@@ -1,0 +1,19 @@
+{
+  "last_updated": "2026-05-20",
+  "batches": [
+    {
+      "file": "collections/abudawud.json",
+      "translated_reference_range": "abudawud:1-710",
+      "count": 20,
+      "next_missing_reference": "abudawud:711",
+      "notes": "Progress file initialized because translation-progress.json was missing at batch start."
+    },
+    {
+      "file": "collections/bukhari.json",
+      "translated_reference_range": "bukhari:1-5029",
+      "count": 20,
+      "next_missing_reference": "bukhari:5030",
+      "notes": "Continued Bukhari reports on the virtues and recitation of the Qur'an."
+    }
+  ]
+}

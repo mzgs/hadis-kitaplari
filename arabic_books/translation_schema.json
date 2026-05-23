@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "translations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "turkish": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "turkish"]
+      }
+    }
+  },
+  "required": ["translations"]
+}
