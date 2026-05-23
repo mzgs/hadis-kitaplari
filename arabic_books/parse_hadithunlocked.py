@@ -5,7 +5,8 @@ Examples:
   python parse_hadithunlocked.py --url https://hadithunlocked.com/bukhari/65/2 -o bukhari_65_2.json
   python parse_hadithunlocked.py --collection bukhari -o bukhari_hu.json --delay 1
   python parse_hadithunlocked.py --all-collections -o hadithunlocked_collections --delay 1
-"""
+  python parse_hadithunlocked.py --all-collections -o collections --skip-english-translation --delay 0.2
+  """
 
 from __future__ import annotations
 
