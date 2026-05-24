@@ -58,6 +58,7 @@ def scan_file(path: Path) -> dict[str, int | str]:
     turkish_missing = 0
     arabic_missing = 0
     chain_missing = 0
+    first_missing_indexes: list[str] = []
 
     for record in iter_records(data):
         records += 1
@@ -70,12 +71,19 @@ def scan_file(path: Path) -> dict[str, int | str]:
         arabic_missing += int(missing_arabic)
         chain_missing += int(missing_chain)
 
+        if (
+            len(first_missing_indexes) < 5
+            and (missing_turkish or missing_arabic or missing_chain)
+        ):
+            first_missing_indexes.append(str(record.get("hadis_no") or records))
+
     return {
         "file": path.name,
         "records": records,
         "turkish_missing": turkish_missing,
         "arabic_missing": arabic_missing,
         "chain_missing": chain_missing,
+        "first_missing_indexes": ", ".join(first_missing_indexes) or "-",
     }
 
 
@@ -92,6 +100,7 @@ def print_table(rows: list[dict[str, int | str]]) -> None:
         "Turkish missing",
         "Arabic missing",
         "Chain missing",
+        "First 5 missing indexes",
     ]
     keys = [
         "file",
@@ -99,6 +108,7 @@ def print_table(rows: list[dict[str, int | str]]) -> None:
         "turkish_missing",
         "arabic_missing",
         "chain_missing",
+        "first_missing_indexes",
     ]
 
     table_rows = [[format_number(row[key]) for key in keys] for row in rows]
