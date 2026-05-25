@@ -1791,14 +1791,14 @@
       "hadis_no": 248,
       "turkce": "İbni Abbas radıyallahu anhümâ Berîre ile kocası arasında geçen olaya dair şunları söyledi:\r\nPeygamber aleyhisselâm Berîre’ye:\r\n- “Keşke tekrar kocana dönsen!” buyurdu.\r\nBerîre:\r\n- Yâ Resûlallah! Böyle yapmamı bana emrediyor musun? diye sordu.\r\nResûl-i Ekrem Efendimiz:\r\n- “Hayır, sadece aracılık yapıyorum” buyurdu.\r\nBunun üzerine Berîre:\r\n- Benim ona ihtiyacım yok, dedi.\r\nBuhârî, Talâk 16. Ayrıca bk. Buhârî, Talâk 15; Ebû Dâvûd, Talâk 21; Nesâî, Âdâbü’l-kudât 28; İbni Mâce, Talâk 29",
       "arabic": "وعن ابن عباس رضي اللَّه عنهما في قِصَّة برِيرَةَ وزَوْجِها . قال : قال لَهَا النَّبِيُّ صَلّى اللهُ عَلَيْهِ وسَلَّم : « لَوْ راجَعْتِهِ ؟ » قَالتَ : يا رَسُولَ اللَّه تأْمُرُنِي ؟ قال : « إِنَّما أَشـْفعُ » قَالَتْ : لا حاجة لِي فِيهِ .رواه البخاري .",
-      "chain": null,
+      "chain": "Muhammed > Abd el-Vahhâb > Hâlid > İkrime > İbn Abbâs",
       "reference": null
     },
     {
       "hadis_no": 249,
       "turkce": "İbni Abbas radıyallahu anhümâ Berîre ile kocası arasında geçen olaya dair şunları söyledi:\r\nPeygamber aleyhisselâm Berîre’ye:\r\n- “Keşke tekrar kocana dönsen!” buyurdu.\r\nBerîre:\r\n- Yâ Resûlallah! Böyle yapmamı bana emrediyor musun? diye sordu.\r\nResûl-i Ekrem Efendimiz:\r\n- “Hayır, sadece aracılık yapıyorum” buyurdu.\r\nBunun üzerine Berîre:\r\n- Benim ona ihtiyacım yok, dedi.\r\nBuhârî, Talâk 16. Ayrıca bk. Buhârî, Talâk 15; Ebû Dâvûd, Talâk 21; Nesâî, Âdâbü’l-kudât 28; İbni Mâce, Talâk 29",
       "arabic": "وعن ابن عباس رضي اللَّه عنهما في قِصَّة برِيرَةَ وزَوْجِها . قال : قال لَهَا النَّبِيُّ صَلّى اللهُ عَلَيْهِ وسَلَّم : « لَوْ راجَعْتِهِ ؟ » قَالتَ : يا رَسُولَ اللَّه تأْمُرُنِي ؟ قال : « إِنَّما أَشـْفعُ » قَالَتْ : لا حاجة لِي فِيهِ .رواه البخاري .",
-      "chain": null,
+      "chain": "Muhammed > Abd el-Vahhâb > Hâlid > İkrime > İbn Abbâs",
       "reference": null
     },
     {
@@ -3300,7 +3300,7 @@
       "hadis_no": 457,
       "turkce": "“Allah korkusundan ağlamak” konusuyla ilgili pek çok hadis bulunmaktadır. Meselâ, bid’atlardan sakındırma konusunda geçen  İrbâz İbni Sâriye radıyallahu anh’ın, “ Resûlullah sallallahu aleyhi ve sellem bize kalpleri ürperten, gözleri yaşartan  bir  va’z  ve nasihatta bulundu” anlamındaki rivayeti bunlardandır.",
       "arabic": "حديث العْرباض بنِ ساريةَ . رضي اللَّه عنه ، قال : وعَظَنَا رسُول اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم مَوْعِظَةً وَجِلَتْ منها القُلُوبُ ، وذَرَفْت منْهَا العُيُونُ » . وقد سبق في باب النهي عن البدع.",
-      "chain": null,
+      "chain": "Ahmed b. Hanbal > el-Valîd b. Muslim > Savr b. Yezîd > Hâlid b. Madân > Abdurrahman b. Amr el-Sulamî ve Hucr b. Hucr",
       "reference": null
     },
     {
@@ -4464,7 +4464,7 @@
       "hadis_no": 619,
       "turkce": "Ebû Hureyre radıyallahu anh’den rivayet edildiğine göre Resûlullah sallallahu aleyhi ve sellem şöyle dedi:\r\n“Allah Teâlâ şöyle buyurdu:\r\nYücelik ve kudret (izzet) benim izârım, büyüklük de benim ridâm sayılır. Bunlardan biri kendisinde de varmış gibi davranan olursa, onun cezasını veririm.”\r\nMüslim, Birr 136. Ayrıca bk. Ebû Dâvûd, Libâs 26; İbni Mâce, Zühd 16",
       "arabic": "وعنه قال : قال رسولُ اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم : « قال اللَّه عزَّ وجلَّ : العِزُّ إِزاري ، والكِبْرياءُ رِدَائِي ، فَمَنْ يُنَازعُني في واحدٍ منهُما فقدْ عذَّبتُه » رواه مسلم .",
-      "chain": null,
+      "chain": "Ahmed b. Yûsuf el-Azdî > Ömer b. Hafs b. Ghiyâs babamdan > el-Amaş > Ebû Işâk > Ebû Muslim el-Aghar > Ebû Saîd el-Hudrî ve Abî Hureyre",
       "reference": null
     }
   ],
@@ -5018,7 +5018,7 @@
       "hadis_no": 695,
       "turkce": "Ebû Hureyre radıyallahu anh’den rivayet edildiğine göre Peygamber sallallahu aleyhi ve sellem şöyle buyurdu:\r\n“Güzel söz sadakadır.”\r\nBuhârî, Edeb 34, Cihâd 128, Müslim, Zekât 56",
       "arabic": "وعن أبي هريرة رضي اللَّه عنه أن النبي صَلّى اللهُ عَلَيْهِ وسَلَّم قال : والكلِمةُ الطَّيِّبَةُ صدَقَةٌ » متفقٌ عليه . وهو بعض حديث تقدم بطولِه .",
-      "chain": null,
+      "chain": "Muhammed b. Râfi > Abd el-Razzâk b. Hammâm > Ma'mer > Hammâm b. Munabbih > Ebû Hureyre",
       "reference": null
     },
     {
@@ -5074,7 +5074,7 @@
       "hadis_no": 703,
       "turkce": "İrbâz İbni Sâriye radıyallahu anh:\r\nResûlullah sallallahu aleyhi ve sellem bize çok tesirli bir öğüt verdi. Bu öğütten dolayı kalpler ürperdi, gözler yaşardı, diyerek devamı ve tamamı “Sünneti Koruma” bahsinde geçen hadisi rivayet etti.\r\nTirmizî, İlim 16; Ebû Dâvûd, Sünnet 5. Ayrıca bk. İbni Mâce, Mukaddime 6",
       "arabic": "وعن العِرْباض بن سَاريةَ رضي اللَّه عنه قال : وَعظَنَا رسول اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم مَوْعِظَةً وَجِلَتْ مِنهْا القُلُوب . وَذَرِفَتْ مِنْها العُيُون وَذَكَرَ الحدِيثَ ، وَقدْ سَبق بِكَمالِهِ في باب الأمر بالمُحافَظةِ على السُّنَّةِ ، وذَكَرْنَا أَنَّ التِّرْمِذيَّ قال إنه حديث حسنٌ صحيحٌ .",
-      "chain": null,
+      "chain": "Ahmed b. Hanbal > el-Valîd b. Muslim > Savr b. Yezîd > Hâlid b. Madân > Abdurrahman b. Amr el-Sulamî ve Hucr b. Hucr",
       "reference": null
     },
     {
@@ -6582,7 +6582,7 @@
       "hadis_no": 917,
       "turkce": "Sa’d ibni Ebû Vakkâs radıyallahu anh’den rivayet edildiğine göre şöyle demiştir:\r\nYakalandığım şiddetli bir hastalık dolayısıyla Resûlullah sallallahu aleyhi ve sellem ziyaretime geldi. Ona:\r\n- “Gördüğün gibi çok rahatsızım. Ben zengin bir adamım. Bir tek kızımdan başka mirasçım da yok...” dedim.\r\n[Râvi, hadisin tamamını nakletmiştir.]\r\nBuhârî, Cenâiz 36, Vasâyâ 2, Merdâ 16, Daavât 43, Ferâiz 6; Müslim, Vasâyâ 5. Ayr. bk. Ebû Dâvûd, Ferâiz 3; Tirmizî, Vasâyâ 1; Nesâî, Vasâyâ 3; İbni Mâce, Vasâyâ 5",
       "arabic": "وعن سعدِ بن أَبي وَقَّاص رضي اللَّه عنه قال : جَاءَني رسولُ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم يعودُني مِن وجعٍ اشَتدَّ بي ، فَقُلْتُ : بلَغَ بي ما ترى ، وأَنَا ذو مَالٍ ، وَلا يرِثُني إِلاَّ ابنتي . وذكر الحديث ، متفقٌ عليه .",
-      "chain": null,
+      "chain": "Abdullah b. Yûsuf > Mâlik > İbn Şihâb > Âmir b. Sad b. Ebû Vakkâs babasından",
       "reference": null
     },
     {
@@ -6757,7 +6757,7 @@
       "hadis_no": 942,
       "turkce": "Abdullah İbni Ebû Evfâ radıyallahu anhümâ’dan rivayet edildiğine göre o, kızının cenaze namazında dört defa tekbir aldı. Dördüncü tekbirden sonra, iki tekbir arasında durduğu kadar durup kızının bağışlanmasını diledi ve ona dua etti. Sonra da “Resûlullah sallallahu aleyhi ve sellem böyle yapardı” dedi.\r\nBir başka rivayette şu ifadeler yer almaktadır: “Dört tekbir aldıktan sonra o kadar bekledi ki, biz onun beşinci defa tekbir alacağını sandık. Sonra sağına ve soluna selâm verdi. Namazdan sonra; “Bu yaptığın nedir?” dedik. O da bize, “Resûlullah sallallahu aleyhi ve sellem’in yaptığını gördüğüm şeye  bir  ilave yapmış değilim,” ya da “Resûlullah sallallahu aleyhi ve sellem böyle yapardı” diye cevap verdi.\r\nHâkim, el-Müstedrek, I, 360 (Hâkim, “hadis sahihtir” der). Ayrıca bk. İbni Mâce, Cenâiz 24",
       "arabic": "وعن عبد اللَّه بنِ أبي أوْفى رضي اللَّه عنهما أَنَّهُ كبَّر على جَنَازَةِ ابْنَةٍ لَهُ أَرْبَعَ تَكْبِيراتٍ ، فَقَامَ بَعْدَ الرَّابِعَةِ كَقَدْرِ مَا بَيْنَ التَّكْبيرتيْن يَسْتَغفِرُ لهَا وَيَدْعُو ، ثُمَّ قال : كَانَ رسُولُ اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم يَصْنَعُ هكذَا وفي رواية : « كَبَّرَ أَرْبعاً فمكث سَاعةً حتَّى ظَنَنْتُ أَنَّهُ سيُكَبِّرُ خَمْساً ، ثُمَّ سلَّمَ عنْ يمِينهِ وَعَنْ شِمالِهِ ، فَلَمَّا انْصَرَف قُلْنا لَهُ : مَا هذا ؟ فقال : إنِّي لا أزيدُكُمْ عَلى مَا رَأَيْتُ رسُولُ اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم يَصْنَعُ ، أوْ : هكذا صَنعَ رسولُ اللَّهِ صَلّى اللهُ عَلَيْهِ وسَلَّم . رواه الحاكم وقال : حديث صحيح .",
-      "chain": null,
+      "chain": "Ebû Bekir Ahmed b. el-Hasan el-Kâdî ve Muhammed b. Abdullah el-Hâfız > Ebû el-Abbâs Muhammed b. Yakûb > el-Sarî b. Yahyâ > Kabîsah > el-Hasan b. Sâlih > Ebû Yafûr > Abdullah b. Ebû Avfâ",
       "reference": null
     },
     {
@@ -7887,8 +7887,8 @@
     {
       "hadis_no": 1103,
       "turkce": "Âişe radıyallahu anhâ şöyle dedi:\r\nPeygamber sallallahu aleyhi ve sellem sabah namazının iki rek`at sünnetine diğer nâfile namazlardan daha fazla önem verirdi.\r\nBuhârî, Teheccüd  27; Müslim, Müsâfirîn 94. Ayrıca bk. Ebû Dâvûd, Tatavvu, 2",
-      "arabic": "",
-      "chain": null,
+      "arabic": "لَمْ يَكُنِ النَّبِيُّ ﷺ عَلَى شَىْءٍ مِنَ النَّوَافِلِ أَشَدَّ مِنْهُ تَعَاهُدًا عَلَى رَكْعَتَىِ الْفَجْرِ",
+      "chain": "Bayân b. Amr > Yahyâ b. Saîd > İbn Cüreyc > Atâ > Ubayd b. Umeyr > Âişe",
       "reference": null
     },
     {
@@ -9814,7 +9814,7 @@
       "hadis_no": 1377,
       "turkce": "Câbir radıyallahu anh' den rivayet edildiğine göre, Nebî sallallahu aleyhi ve sellem ondan bir deve satın almıştı. Devenin parasının tartılmasını ve üzerine bir miktar ilâve edilmesini emretti.\r\nBuhârî, Büyû‘ 34, Hibe 23; Müslim, Müsâkât 109-115",
       "arabic": "وعَنْ جابرٍ ، رضي اللَّه عَنْهُ ، أنَّ النبيَّ صَلّى اللهُ عَلَيْهِ وسَلَّم ، اشْتَرى مِنْهُ بَعِيراً ، فَوَزَنَ لَهُ، فَأَرْجَحَ متفقٌ عليه .",
-      "chain": null,
+      "chain": "Muhammed b. Başhâr > Ghundar > Şubah > Muhârib > Câbir b. Abdullah",
       "reference": null
     },
     {
@@ -10655,7 +10655,7 @@
       "hadis_no": 1496,
       "turkce": "İbn Mes‘ûd radıyallahu anh şöyle dedi:\r\nResûlullah sallallahu aleyhi ve sellem’in dualarından biri şöyleydi:\r\n“Allâhumme innî es’elüke mûcibâti rahmetike ve azâime mağfiretike ve’s-selâmete min külli ismin ve’l-ganîmete min külli birrin ve’l-fevze bi’l-cenneti ve’n-necâte mine’n-nâr: Allahım! Senin rahmetini kazandıracak, bağışlamanı sağlayacak işler yapmayı, her türlü günahtan uzak durmayı, bütün iyilikleri işlemeyi, cennete kavuşup cehennemden kurtulmayı nasip etmeni niyâz ediyorum.”\r\nHâkim, el-Müstedrek, I, 525.",
       "arabic": "وَعَن ابْنِ مسْعُودٍ ، رضِيَ اللَّه عنْهُ ، قَالَ : كَانَ مِن دُعَاء رَسُولِ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم : اللَّهُمَّ إِنِّي أَسْأَلُكَ مُوجِباتِ رحْمتِكَ ، وَعزَائمَ مغفِرتِكَ ، والسَّلامَةَ مِن كُلِّ إِثمٍ ، والغَنِيمَةَ مِن كُلِّ بِرٍ ، وَالفَوْزَ بالجَنَّةِ ، وَالنَّجاةَ مِنَ النَّارِ » . رواهُ الحاكِم أبو عبد اللَّهِ ، وقال : حديثٌ صحيحٌ على  شرط مسلِمٍ  .",
-      "chain": null,
+      "chain": "Abdurrahman b. Hamdân el-Cellâb bi-Hemedân > Ebû Hâtim el-Râzî > Kabîsah b. Ukbah > Süfyân > Meysarah b. Habîb > el-Minhâl b. Amr > Ebû Ubeyde",
       "reference": null
     },
     {
@@ -11672,7 +11672,7 @@
       "hadis_no": 1641,
       "turkce": "İbni Ömer radıyallahu anhümâ  şöyle dedi:\r\nResûlullah sallallahu aleyhi ve sellem başın bir kısmını tıraş edip bir kısmının (perçem olarak) bırakılmasını yasakladı.\r\nBuhârî, Libâs 72; Müslim, Libâs 72, 113. Ayrıca bk. Ebû Dâvûd, Tereccül 14; Nesâî, Zînet 5, 58; İbni Mâce, Libâs 38",
       "arabic": "عن ابن عُمر رضي اللَّه عنهُما قَالَ: نَهَى رسُولُ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم عنِ القَزعِ. متفق عليه.",
-      "chain": null,
+      "chain": "Muslim b. İbrahim > Abdullah b. el-Musannâ b. Abdullah b. Enes b. Mâlik > Abdullah b. Dînâr > İbn Ömer",
       "reference": null
     },
     {
@@ -12554,7 +12554,7 @@
       "hadis_no": 1767,
       "turkce": "Ebû Hureyre ve Âişe radıyallahu anhümâ'dan rivayet edildiğine göre Nebî sallallahu aleyhi ve sellem iftar etmeden orucu birbirine eklemeyi yasakladı.\r\nBuhârî, Savm 48, 49; Müslim, Sıyâm 59. Ayrıca bk. Ebû Dâvûd, Savm 24",
       "arabic": "عَنْ أَبي هُريْرَةَ وَعَائِشَةَ رَضِي اللَّه عنْهُمَا أَنَّ النَّبِيَّ صَلّى اللهُ عَلَيْهِ وسَلَّم نَهَى عَنِ الْوِصالِ . متفقٌ عليه .",
-      "chain": null,
+      "chain": "[Zincir 1] Ebû el-Yamân > Şuayb > el-Zührî > Ebû Seleme b. Abdurrahman > Ebû Hureyre [Zincir 2] Osman b. Ebû Şaybah ve Muhammed > Abdah > Hişâm b. Urve babasından > Âişe",
       "reference": null
     },
     {
@@ -12785,7 +12785,7 @@
       "hadis_no": 1800,
       "turkce": "Enes İbni Sîrîn şöyle dedi:\r\nBen, Enes İbni Mâlik radıyallahu anh ile birlikte Mecûsîlerden bir grubun yanında idim. Gümüşten bir kap içinde pelte tatlısı getirildi; Enes onu yemedi. Getiren kişiye, onu başka bir kaba aktarması söylenildi; o da ağaçtan yapılmış bir kaba aktarıp getirdi, Enes de ondan yedi.\r\nBeyhakî, es-Sünenü'l-kübrâ, I, 28, Tahâret, bâbü'l-men'i mine'l-ekli fî sıhâfi'z-zehebi ve'l-fıdda",
       "arabic": "وعَنْ أنس بن سِيرينَ قال : كنْتُ مَع أنَسِ بن مالك رضي اللَّه عنْهُ عِنْد نَفَرٍ مِنَ  المجُوسِ ، فَجِيءَ بفَالُودَجٍ عَلى إنَاءٍ مِنْ فِضَّةٍ ، فَلَمْ يأكُلْهُ ، فَقِيلَ لَهُ حوِّلهُ فحوَّلَه عَلى إنَاءٍ مِنْ خَلَنْج ، وجِيءَ بِهِ فأَكَلَهُ .رواه البيهقي بإسْنادٍ حَسنٍ . « الخَلَنْجُ » : الجَفْنَة .",
-      "chain": null,
+      "chain": "Ebû el-Hasan Ali b. Ahmed b. Abdân > Ahmed b. Ubeyd el-Saffâr > Ahmed b. Amr el-Katavânî > Abdülvâhid b. Gıyâs > Abdülvâhid b. Ziyâd > Yûnus b. Ubeyd > Enes b. Sîrîn",
       "reference": null
     },
     {
@@ -12906,7 +12906,7 @@
       "hadis_no": 1817,
       "turkce": "İmrân İbni Husayn radıyallahu anh Resûlullah sallallahu aleyhi ve sellem’i şöyle buyururken işittim dedi:\r\n“Hz. Âdem’in yaratıldığı zamandan kıyametin kopacağı ana kadar deccâlden daha büyük bir fitne yoktur.”\r\nMüslim, Fiten 126. Ayrıca bk. Ahmed İbni Hanbel, Müsned, IV, 19-21",
       "arabic": "وَسَمِعْتُ رَسُولَ اللهِ ﷺ يَقُولُ وَاللهِ مَا بَيْنَ خَلْقِ آدَمَ إِلَى قِيَامِ السَّاعَةِ أَمْرٌ أَعْظَمُ مِنَ الدَّجَّالِ",
-      "chain": "",
+      "chain": "Züheyr b. Harb > Ahmed b. Işâk el-Hadramî > Abdülazîz / İbn el-Muhtâr > Ayyûb > Humayd b. Hilâl",
       "reference": "ahmad:16255"
     },
     {
@@ -13032,7 +13032,7 @@
       "hadis_no": 1835,
       "turkce": "Ebû Sa’lebe el-Huşenî Cürsûm İbni Nâşir radıyallahu anh’ın rivayet ettiğine göre Resûlullah sallallahu aleyhi ve sellem şöyle buyurdu:\r\n“Allah Teâlâ bazı şeyleri farz kıldı, onları ihmal etmeyin. Bazı günahlara yaklaşılmaması için sınırlar koydu, o sınırları aşmayın. Bazı şeyleri haram kıldı, o haramları çiğnemeyin. Bazı şeyleri de unuttuğu için değil size olan merhameti sebebiyle dile getirmedi, onları da araştırıp kurcalamayın.”\r\nDârekutnî, es-Sünen, IV, 184. Ayrıca bk. Hâkim, el-Müstedrek, IV, 115",
       "arabic": "وعنْ أبي ثَعْلَبَةَ الخُشَنيِّ جَرْثُومِ بنِ نَاشِرٍ رضي اللَّه عَنْهُ عنْ رَسُولِ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم قال: إن اللَّه تعالى فَرَضَ فَرائِضَ فلا تُضَيِّعُوهَا ، وحدَّ حُدُوداً فَلا تَعْتَدُوهَا ، وحَرَّم أشْياءَ فَلا تَنْتَهِكُوها ، وَسكَتَ عَنْ أشْياءَ رَحْمةً لَكُمْ غَيْرَ نِسْيانٍ فَلا تَبْحثُوا عنها » حديثٌ حسن ، رواه الدَّارقُطْني وَغَيْرَهُ .",
-      "chain": null,
+      "chain": "Ubeyd b. Gannâm > Ebû Bekir b. Ebû Şeybe > Abdürrahîm b. Süleymân > Dâvud b. Ebû Hind > Mekhûl > Ebû Sa'lebe",
       "reference": null
     },
     {
@@ -13109,7 +13109,7 @@
       "hadis_no": 1846,
       "turkce": "Âsım el-Ahvel’den rivayet edildiğine göre Abdullah İbni Sercis radıyallahu anh şöyle dedi:\r\nResûlullah sallallahu aleyhi ve sellem’e:\r\n- Yâ Resûlallah! Allah seni bağışlasın, dedim. O da:\r\n- “Seni de bağışlasın” buyurdu.\r\nÂsım el-Ahvel dedi ki, Abdullah İbni Sercis’e:\r\n- Resûlullah sallallahu aleyhi ve sellem senin için böyle mağfiret diledi mi? diye sordum.\r\n- Evet, senin için de mağfiret diledi, dedi ve şu âyet-i kerîmeyi okudu:\r\n“(Habîbim!) Hem kendinin hem de mü’min erkeklerin ve mü’min kadınların günahlarının bağışlanmasını dile!”\r\nMüslim, Fezâil 112",
       "arabic": "وعَنْ عاصِم الأحْوَلِ عَنْ عَبْدِ اللَّه بنِ سَرْجِسَ رضي اللَّه عَنْهُ قَالَ : قُلْتُ لِرَسُولِ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم : يَا رَسُولَ اللَّه غَفَرَ اللَّه لكَ ، قَالَ : « وَلَكَ » قَالَ عَاصِمٌ : فَقلْتُ لَهُ : اسْتَغْفَرَ لَكَ رَسُولُ اللَّه صَلّى اللهُ عَلَيْهِ وسَلَّم ؟ قَالَ : نَعَمْ وَلَكَ ، ثُمَّ تَلاَ هَذه الآيةَ : { واستغفِرْ لِذَنْبِكَ ولِلْمُؤمِنِينَ والمُؤْمِناتِ}  [ محمد : 19 ] ، رَواهُ مُسلم .",
-      "chain": null,
+      "chain": "[Zincir 1] Ebû Kâmil > Hammâd / İbn Zayd [Zincir 2] Sûvayd b. Saîd > Ali b. Muşir > Âsim el-Ahval [Zincir 3] Hâmid b. Ömer el-Bakrâvî > Abdülvâhid / İbn Ziyâd > Âsim > Abdullah b. Sarcis",
       "reference": null
     },
     {
