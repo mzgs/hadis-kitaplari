@@ -63,7 +63,7 @@ def scan_file(path: Path) -> dict[str, int | str]:
     for record in iter_records(data):
         records += 1
 
-        missing_turkish = is_missing(record, "turkce")
+        missing_turkish = is_missing(record, "turkish")
         missing_arabic = is_missing(record, "arabic")
         missing_chain = is_missing(record, "chain")
 
@@ -75,7 +75,7 @@ def scan_file(path: Path) -> dict[str, int | str]:
             len(first_missing_indexes) < 5
             and (missing_turkish or missing_arabic or missing_chain)
         ):
-            first_missing_indexes.append(str(record.get("hadis_no") or records))
+            first_missing_indexes.append(str(record.get("hadith_no") or records))
 
     return {
         "file": path.name,
