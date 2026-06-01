@@ -45,25 +45,7 @@ Never sacrifice transmitted meaning for smoother modern Turkish.
 
 ---
 
-# DO NOT TRANSLATE VIA ENGLISH
-
-Always derive meaning directly from Arabic.
-
-English translations may be consulted only as secondary references for ambiguity resolution.
-
-Never inherit:
-- English idioms,
-- English sentence structure,
-- English theological interpretation,
-- or English explanatory expansions.
-
-Do not unconsciously perform:
-Arabic → English → Turkish
-
-Instead perform:
-Arabic → Turkish
-
----
+ 
 
 # CORE TRANSLATION PRINCIPLES
 
