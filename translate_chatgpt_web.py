@@ -39,10 +39,10 @@ Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
 
 Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
 
+"عن فلان" kalıplarını mümkün olduğunda "Falancadan rivayet edildiğine göre" veya "Falanca şöyle rivayet etmiştir" şeklinde çevir.
+"قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
 
-Çeviriyi yaparken hedef okuyucunun günümüz Türk okuyucusu olduğunu varsay.
-
-Bir kavram, kişi, grup, yer veya tarihî olay metnin anlaşılması için gerekli olduğu hâlde ortalama bir Türk okuyucunun bilmesi beklenmiyorsa, ilk geçtiği yerde birkaç kelimelik açıklama ekleyebilirsin.
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
 
 Çıktı yalnızca geçerli JSON olsun, no markdown:
 
@@ -186,9 +186,7 @@ def build_translation_prompt(selected_items):
     hadiths_json = json.dumps(selected_items, ensure_ascii=False, indent=2)
     return (
         f"{PROMPT.rstrip()}\n\n"
-        "Aşağıdaki JSON dizisindeki hadisleri çevir. "
-        "Her sonuçta aynı reference değerini kullan.\n"
-        f"{hadiths_json}\n"
+        f"{hadiths_json}"
     )
 
 
