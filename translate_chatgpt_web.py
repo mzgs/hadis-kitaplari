@@ -31,8 +31,11 @@ Tarihî bağlam kesin olarak biliniyorsa metnin içine eklenebilsin.
 Arapça metinde kapalı bırakılan ancak hadis âlimlerinin ittifakla açıkladığı hususlar okuyucunun anlayacağı şekilde metne yedirilsin.
 
 Türkçe karşılığı doğru olsa bile tercüme kokan, yapay ifadeler kullanma. Arapçadaki vurgu, hasr, ism-i tafdîl ve belagat inceliklerini koruyarak doğal, sade ve klasik hadis tercümesi üslubuna yakın Türkçe kur.
-arapca bir kelimenin anlamini cumlede kaybetme ve dogal turkce klasik turkce hadis uslubu kullan.
+arapca bir kelimenin anlamini cumlede kaybetme ve dogal turkce klasik turkce hadis uslubu kullan. Bir turk okuyucuya uygun cevir.
+
+Çeviri sadece lafzî karşılık vermekle yetinmesin. Arapça metnin bağlamından, siyak ve sibakından (öncesi-sonrası), hadis içindeki açıklamalardan ve hadis âlimlerinin ittifakla kabul ettiği yorumlardan açıkça anlaşılan anlamlar Türkçeye doğal biçimde yedirilebilir. Bu tür açıklamalar metnin muradını daha doğru yansıtıyorsa, lafızda birebir bulunmasa bile tercümede kullanılabilir. Ancak zayıf, tartışmalı veya spekülatif yorumlar eklenmemelidir.
 Cogunlugun bildigi kelimeleri parantez icinde anlamlarini vermene gerek yok.
+
 Output format, no markdown:
 [{"tr":"<Turkish translation>","reference": ""}]
 
@@ -336,6 +339,9 @@ def main():
     if args.book and not args.hadiths:
         try:
             run_auto_batches(args.book, args.max_append_chars, args.timeout)
+        except KeyboardInterrupt:
+            print("\nStopped by user. Current in-progress batch was not saved.")
+            raise SystemExit(130)
         except (OSError, json.JSONDecodeError, ValueError) as exc:
             print(f"Failed to run automatic batches: {exc}")
             raise SystemExit(1) from exc
@@ -353,6 +359,9 @@ def main():
 
     try:
         request_translation(prompt, output_path, args.timeout)
+    except KeyboardInterrupt:
+        print("\nStopped by user. Current in-progress request was not saved.")
+        raise SystemExit(130)
     except urllib.error.HTTPError as exc:
         print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
     except urllib.error.URLError as exc:
