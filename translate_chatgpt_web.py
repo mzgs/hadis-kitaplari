@@ -15,33 +15,43 @@ DEFAULT_TIMEOUT_SECONDS = 300
 RANGE_FILE_RE = re.compile(r"^(\d+)-(\d+)\.json$")
 
 PROMPT = """
-Aşağıdaki tüm hadisleri Türkçeye çevir. 
-Çeviri sade, doğru ve akıcı Türkçe olsun. 
-Dini terimleri mümkünse klasik Türkçe kullanımına uygun çevir. 
-(sallallahu aleyhi ve sellem) yerine (s.a.v.) kullan.
-Gerekirse önemli kelimeler için kısa not ekle. 
+Aşağıdaki hadisleri Türkçeye çevir.
 
-"عن فلان" kalıplarını mümkün olduğunda "Falancadan rivayet edildiğine göre" veya "Falanca şöyle rivayet etmiştir" şeklinde çevir.
-"قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
-Hz. Peygamber için "Nebî (s.a.v.)" veya "Resûlullah (s.a.v.)" ifadelerini bağlama uygun şekilde kullan.
-Çeviriler Diyanet, İSAM ve klasik Türkçe hadis tercümelerinin üslubuna yakın olsun.
+Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
 
-Okuyucunun bilmeyeceği şahıslar, yerler, kabileler, olaylar ve kavramlar ilk geçtiği yerde çok kısa açıklamayla verilsin ancak çoğunlukla bilinen kelimeler için gerek yok.
-Tarihî bağlam kesin olarak biliniyorsa metnin içine eklenebilsin.
-Arapça metinde kapalı bırakılan ancak hadis âlimlerinin ittifakla açıkladığı hususlar okuyucunun anlayacağı şekilde metne yedirilsin.
+* (صلى الله عليه وسلم) → (s.a.v.)
+* Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
+* Rivayet kalıplarını doğal Türkçe ile aktar.
+* İsnadları (rivayet zincirlerini) okuyucunun rahat takip edebileceği şekilde çevir; uzun ravi zincirlerini kelime kelime çevirmek zorunda değilsin.
+* Siyak ve sibakı dikkate al.
+* Arapça metnin muradını doğru yansıt.
+* Tartışmalı, spekülatif veya metinde temeli olmayan yorumlar ekleme.
+* Gerekirse kısa açıklamalar ekleyebilirsin, ancak tercüme tefsire dönüşmesin.
+* Yerleşik İslâmî terimleri anlam kaybına yol açacaksa koru.
 
-Türkçe karşılığı doğru olsa bile tercüme kokan, yapay ifadeler kullanma. Arapçadaki vurgu, hasr, ism-i tafdîl ve belagat inceliklerini koruyarak doğal, sade ve klasik hadis tercümesi üslubuna yakın Türkçe kur.
-arapca bir kelimenin anlamini cumlede kaybetme ve dogal turkce klasik turkce hadis uslubu kullan. Bir turk okuyucuya uygun cevir.
+Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
 
-Çeviri sadece lafzî karşılık vermekle yetinmesin. Arapça metnin bağlamından, siyak ve sibakından (öncesi-sonrası), hadis içindeki açıklamalardan ve hadis âlimlerinin ittifakla kabul ettiği yorumlardan açıkça anlaşılan anlamlar Türkçeye doğal biçimde yedirilebilir. Bu tür açıklamalar metnin muradını daha doğru yansıtıyorsa, lafızda birebir bulunmasa bile tercümede kullanılabilir. Ancak zayıf, tartışmalı veya spekülatif yorumlar eklenmemelidir.
+1. Anlamın doğruluğu
+2. Hadisin muradının korunması
+3. Doğal ve akıcı Türkçe
+4. Klasik hadis tercümesi üslubu
+5. Lafzî sadakat
 
-Doğal türkçe kullan mekanik bir çeviri yapma.
+Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
 
-Output format, no markdown:
-[{"tr":"<Turkish translation>","reference": ""}]
 
+Çeviriyi yaparken hedef okuyucunun günümüz Türk okuyucusu olduğunu varsay.
+
+Bir kavram, kişi, grup, yer veya tarihî olay metnin anlaşılması için gerekli olduğu hâlde ortalama bir Türk okuyucunun bilmesi beklenmiyorsa, ilk geçtiği yerde birkaç kelimelik açıklama ekleyebilirsin.
+
+Çıktı yalnızca geçerli JSON olsun, no markdown:
+
+[{
+"tr":"<Turkish translation>",
+"reference":"",
+"notes":""
+}]
  
-
 
 
 """
@@ -58,7 +68,10 @@ def parse_args():
     )
     parser.add_argument(
         "--hadiths",
-        help="Comma-separated one-based hadith item indexes to include, e.g. 1,5,6.",
+        help=(
+            "Comma-separated one-based hadith item indexes or ranges to include, "
+            "e.g. 1,5,6 or 1-4."
+        ),
     )
     parser.add_argument(
         "--max-append-chars",
@@ -86,15 +99,34 @@ def parse_hadith_indexes(raw_indexes):
         return None
 
     indexes = []
-    for raw_index in raw_indexes.split(","):
-        raw_index = raw_index.strip()
-        if not raw_index:
+    for raw_part in raw_indexes.split(","):
+        raw_part = raw_part.strip()
+        if not raw_part:
+            continue
+
+        if "-" in raw_part:
+            raw_start, separator, raw_end = raw_part.partition("-")
+            if not raw_start.strip() or not raw_end.strip() or separator != "-":
+                raise ValueError(f"Invalid hadith range: {raw_part!r}")
+
+            try:
+                start = int(raw_start)
+                end = int(raw_end)
+            except ValueError as exc:
+                raise ValueError(f"Invalid hadith range: {raw_part!r}") from exc
+
+            if start < 1 or end < 1:
+                raise ValueError(f"Hadith indexes must be one-based: {raw_part}")
+            if start > end:
+                raise ValueError(f"Hadith range start must be <= end: {raw_part}")
+
+            indexes.extend(range(start, end + 1))
             continue
 
         try:
-            index = int(raw_index)
+            index = int(raw_part)
         except ValueError as exc:
-            raise ValueError(f"Invalid hadith index: {raw_index!r}") from exc
+            raise ValueError(f"Invalid hadith index: {raw_part!r}") from exc
 
         if index < 1:
             raise ValueError(f"Hadith indexes must be one-based: {index}")
