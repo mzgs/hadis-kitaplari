@@ -3,12 +3,16 @@
 import json
 from argparse import ArgumentParser
 from pathlib import Path
+import re
 import urllib.error
 import urllib.request
 
 
 API_URL = "http://127.0.0.1:8787/api/reply"
 DEFAULT_OUT_PATH = Path("out.json")
+DEFAULT_MAX_APPEND_CHARS = 24_000
+DEFAULT_TIMEOUT_SECONDS = 300
+RANGE_FILE_RE = re.compile(r"^(\d+)-(\d+)\.json$")
 
 PROMPT = """
 Aşağıdaki tüm hadisleri Türkçeye çevir. 
@@ -51,6 +55,24 @@ def parse_args():
     parser.add_argument(
         "--hadiths",
         help="Comma-separated one-based hadith item indexes to include, e.g. 1,5,6.",
+    )
+    parser.add_argument(
+        "--max-append-chars",
+        type=int,
+        default=DEFAULT_MAX_APPEND_CHARS,
+        help=(
+            "Maximum number of characters from the appended hadith JSON per "
+            f"automatic batch. Defaults to {DEFAULT_MAX_APPEND_CHARS}."
+        ),
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=DEFAULT_TIMEOUT_SECONDS,
+        help=(
+            "Seconds to wait for each local ChatGPT bridge response. "
+            f"Defaults to {DEFAULT_TIMEOUT_SECONDS}."
+        ),
     )
     return parser.parse_args()
 
@@ -124,6 +146,16 @@ def select_hadith_items(hadith_items, indexes):
     return selected_items
 
 
+def build_translation_prompt(selected_items):
+    hadiths_json = json.dumps(selected_items, ensure_ascii=False, indent=2)
+    return (
+        f"{PROMPT.rstrip()}\n\n"
+        "Aşağıdaki JSON dizisindeki hadisleri çevir. "
+        "Her sonuçta aynı reference değerini kullan.\n"
+        f"{hadiths_json}\n"
+    )
+
+
 def build_prompt(book_path=None, raw_hadith_indexes=None):
     if raw_hadith_indexes and not book_path:
         raise ValueError("--hadiths can only be used with --book")
@@ -138,16 +170,69 @@ def build_prompt(book_path=None, raw_hadith_indexes=None):
     indexes = parse_hadith_indexes(raw_hadith_indexes)
     selected_items = select_hadith_items(hadith_items, indexes)
 
-    hadiths_json = json.dumps(selected_items, ensure_ascii=False, indent=2)
-    prompt = (
-        f"{PROMPT.rstrip()}\n\n"
-        "Aşağıdaki JSON dizisindeki hadisleri çevir. "
-        "Her sonuçta aynı reference değerini kullan.\n"
-        f"{hadiths_json}\n"
-    )
+    prompt = build_translation_prompt(selected_items)
     output_path = Path("translations") / book_path.stem / "out.json"
 
     return prompt, output_path
+
+
+def get_existing_ranges(output_dir):
+    ranges = []
+    if not output_dir.exists():
+        return ranges
+
+    for path in output_dir.iterdir():
+        match = RANGE_FILE_RE.match(path.name)
+        if not match or not path.is_file():
+            continue
+
+        start, end = (int(value) for value in match.groups())
+        if start <= end:
+            ranges.append((start, end, path))
+
+    ranges.sort(key=lambda item: (item[0], item[1]))
+    return ranges
+
+
+def find_covering_range(index, ranges):
+    for start, end, path in ranges:
+        if start <= index <= end:
+            return start, end, path
+    return None
+
+
+def is_covered(index, ranges):
+    return find_covering_range(index, ranges) is not None
+
+
+def build_auto_batch(hadith_items, start_index, existing_ranges, max_append_chars):
+    selected_items = []
+    current_index = start_index
+
+    while current_index <= len(hadith_items):
+        if is_covered(current_index, existing_ranges):
+            break
+
+        candidate_items = select_hadith_items(hadith_items, [current_index])
+        next_items = selected_items + candidate_items
+        appended_json = json.dumps(next_items, ensure_ascii=False, indent=2)
+
+        if selected_items and len(appended_json) > max_append_chars:
+            break
+
+        selected_items = next_items
+        current_index += 1
+
+        if len(appended_json) > max_append_chars:
+            break
+
+    return selected_items
+
+
+def load_book_items(book_path):
+    with open(book_path, encoding="utf-8") as book_file:
+        book_data = json.load(book_file)
+    return collect_hadith_items(book_data)
 
 
 def write_response(body, output_path):
@@ -176,15 +261,7 @@ def write_response(body, output_path):
             output_file.write("\n")
 
 
-def main():
-    args = parse_args()
-
-    try:
-        prompt, output_path = build_prompt(args.book, args.hadiths)
-    except (OSError, json.JSONDecodeError, ValueError) as exc:
-        print(f"Failed to build prompt: {exc}")
-        raise SystemExit(1) from exc
-
+def request_translation(prompt, output_path, timeout):
     payload = json.dumps({"prompt": prompt}).encode("utf-8")
 
     request = urllib.request.Request(
@@ -194,12 +271,88 @@ def main():
         method="POST",
     )
 
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        body = response.read().decode("utf-8")
+        print(body)
+        write_response(body, output_path)
+        print(f"Wrote response to {output_path}")
+
+
+def run_auto_batches(book_path, max_append_chars, timeout):
+    if max_append_chars < 1:
+        raise ValueError("--max-append-chars must be greater than zero")
+    if timeout <= 0:
+        raise ValueError("--timeout must be greater than zero")
+
+    hadith_items = load_book_items(book_path)
+    output_dir = Path("translations") / book_path.stem
+    existing_ranges = get_existing_ranges(output_dir)
+    current_index = 1
+
+    while current_index <= len(hadith_items):
+        covering_range = find_covering_range(current_index, existing_ranges)
+        if covering_range:
+            _, end, path = covering_range
+            print(f"Skipping {path}; covers {current_index}-{end}")
+            current_index = end + 1
+            continue
+
+        selected_items = build_auto_batch(
+            hadith_items,
+            current_index,
+            existing_ranges,
+            max_append_chars,
+        )
+        if not selected_items:
+            current_index += 1
+            continue
+
+        start_index = selected_items[0]["index"]
+        end_index = selected_items[-1]["index"]
+        output_path = output_dir / f"{start_index}-{end_index}.json"
+        if output_path.exists():
+            print(f"Skipping {output_path}; already exists")
+            existing_ranges.append((start_index, end_index, output_path))
+            existing_ranges.sort(key=lambda item: (item[0], item[1]))
+            current_index = end_index + 1
+            continue
+
+        appended_json = json.dumps(selected_items, ensure_ascii=False, indent=2)
+        print(
+            f"Translating {start_index}-{end_index} "
+            f"({len(selected_items)} hadiths, {len(appended_json)} appended chars)"
+        )
+        prompt = build_translation_prompt(selected_items)
+        request_translation(prompt, output_path, timeout)
+
+        existing_ranges.append((start_index, end_index, output_path))
+        existing_ranges.sort(key=lambda item: (item[0], item[1]))
+        current_index = end_index + 1
+
+
+def main():
+    args = parse_args()
+
+    if args.book and not args.hadiths:
+        try:
+            run_auto_batches(args.book, args.max_append_chars, args.timeout)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            print(f"Failed to run automatic batches: {exc}")
+            raise SystemExit(1) from exc
+        except urllib.error.HTTPError as exc:
+            print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
+        except urllib.error.URLError as exc:
+            print(f"Request failed: {exc.reason}")
+        return
+
     try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            body = response.read().decode("utf-8")
-            print(body)
-            write_response(body, output_path)
-            print(f"Wrote response to {output_path}")
+        prompt, output_path = build_prompt(args.book, args.hadiths)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        print(f"Failed to build prompt: {exc}")
+        raise SystemExit(1) from exc
+
+    try:
+        request_translation(prompt, output_path, args.timeout)
     except urllib.error.HTTPError as exc:
         print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
     except urllib.error.URLError as exc:
