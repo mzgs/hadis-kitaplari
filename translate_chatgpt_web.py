@@ -26,7 +26,7 @@ Gerekirse önemli kelimeler için kısa not ekle.
 Hz. Peygamber için "Nebî (s.a.v.)" veya "Resûlullah (s.a.v.)" ifadelerini bağlama uygun şekilde kullan.
 Çeviriler Diyanet, İSAM ve klasik Türkçe hadis tercümelerinin üslubuna yakın olsun.
 
-Okuyucunun bilmeyeceği şahıslar, yerler, kabileler, olaylar ve kavramlar ilk geçtiği yerde çok kısa açıklamayla verilsin.
+Okuyucunun bilmeyeceği şahıslar, yerler, kabileler, olaylar ve kavramlar ilk geçtiği yerde çok kısa açıklamayla verilsin ancak çoğunlukla bilinen kelimeler için gerek yok.
 Tarihî bağlam kesin olarak biliniyorsa metnin içine eklenebilsin.
 Arapça metinde kapalı bırakılan ancak hadis âlimlerinin ittifakla açıkladığı hususlar okuyucunun anlayacağı şekilde metne yedirilsin.
 
@@ -34,7 +34,8 @@ Türkçe karşılığı doğru olsa bile tercüme kokan, yapay ifadeler kullanma
 arapca bir kelimenin anlamini cumlede kaybetme ve dogal turkce klasik turkce hadis uslubu kullan. Bir turk okuyucuya uygun cevir.
 
 Çeviri sadece lafzî karşılık vermekle yetinmesin. Arapça metnin bağlamından, siyak ve sibakından (öncesi-sonrası), hadis içindeki açıklamalardan ve hadis âlimlerinin ittifakla kabul ettiği yorumlardan açıkça anlaşılan anlamlar Türkçeye doğal biçimde yedirilebilir. Bu tür açıklamalar metnin muradını daha doğru yansıtıyorsa, lafızda birebir bulunmasa bile tercümede kullanılabilir. Ancak zayıf, tartışmalı veya spekülatif yorumlar eklenmemelidir.
-Cogunlugun bildigi kelimeleri parantez icinde anlamlarini vermene gerek yok.
+
+Doğal türkçe kullan mekanik bir çeviri yapma.
 
 Output format, no markdown:
 [{"tr":"<Turkish translation>","reference": ""}]
