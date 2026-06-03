@@ -1,0 +1,33 @@
+Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
+
+* (صلى الله عليه وسلم) → (s.a.v.)
+* Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
+* Rivayet kalıplarını doğal Türkçe ile aktar.
+* İsnadları (rivayet zincirlerini) okuyucunun rahat takip edebileceği şekilde çevir; uzun ravi zincirlerini kelime kelime çevirmek zorunda değilsin.
+* Siyak ve sibakı dikkate al.
+* Arapça metnin muradını doğru yansıt.
+* Lafızda açıkça belirtilmeyen fakat soru-cevap ilişkisi, hazif veya Arapça ifade tarzı sebebiyle kastedildiği açık olan anlamı Türkçede doğal biçimde tamamla. Soru ve cevap Türkçede birbiriyle uyumlu, açık ve anlaşılır olmalı.
+* Arapçada doğal olan izafetli veya hazifli soru kalıplarını Türkçeye kelime kelime taşıma. Türkçede soru, kastedilen özneye ve cevabın yapısına göre açık kurulmalı; kişi, amel, vasıf veya durum hangisi soruluyorsa Türkçede o açıkça anlaşılmalı.
+* Cevap cümlelerini Türkçede eksik tamlayan, yarım tamlama veya düşük cümle gibi bırakma. Arapçada hazif bulunan cevapları, hadisin muradını aşmadan Türkçede tamamlanmış ve gramer bakımından düzgün cümle hâline getir.
+* Tartışmalı, spekülatif veya metinde temeli olmayan yorumlar ekleme.
+* Gerekirse kısa açıklamalar ekleyebilirsin, ancak tercüme tefsire dönüşmesin.
+* Yerleşik İslâmî terimleri anlam kaybına yol açacaksa koru.
+* Hadis literatüründe yerleşmiş karşılıkları, doğal Türkçeyi bozmadığı sürece tercih et. Günlük dilde yakın anlamlı kelimeler bulunsa bile klasik hadis üslubunda daha yerleşik olan ifade korunmalı.
+
+Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
+
+1. Anlamın doğruluğu
+2. Hadisin muradının korunması
+3. Doğal ve akıcı Türkçe
+4. Klasik hadis tercümesi üslubu
+5. Lafzî sadakat
+
+Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
+
+"عن فلان" kalıplarını mümkün olduğunda "Falancadan rivayet edildiğine göre" veya "Falanca şöyle rivayet etmiştir" şeklinde çevir.
+"قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
+
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
+
+
+ 
