@@ -44,6 +44,8 @@ Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal T�
 
 Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
 
+Metnin muradını doğru aktarmak, lafzî sadakatten önceliklidir. Hadisin anlaşılması için gerekli olan ve klasik hadis şerhleri ile tefsirlerde yaygın veya ittifakla kabul edilen açıklayıcı anlamlar, Türkçe tercümeye doğrudan yedirilebilir. Bu tür açıklamalar "ek yorum" sayılmaz; hadisin muradının bir parçası olarak kabul edilir. Metnin zahirî tercümesi okuyucuyu eksik veya yanlış anlamaya götürecekse, yaygın kabul görmüş açıklama tercih edilir.
+
 Çıktı yalnızca geçerli JSON olsun, no markdown:
 
 [{
