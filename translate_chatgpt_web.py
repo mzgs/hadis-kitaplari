@@ -3,19 +3,16 @@
 import json
 from argparse import ArgumentParser
 from pathlib import Path
-import re
 import urllib.error
 import urllib.request
 
 
 API_URL = "http://127.0.0.1:8787/api/reply"
 DEFAULT_OUT_PATH = Path("out.json")
-DEFAULT_MAX_APPEND_CHARS = 24_000
 DEFAULT_TIMEOUT_SECONDS = 300
-RANGE_FILE_RE = re.compile(r"^(\d+)-(\d+)\.json$")
 
 PROMPT = """
-Aşağıdaki hadisleri Türkçeye çevir.
+Aşağıdaki hadisi Türkçeye çevir.
 
 Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
 
@@ -44,15 +41,14 @@ Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal T�
 
 Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
 
-Çıktı yalnızca geçerli JSON olsun, no markdown:
 
-[{
+output format json, no markdown:
+{
 "tr":"<Turkish translation>",
-"reference":"",
-"notes":""
-}]
+"reference":""
+}
  
-
+ 
 
 """
 
@@ -74,15 +70,6 @@ def parse_args():
         ),
     )
     parser.add_argument(
-        "--max-append-chars",
-        type=int,
-        default=DEFAULT_MAX_APPEND_CHARS,
-        help=(
-            "Maximum number of characters from the appended hadith JSON per "
-            f"automatic batch. Defaults to {DEFAULT_MAX_APPEND_CHARS}."
-        ),
-    )
-    parser.add_argument(
         "--timeout",
         type=float,
         default=DEFAULT_TIMEOUT_SECONDS,
@@ -90,6 +77,11 @@ def parse_args():
             "Seconds to wait for each local ChatGPT bridge response. "
             f"Defaults to {DEFAULT_TIMEOUT_SECONDS}."
         ),
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Recreate existing per-hadith JSON files instead of skipping them.",
     )
     return parser.parse_args()
 
@@ -210,59 +202,6 @@ def build_prompt(book_path=None, raw_hadith_indexes=None):
     return prompt, output_path
 
 
-def get_existing_ranges(output_dir):
-    ranges = []
-    if not output_dir.exists():
-        return ranges
-
-    for path in output_dir.iterdir():
-        match = RANGE_FILE_RE.match(path.name)
-        if not match or not path.is_file():
-            continue
-
-        start, end = (int(value) for value in match.groups())
-        if start <= end:
-            ranges.append((start, end, path))
-
-    ranges.sort(key=lambda item: (item[0], item[1]))
-    return ranges
-
-
-def find_covering_range(index, ranges):
-    for start, end, path in ranges:
-        if start <= index <= end:
-            return start, end, path
-    return None
-
-
-def is_covered(index, ranges):
-    return find_covering_range(index, ranges) is not None
-
-
-def build_auto_batch(hadith_items, start_index, existing_ranges, max_append_chars):
-    selected_items = []
-    current_index = start_index
-
-    while current_index <= len(hadith_items):
-        if is_covered(current_index, existing_ranges):
-            break
-
-        candidate_items = select_hadith_items(hadith_items, [current_index])
-        next_items = selected_items + candidate_items
-        appended_json = json.dumps(next_items, ensure_ascii=False, indent=2)
-
-        if selected_items and len(appended_json) > max_append_chars:
-            break
-
-        selected_items = next_items
-        current_index += 1
-
-        if len(appended_json) > max_append_chars:
-            break
-
-    return selected_items
-
-
 def load_book_items(book_path):
     with open(book_path, encoding="utf-8") as book_file:
         book_data = json.load(book_file)
@@ -312,69 +251,48 @@ def request_translation(prompt, output_path, timeout):
         print(f"Wrote response to {output_path}")
 
 
-def run_auto_batches(book_path, max_append_chars, timeout):
-    if max_append_chars < 1:
-        raise ValueError("--max-append-chars must be greater than zero")
+def run_hadith_translations(book_path, raw_hadith_indexes, timeout, force=False):
     if timeout <= 0:
         raise ValueError("--timeout must be greater than zero")
 
     hadith_items = load_book_items(book_path)
     output_dir = Path("translations") / book_path.stem
-    existing_ranges = get_existing_ranges(output_dir)
-    current_index = 1
+    indexes = parse_hadith_indexes(raw_hadith_indexes)
+    if indexes is None:
+        indexes = range(1, len(hadith_items) + 1)
 
-    while current_index <= len(hadith_items):
-        covering_range = find_covering_range(current_index, existing_ranges)
-        if covering_range:
-            _, end, path = covering_range
-            print(f"Skipping {path}; covers {current_index}-{end}")
-            current_index = end + 1
-            continue
+    for index in indexes:
+        if index > len(hadith_items):
+            raise ValueError(
+                f"Hadith index {index} is out of range; book has {len(hadith_items)} items"
+            )
 
-        selected_items = build_auto_batch(
-            hadith_items,
-            current_index,
-            existing_ranges,
-            max_append_chars,
-        )
-        if not selected_items:
-            current_index += 1
-            continue
-
-        start_index = selected_items[0]["index"]
-        end_index = selected_items[-1]["index"]
-        output_path = output_dir / f"{start_index}-{end_index}.json"
-        if output_path.exists():
+    for index in indexes:
+        output_path = output_dir / f"{index}.json"
+        if output_path.exists() and not force:
             print(f"Skipping {output_path}; already exists")
-            existing_ranges.append((start_index, end_index, output_path))
-            existing_ranges.sort(key=lambda item: (item[0], item[1]))
-            current_index = end_index + 1
             continue
 
-        appended_json = json.dumps(selected_items, ensure_ascii=False, indent=2)
-        print(
-            f"Translating {start_index}-{end_index} "
-            f"({len(selected_items)} hadiths, {len(appended_json)} appended chars)"
-        )
+        selected_items = select_hadith_items(hadith_items, [index])
+        if output_path.exists():
+            print(f"Recreating {output_path}")
+        else:
+            print(f"Translating {index}")
         prompt = build_translation_prompt(selected_items)
         request_translation(prompt, output_path, timeout)
-
-        existing_ranges.append((start_index, end_index, output_path))
-        existing_ranges.sort(key=lambda item: (item[0], item[1]))
-        current_index = end_index + 1
 
 
 def main():
     args = parse_args()
 
-    if args.book and not args.hadiths:
+    if args.book:
         try:
-            run_auto_batches(args.book, args.max_append_chars, args.timeout)
+            run_hadith_translations(args.book, args.hadiths, args.timeout, args.force)
         except KeyboardInterrupt:
-            print("\nStopped by user. Current in-progress batch was not saved.")
+            print("\nStopped by user. Current in-progress hadith was not saved.")
             raise SystemExit(130)
         except (OSError, json.JSONDecodeError, ValueError) as exc:
-            print(f"Failed to run automatic batches: {exc}")
+            print(f"Failed to run hadith translations: {exc}")
             raise SystemExit(1) from exc
         except urllib.error.HTTPError as exc:
             print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
