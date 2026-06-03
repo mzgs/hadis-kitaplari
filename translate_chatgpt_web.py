@@ -41,7 +41,7 @@ Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal T�
 
 Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
 
-Özellikle soru-cevap hadislerinde soru, cevabın gösterdiği kastedilen manaya göre tercüme edilebilir. Arapça metinde soyut bir kavram, amel, vasıf veya hüküm zikredilmiş olsa bile, bağlam bununla o kavramın sahibinin, kişinin, o ameli işleyenin veya o vasfı taşıyan kimsenin kastedildiğini gösteriyorsa, Türkçede bu mana açıkça ifade edilebilir.
+Özellikle soru-cevap hadislerinde soru, cevabın gösterdiği kastedilen manaya göre tercüme edilebilir. Arapça metinde soyut bir kavram, amel, vasıf veya hüküm zikredilmiş olsa bile, bağlam bununla o kavramın sahibinin, kişinin, o ameli işleyenin veya o vasfı taşıyan kimsenin kastedildiğini gösteriyorsa, Türkçede bu mana açıkça dogal turkcedeki sifat ile ifade edilebilir.
 Hadislerde geçen `الإسلام`, `الإيمان`, `الدين`, `البر`, `الخير`, `العمل`, `الصدقة`, `الجهاد`, `الهجرة` gibi kavramlar bağlama göre bazen doğrudan kavramın kendisini değil, o kavramın sahibini, ehil kimseyi, ameli veya o kavramın pratik tezahürünü ifade edebilir. Bu gibi durumlarda lafzî tercüme yerine muradı daha doğru yansıtan Türkçe tercih edilsin.
 
  
