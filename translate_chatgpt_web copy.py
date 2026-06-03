@@ -12,46 +12,75 @@ DEFAULT_OUT_PATH = Path("out.json")
 DEFAULT_TIMEOUT_SECONDS = 300
 
 PROMPT = """
+# Hadis Tercüme Talimatı
+
 Aşağıdaki hadisi Türkçeye çevir.
 
-Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
+Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal; ancak yapay, donuk ve tercüme kokan ifadeler kullanma.
 
-* (صلى الله عليه وسلم) → (s.a.v.)
-* Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
-* Rivayet kalıplarını doğal Türkçe ile aktar.
-* İsnadları (rivayet zincirlerini) okuyucunun rahat takip edebileceği şekilde çevir; uzun ravi zincirlerini kelime kelime çevirmek zorunda değilsin.
-* Siyak ve sibakı dikkate al.
-* Arapça metnin muradını doğru yansıt.
-* Tartışmalı, spekülatif veya metinde temeli olmayan yorumlar ekleme.
-* Gerekirse kısa açıklamalar ekleyebilirsin, ancak tercüme tefsire dönüşmesin.
-* Yerleşik İslâmî terimleri anlam kaybına yol açacaksa koru.
+## Genel Üslup
+
+- `(صلى الله عليه وسلم)` ifadesini `(s.a.v.)` olarak çevir.
+- Hz. Peygamber için bağlama göre `Resûlullah (s.a.v.)` veya `Nebî (s.a.v.)` kullan.
+- Rivayet kalıplarını doğal Türkçe ile aktar.
+- `عن فلان` kalıplarını mümkün olduğunda `Falancadan rivayet edildiğine göre` veya `Falanca şöyle rivayet etmiştir` şeklinde çevir.
+- `قال` ifadesini bağlama göre `dedi ki`, `şöyle buyurdu`, `şöyle dedi` şeklinde çevir.
+- İsnadları okuyucunun rahat takip edebileceği şekilde çevir; uzun ravi zincirlerini kelime kelime çevirmek zorunda değilsin.
+- Yerleşik İslâmî terimleri anlam kaybına yol açacaksa koru.
+
+## Mana ve Murad Önceliği
+
+Hadis tercümesinde yalnızca lafzî karşılıklar esas alınmasın. Arapça lafzın birebir tercümesi Türkçede yanlış, eksik, kapalı veya doğal olmayan bir anlam oluşturuyorsa, hadisin muradı esas alınsın.
+
+Özellikle soru-cevap hadislerinde soru, cevabın gösterdiği kastedilen manaya göre tercüme edilebilir. Arapça metinde soyut bir kavram, amel, vasıf veya hüküm zikredilmiş olsa bile, bağlam bununla o kavramın sahibinin, ehl-i olan kişinin, o ameli işleyenin veya o vasfı taşıyan kimsenin kastedildiğini gösteriyorsa, Türkçede bu mana açıkça ifade edilebilir.
+
+Hadislerde geçen `الإسلام`, `الإيمان`, `الدين`, `البر`, `الخير`, `العمل`, `الصدقة`, `الجهاد`, `الهجرة` gibi kavramlar bağlama göre bazen doğrudan kavramın kendisini değil, o kavramın sahibini, ehil kimseyi, ameli veya o kavramın pratik tezahürünü ifade edebilir. Bu gibi durumlarda lafzî tercüme yerine muradı daha doğru yansıtan Türkçe tercih edilsin.
+
+Lafzî sadakat, hadisin muradını perdeleyecek veya Türkçe okuyucuda yanlış bir anlam oluşturacaksa, muradı en doğru yansıtan tercüme tercih edilsin.
+
+
+## Siyak ve Sibak
+
+- Siyak ve sibakı dikkate al.
+- Hadisin soru-cevap yapısı, muhatapları, bağlamı ve cevabın yönü tercümeye yansıtılsın.
+- Cevap bir kişiyi, davranışı, hükmü veya vasfı açıklıyorsa, soru da Türkçede buna uygun şekilde kurulabilir.
+- Arapça metnin muradı doğru yansıtılsın.
+- Tartışmalı, spekülatif veya metinde temeli olmayan yorumlar eklenmesin.
+
+## Kısa Açıklamalar
+
+- Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın.
+- Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin genel kabul gören açıklamaları, gerekiyorsa metne doğal biçimde eklenebilir.
+- Açıklamalar kısa tutulmalı; tercüme tefsire dönüşmemelidir.
+- Gereksiz açıklama yapılmamalıdır.
+
+
+## Öncelik Sırası
 
 Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
 
-1. Anlamın doğruluğu
-2. Hadisin muradının korunması
-3. Doğal ve akıcı Türkçe
-4. Klasik hadis tercümesi üslubu
-5. Lafzî sadakat
+1. Hadisin muradının doğru anlaşılması
+2. Anlamın doğruluğu
+3. Siyak ve sibakın korunması
+4. Doğal ve akıcı Türkçe
+5. Klasik hadis tercümesi üslubu
+6. Lafzî sadakat
 
-Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
+Lafzî sadakat doğal Türkçeyi bozuyorsa veya hadisin muradını perdeleyebilecekse, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
 
-"عن فلان" kalıplarını mümkün olduğunda "Falancadan rivayet edildiğine göre" veya "Falanca şöyle rivayet etmiştir" şeklinde çevir.
-"قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
+## Çıktı Formatı
 
-Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
+Sadece aşağıdaki JSON formatında cevap ver. Markdown kullanma.
 
-Özellikle soru-cevap hadislerinde soru, cevabın gösterdiği kastedilen manaya göre tercüme edilebilir. Arapça metinde soyut bir kavram, amel, vasıf veya hüküm zikredilmiş olsa bile, bağlam bununla o kavramın sahibinin, kişinin, o ameli işleyenin veya o vasfı taşıyan kimsenin kastedildiğini gösteriyorsa, Türkçede bu mana açıkça ifade edilebilir.
-Hadislerde geçen `الإسلام`, `الإيمان`, `الدين`, `البر`, `الخير`, `العمل`, `الصدقة`, `الجهاد`, `الهجرة` gibi kavramlar bağlama göre bazen doğrudan kavramın kendisini değil, o kavramın sahibini, ehil kimseyi, ameli veya o kavramın pratik tezahürünü ifade edebilir. Bu gibi durumlarda lafzî tercüme yerine muradı daha doğru yansıtan Türkçe tercih edilsin.
-
- 
-
-
-output format json, no markdown:
+```json
 {
-"tr":"<Turkish translation>",
-"reference":""
+  "tr": "<Turkish translation>",
+  "reference": ""
 }
+```
+
+## Hadis Metni 
+
  
  
  
