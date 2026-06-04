@@ -39,12 +39,14 @@ Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal T�
 "عن فلان" kalıplarını mümkün olduğunda "Falancadan rivayet edildiğine göre" veya "Falanca şöyle rivayet etmiştir" şeklinde çevir.
 "قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
 
-Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
 
-Özellikle soru-cevap hadislerinde soru, cevabın gösterdiği kastedilen manaya göre tercüme edilebilir. Arapça metinde soyut bir kavram, amel, vasıf veya hüküm zikredilmiş olsa bile, bağlam bununla o kavramın sahibinin, kişinin, o ameli işleyenin veya o vasfı taşıyan kimsenin kastedildiğini gösteriyorsa, Türkçede bu mana açıkça dogal turkcedeki sifat ile ifade edilebilir.
-Hadislerde geçen `الإسلام`, `الإيمان`, `الدين`, `البر`, `الخير`, `العمل`, `الصدقة`, `الجهاد`, `الهجرة` gibi kavramlar bağlama göre bazen doğrudan kavramın kendisini değil, o kavramın sahibini, ehil kimseyi, ameli veya o kavramın pratik tezahürünü ifade edebilir. Bu gibi durumlarda lafzî tercüme yerine muradı daha doğru yansıtan Türkçe tercih edilsin.
+Soru ve cevap arasında anlam ilişkisini gözet. Arapça lafız zahiren bir kavramı (İslâm, iman, ihsan vb.) sorsa bile, cevaptan açıkça anlaşılıyorsa Türkçede muradı yansıtacak şekilde tercüme et. Gerektiğinde lafzî tercüme yerine, kastedilen anlamı ver.
 
- 
+Hitapları Türkçe hadis tercümesi geleneğine uygun aktar. "يا رسول الله", "يا نبي الله" gibi ifadeleri lafzen "Ey Resûlullah", "Ey Allah'ın Nebîsi" şeklinde çevirmek yerine mümkün olduğunda "Yâ Resûlallah", "Yâ Nebiyyallah" şeklinde koru.
+
+Hadisteki vurgu ve derecelendirmeleri koru. Bir sıfatın en yüksek derecesini, fazilet sıralamasını veya zirve hâlini ifade eden lafızları, sadece genel bir artış veya çoğalma anlamına indirgeme. Tercümede metnin vurguladığı üstünlük derecesi açıkça hissedilsin
+
+Çeviri sırasında yalnızca lafzı değil, metnin işaret ettiği tarihî ve ilmî referansları da dikkate al. Hadis âlimlerinin ve tarih kaynaklarının ittifakla belirlediği kişi, olay, yer ve kavramlar mümkün olduğunca yerleşik isimleriyle anılsın; okuyucunun bunları ayrıca araştırmasına gerek bırakmayacak ölçüde kısa ve doğal açıklamalar eklensin
 
 
 output format json, no markdown:
