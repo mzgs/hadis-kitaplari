@@ -33,3 +33,14 @@ output format json, no markdown:
 "tr":"<Turkish translation>",
 "reference":""
 }
+
+
+
+
+
+
+------------------------------------------------------------------------------
+
+
+
+Metni Türkçede en doğal hadis üslubuyla yeniden ifade et. Arapça cümle yapısını ve bakış açısını koruma zorunluluğu yoktur. Anlam aynı kalmak şartıyla özne, nesne ve yüklem ilişkileri Türkçenin tabiî kullanımına göre yeniden kurulabilir.

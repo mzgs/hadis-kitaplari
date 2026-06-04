@@ -16,6 +16,8 @@ Aşağıdaki hadisi Türkçeye çevir.
 
 Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
 
+Ceviri icin ana kaynak arapcadir ancak gerektiginde ingilizcesini yardimci kaynak olarak kullanabilirsin.
+
 * (صلى الله عليه وسلم) → (s.a.v.)
 * Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
 * Rivayet kalıplarını doğal Türkçe ile aktar.
@@ -40,7 +42,8 @@ Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal T�
 "قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
 
 
-Soru ve cevap arasında anlam ilişkisini gözet. Arapça lafız zahiren bir kavramı (İslâm, iman, ihsan vb.) sorsa bile, cevaptan açıkça anlaşılıyorsa Türkçede muradı yansıtacak şekilde tercüme et. Gerektiğinde lafzî tercüme yerine, kastedilen anlamı ver.
+Soru ve cevap arasında anlam ilişkisini gözet. Arapça lafız zahiren bir kavramı (İslâm, iman, ihsan vb.) sorsa bile, cevaptan açıkça anlaşılıyorsa Türkçede muradı yansıtacak şekilde tercüme et.  
+Soru ve cevap arasında kişi-kavram uyumsuzluğu oluşuyorsa, soruyu cevabın gösterdiği murada göre yeniden ifade et. Cevap bir kişiyi tarif ediyorsa soru da Türkçede kişi merkezli kurulmalıdır. Soru ve cevap birbirini doğal biçimde karşılamıyorsa, Türkçede anlam bütünlüğünü sağlayacak ifade tercih edilmelidir.
 
 Hitapları Türkçe hadis tercümesi geleneğine uygun aktar. "يا رسول الله", "يا نبي الله" gibi ifadeleri lafzen "Ey Resûlullah", "Ey Allah'ın Nebîsi" şeklinde çevirmek yerine mümkün olduğunda "Yâ Resûlallah", "Yâ Nebiyyallah" şeklinde koru.
 
@@ -48,17 +51,24 @@ Hadisteki vurgu ve derecelendirmeleri koru. Bir sıfatın en yüksek derecesini,
 
 Çeviri sırasında yalnızca lafzı değil, metnin işaret ettiği tarihî ve ilmî referansları da dikkate al. Hadis âlimlerinin ve tarih kaynaklarının ittifakla belirlediği kişi, olay, yer ve kavramlar mümkün olduğunca yerleşik isimleriyle anılsın; okuyucunun bunları ayrıca araştırmasına gerek bırakmayacak ölçüde kısa ve doğal açıklamalar eklensin
 
+ Birden fazla doğru tercüme imkânı bulunduğunda, klasik Türkçe hadis tercümelerinde yaygın olarak kullanılan ve okuyucunun en kolay anlayacağı ifadeyi tercih et.
+
 
 output format json, no markdown:
 {
 "tr":"<Turkish translation>",
 "reference":""
 }
- 
+
+"""
+
+PROMPT2 = """
+Metni Türkçede en doğal hadis üslubuyla yeniden ifade et. Arapça cümle yapısını ve bakış açısını koruma zorunluluğu yoktur. Anlam aynı kalmak şartıyla özne, nesne ve yüklem ilişkileri Türkçenin tabiî kullanımına göre yeniden kurulabilir.
+
+"""
  
  
 
-"""
 
 
 def parse_args():
@@ -90,6 +100,17 @@ def parse_args():
         "--force",
         action="store_true",
         help="Recreate existing per-hadith JSON files instead of skipping them.",
+    )
+    parser.add_argument(
+        "--enable-prompt2",
+        dest="enable_prompt2",
+        action="store_true",
+        help="Include the secondary prompt as prompt2 in the bridge API payload.",
+    )
+    parser.add_argument(
+        "--no-english",
+        action="store_true",
+        help="Omit English translation/context fields from the prompt payload.",
     )
     return parser.parse_args()
 
@@ -182,15 +203,30 @@ def select_hadith_items(hadith_items, indexes):
     return selected_items
 
 
-def build_translation_prompt(selected_items):
-    hadiths_json = json.dumps(selected_items, ensure_ascii=False, indent=2)
+def omit_english_fields(value):
+    if isinstance(value, list):
+        return [omit_english_fields(item) for item in value]
+
+    if isinstance(value, dict):
+        return {
+            key: omit_english_fields(item)
+            for key, item in value.items()
+            if key.lower() != "english"
+        }
+
+    return value
+
+
+def build_translation_prompt(selected_items, no_english=False):
+    prompt_items = omit_english_fields(selected_items) if no_english else selected_items
+    hadiths_json = json.dumps(prompt_items, ensure_ascii=False, indent=2)
     return (
         f"\n{PROMPT.rstrip()}\n\n"
         f"{hadiths_json}"
     )
 
 
-def build_prompt(book_path=None, raw_hadith_indexes=None):
+def build_prompt(book_path=None, raw_hadith_indexes=None, no_english=False):
     if raw_hadith_indexes and not book_path:
         raise ValueError("--hadiths can only be used with --book")
 
@@ -204,7 +240,7 @@ def build_prompt(book_path=None, raw_hadith_indexes=None):
     indexes = parse_hadith_indexes(raw_hadith_indexes)
     selected_items = select_hadith_items(hadith_items, indexes)
 
-    prompt = build_translation_prompt(selected_items)
+    prompt = build_translation_prompt(selected_items, no_english)
     output_path = Path("translations") / book_path.stem / "out.json"
 
     return prompt, output_path
@@ -242,8 +278,12 @@ def write_response(body, output_path):
             output_file.write("\n")
 
 
-def request_translation(prompt, output_path, timeout):
-    payload = json.dumps({"prompt": prompt}).encode("utf-8")
+def request_translation(prompt, output_path, timeout, enable_prompt2=False):
+    request_payload = {"prompt": prompt}
+    if enable_prompt2:
+        request_payload["prompt2"] = PROMPT2
+
+    payload = json.dumps(request_payload).encode("utf-8")
 
     request = urllib.request.Request(
         API_URL,
@@ -259,7 +299,14 @@ def request_translation(prompt, output_path, timeout):
         print(f"Wrote response to {output_path}")
 
 
-def run_hadith_translations(book_path, raw_hadith_indexes, timeout, force=False):
+def run_hadith_translations(
+    book_path,
+    raw_hadith_indexes,
+    timeout,
+    force=False,
+    enable_prompt2=False,
+    no_english=False,
+):
     if timeout <= 0:
         raise ValueError("--timeout must be greater than zero")
 
@@ -286,8 +333,8 @@ def run_hadith_translations(book_path, raw_hadith_indexes, timeout, force=False)
             print(f"Recreating {output_path}")
         else:
             print(f"Translating {index}")
-        prompt = build_translation_prompt(selected_items)
-        request_translation(prompt, output_path, timeout)
+        prompt = build_translation_prompt(selected_items, no_english)
+        request_translation(prompt, output_path, timeout, enable_prompt2)
 
 
 def main():
@@ -295,7 +342,14 @@ def main():
 
     if args.book:
         try:
-            run_hadith_translations(args.book, args.hadiths, args.timeout, args.force)
+            run_hadith_translations(
+                args.book,
+                args.hadiths,
+                args.timeout,
+                args.force,
+                args.enable_prompt2,
+                args.no_english,
+            )
         except KeyboardInterrupt:
             print("\nStopped by user. Current in-progress hadith was not saved.")
             raise SystemExit(130)
@@ -309,13 +363,13 @@ def main():
         return
 
     try:
-        prompt, output_path = build_prompt(args.book, args.hadiths)
+        prompt, output_path = build_prompt(args.book, args.hadiths, args.no_english)
     except (OSError, json.JSONDecodeError, ValueError) as exc:
         print(f"Failed to build prompt: {exc}")
         raise SystemExit(1) from exc
 
     try:
-        request_translation(prompt, output_path, args.timeout)
+        request_translation(prompt, output_path, args.timeout, args.enable_prompt2)
     except KeyboardInterrupt:
         print("\nStopped by user. Current in-progress request was not saved.")
         raise SystemExit(130)
