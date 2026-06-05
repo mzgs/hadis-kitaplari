@@ -16,10 +16,6 @@ Aşağıdaki hadisi Türkçeye çevir.
 
 Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
 
-Ceviri icin ana kaynak arapcadir ancak gerektiginde ingilizcesini yardimci kaynak olarak kullanabilirsin.
-
-Do NOT preserve English sentence structure or wording.
-
 * (صلى الله عليه وسلم) → (s.a.v.)
 * Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
 * Rivayet kalıplarını doğal Türkçe ile aktar.
@@ -44,21 +40,22 @@ Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal T�
 "قال" ifadesini bağlama göre "dedi ki", "şöyle buyurdu", "şöyle dedi" şeklinde çevir.
 
 
-Soru ve cevap arasında anlam ilişkisini gözet. Arapça lafız zahiren bir kavramı (İslâm, iman, ihsan vb.) sorsa bile, cevaptan açıkça anlaşılıyorsa Türkçede muradı yansıtacak şekilde tercüme et.  
-Soru ve cevap arasında kişi-kavram uyumsuzluğu oluşuyorsa, soruyu cevabın gösterdiği murada göre yeniden ifade et. Cevap bir kişiyi tarif ediyorsa soru da Türkçede kişi merkezli kurulmalıdır. Soru ve cevap birbirini doğal biçimde karşılamıyorsa, Türkçede anlam bütünlüğünü sağlayacak ifade tercih edilmelidir.
-
 Hitapları Türkçe hadis tercümesi geleneğine uygun aktar. "يا رسول الله", "يا نبي الله" gibi ifadeleri lafzen "Ey Resûlullah", "Ey Allah'ın Nebîsi" şeklinde çevirmek yerine mümkün olduğunda "Yâ Resûlallah", "Yâ Nebiyyallah" şeklinde koru.
 
 Hadisteki vurgu ve derecelendirmeleri koru. Bir sıfatın en yüksek derecesini, fazilet sıralamasını veya zirve hâlini ifade eden lafızları, sadece genel bir artış veya çoğalma anlamına indirgeme. Tercümede metnin vurguladığı üstünlük derecesi açıkça hissedilsin
 
-Çeviri sırasında yalnızca lafzı değil, metnin işaret ettiği tarihî ve ilmî referansları da dikkate al. Hadis âlimlerinin ve tarih kaynaklarının ittifakla belirlediği kişi, olay, yer ve kavramlar mümkün olduğunca yerleşik isimleriyle anılsın; okuyucunun bunları ayrıca araştırmasına gerek bırakmayacak ölçüde kısa ve doğal açıklamalar eklensin
+Canım kudret elinde olan Allah’a yazma Canım elinde olan Allah’a yaz.
 
- Birden fazla doğru tercüme imkânı bulunduğunda, klasik Türkçe hadis tercümelerinde yaygın olarak kullanılan ve okuyucunun en kolay anlayacağı ifadeyi tercih et.
+Hadisin sıhhat derecesini internetten araştırıp ekle. Her âlimin hükmünü ayrı yaz. Kendi yorumunu ekleme. Grade kısmında sadece "Âlim - Hüküm" formatını kullan (örn. Elbânî - Sahih, İbn Hacer - Zayıf).
+
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
+ 
 
 output format json, no markdown:
 {
 "tr":"<Turkish translation>",
-"reference":""
+"reference":"",
+"grade":""
 }
 
 """
