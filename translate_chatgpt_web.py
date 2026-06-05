@@ -53,7 +53,6 @@ Hadisteki vurgu ve derecelendirmeleri koru. Bir sıfatın en yüksek derecesini,
 
  Birden fazla doğru tercüme imkânı bulunduğunda, klasik Türkçe hadis tercümelerinde yaygın olarak kullanılan ve okuyucunun en kolay anlayacağı ifadeyi tercih et.
 
-
 output format json, no markdown:
 {
 "tr":"<Turkish translation>",
