@@ -18,6 +18,8 @@ Aşağıdaki hadisi Türkçeye çevir.
 
 Ceviri icin ana kaynak arapcadir ancak gerektiginde ingilizcesini yardimci kaynak olarak kullanabilirsin.
 
+Do NOT preserve English sentence structure or wording.
+
 * (صلى الله عليه وسلم) → (s.a.v.)
 * Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
 * Rivayet kalıplarını doğal Türkçe ile aktar.
