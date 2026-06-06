@@ -10,6 +10,11 @@ import urllib.request
 API_URL = "http://127.0.0.1:8787/api/reply"
 DEFAULT_OUT_PATH = Path("out.json")
 DEFAULT_TIMEOUT_SECONDS = 300
+STOP_RESPONSE_MODELS = {"gpt-5-3-mini"}
+
+
+class StopTranslation(Exception):
+    pass
 
 PROMPT = """
 Aşağıdaki hadisi Türkçeye çevir.
@@ -256,8 +261,16 @@ def write_response(body, output_path):
     except json.JSONDecodeError:
         data = body
 
-    if isinstance(data, dict) and "response" in data:
-        data = data["response"]
+    if isinstance(data, dict):
+        response_model = data.get("model")
+        if response_model in STOP_RESPONSE_MODELS:
+            raise StopTranslation(
+                f"Stop reason: response model {response_model} is not allowed; "
+                "response was not saved."
+            )
+
+        if "response" in data:
+            data = data["response"]
 
     if isinstance(data, str):
         try:
@@ -351,6 +364,9 @@ def main():
         except KeyboardInterrupt:
             print("\nStopped by user. Current in-progress hadith was not saved.")
             raise SystemExit(130)
+        except StopTranslation as exc:
+            print(exc)
+            raise SystemExit(1) from exc
         except (OSError, json.JSONDecodeError, ValueError) as exc:
             print(f"Failed to run hadith translations: {exc}")
             raise SystemExit(1) from exc
@@ -371,6 +387,9 @@ def main():
     except KeyboardInterrupt:
         print("\nStopped by user. Current in-progress request was not saved.")
         raise SystemExit(130)
+    except StopTranslation as exc:
+        print(exc)
+        raise SystemExit(1) from exc
     except urllib.error.HTTPError as exc:
         print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
     except urllib.error.URLError as exc:
