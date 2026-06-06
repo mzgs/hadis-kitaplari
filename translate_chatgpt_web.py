@@ -91,7 +91,8 @@ Hadisteki vurgu, kuvvetlendirme ve derecelendirmeleri koru. Bir sıfatın en yü
 
 Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
 
-Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde yalnızca gerçekten gerekli ise kısa ve tarafsız bir açıklamayla tanıtılabilir. Açıklamalar mümkün olan en kısa biçimde yapılmalı; yorum, çıkarım, ihtilaflı bilgi veya gereksiz tarihî ayrıntı eklenmemelidir.
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
+
 
 Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
 
