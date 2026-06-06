@@ -96,6 +96,10 @@ Kurallar:
 - Resûlullah’ın sözü ile râvinin açıklaması birbirine karıştırılmaz.
 - Uzun rivayetlerde olay akışı korunur.
 - Anlamı değiştiren sadeleştirme yapılmaz.
+- Arapça fiil ve ifadelerin zaman, görünüş ve süreklilik değeri bağlama göre korunur. Devam eden bir hâl, genel özellik veya süreklilik bildiren anlam; Türkçede yalnızca geçmişte gerçekleşip tamamlanmış bir olay izlenimi veren yapılarla çevrilmez.
+- Bir kelimenin sözlük karşılığı tek başına yeterli sayılmaz. Kök anlam, kalıp, bağlam, zaman-görünüş değeri ve cümlede kurduğu ilişki birlikte değerlendirilir; Türkçede bu toplam anlamı en doğru ve doğal biçimde taşıyan ifade tercih edilir.
+- Arapça bir ifade devam eden hâli, yerleşik vasfı, karşılıklı ilişkiyi, korunma/selamet durumunu veya genel niteliği anlatıyorsa Türkçede de bu yön korunur. Bağlam özellikle geçmişte yaşanmış tekil bir olayı anlatmıyorsa, çeviri yalnızca tamamlanmış geçmiş olay izlenimi veren dar bir yapıya indirgenmez.
+- Anlamı doğru veren birden fazla Türkçe ifade mümkünse, Türkiye’deki yerleşik hadis tercümesi terminolojisine en uygun olanı tercih edilir. Selamet, zarar vermeme, dokunmama, güvende olma ve benzeri ilişki bildiren kalıplarda Türkçe hadis dilinde yerleşik karşılık “emin olmak” ise “güvende olmak” gibi genel modern ifadeler yerine bu terminolojik kullanım tercih edilir.
 - Hadisin muradını netleştirmek için, Arapça lafızda birebir bulunmasa bile bağlamdan kesin olarak anlaşılan ve yerleşik hadis terminolojisinde karşılığı bulunan açıklayıcı kelime veya kısa ifadeler eklenir.
 - Bu tür ekler yeni bir hüküm, olay veya yorum üretmemeli; yalnızca metnin bağlamda zaten taşıdığı muradı Türkçede açık hâle getirmelidir.
 - Bağlamdan kesin olarak çıkarılamayan yorum, tarihî bilgi veya açıklama eklenmez.
@@ -117,6 +121,14 @@ Kurallar:
 - Metin ne aşırı modernleştirilir ne de anlaşılmaz Osmanlıca ile ağırlaştırılır.
 - Arapça cümle dizimi Türkçeye taşınmaz.
 - Kelime kelime çeviri hissi veren ifadeler kullanılmaz.
+- Arapçadaki soru kalıpları, isim tamlamaları ve eksiltili yapılar Türkçeye lafzen aktarılmaz; anlam ve vurgu korunarak Türkçede doğal kullanılan soru ve cümle biçimleriyle yeniden kurulur.
+- Lafzen mümkün fakat Türkçede yapay, muğlak veya düşük kalan bir ifade kullanılmaz. Aynı anlamı eksiksiz veren daha doğal bir Türkçe kuruluş varsa o tercih edilir.
+- Soru ile cevap arasında dil bilgisi ve anlam uyumu bulunmalıdır. Soru bir kişi, özellik, fiil veya durumdan hangisini soruyorsa cevap Türkçede buna doğrudan ve doğal biçimde karşılık vermelidir.
+- Karşılaştırmalı bir soru, cevabında belirli bir insan tipini veya topluluğun bir ferdini tanımlıyorsa soru Türkçede de doğrudan o insanlar arasından kimi kastettiğini soracak biçimde kurulur. Arapçadaki soyut isim tamlaması, Türkçede yapay kalan “... bakımından kim” veya “... yönünden kim” kalıbına dönüştürülmez.
+- Din, iman, İslâm, amel, ahlâk gibi soyut veya kapsayıcı bir alan adıyla kurulan üstünlük sorularında cevap bir kişiyi tanımlıyorsa, soru Türkçede o alanın mensupları veya sahipleri arasından sorulur. Böyle yerlerde “İslâm bakımından kim”, “İslâm’ı en faziletli olan kim”, “İslâm’ın hangisi”, “iman bakımından kim”, “amel bakımından kim” gibi yapay veya bozuk kuruluşlar kullanılmaz.
+- Arapçada soyut adla kurulan soru Türkçede kişi sorusuna dönüşüyorsa, Türkçede “...lerden hangisi/kim”, “... sahiplerinden hangisi/kim” veya bağlama göre aynı doğallıktaki bir ifade tercih edilir. Soyut adı nesne gibi kullanıp “...ı en faziletli olan kim” türü bir yapı kurulmaz.
+- Bir topluluk içinden kişi seçen sorularda Türkçede çoğunlukla ayrılma hâli kullanılır: “...lerden hangisi/kim”. İnsan toplulukları için “...ların hangisi” kalıbı ancak Türkçede gerçekten doğal ve yerleşikse kullanılmalıdır; aksi hâlde “...lerden hangisi/kim” tercih edilir.
+- Doğallık denetiminde yalnızca dil bilgisi doğruluğu yeterli değildir. Cümle, Türkiye Türkçesinde aynı soru günlük ve nitelikli yazı dilinde nasıl soruluyorsa o kuruluşla verilmelidir; Arapça yapının izini taşıyan dolaylı bir kuruluş sırf anlaşılabilir olduğu için kabul edilmez.
 - Türkçe cümleler doğal, temiz ve tek başına anlaşılır olmalıdır.
 - Gereksiz tekrar, bozuk tamlama ve düşük anlatım bırakılmaz.
 - Diyaloglar okunaklı biçimde kurulur.
@@ -170,6 +182,13 @@ Codex çeviri dosyalarını yazdıktan sonra şu kontrolleri yapmalıdır:
 10. Başlangıç lafzı veya ayırt edici ibareyle anılan sûre/âyet kimliği kesin biliniyorsa kısa parantezle belirtilmiş mi?
 11. Türkçe doğal ve yayıma uygun mu?
 12. Kişi adları, dua kısaltmaları ve terimler tutarlı mı?
+13. Arapça soru, tamlama veya eksiltili cümle yapısı Türkçeye lafzen taşınarak yapay bir anlatıma yol açmış mı?
+14. Devam eden hâl, genel özellik veya süreklilik bildiren bir anlam yanlışlıkla geçmişte tamamlanmış tekil bir olay gibi çevrilmiş mi?
+15. Diyaloglarda soru ile cevap Türkçe bakımından doğrudan, doğal ve anlamca uyumlu mu?
+16. Cevabı bir insan tipini veya topluluğun ferdini tanımlayan soru, Türkçede doğrudan o insanlar arasından kimi kastettiğini soruyor mu; yoksa soyut bir adı “bakımından/yönünden” sözüyle zarflaştırarak yapay mı kalıyor?
+17. Din, iman, İslâm, amel, ahlâk gibi soyut alan adlarıyla kurulan kişi sorularında “... bakımından kim”, “...ı en faziletli olan kim” veya “...ın hangisi” türü yapay kuruluşlar bırakılmış mı?
+18. İnsan topluluğu içinden seçim bildiren soruda, Türkçede daha doğal olan “...lerden hangisi/kim” yerine yapay kalan “...ların hangisi” kalıbı kullanılmış mı?
+19. Kök anlam, kalıp ve bağlamın birlikte verdiği devam eden hâl, yerleşik vasıf, karşılıklı ilişki, korunma/selamet durumu veya genel nitelik Türkçede korunmuş mu; yoksa anlam tek bir sözlük karşılığına veya tamamlanmış geçmiş olay izlenimine daraltılmış mı?
 
 Kontroller sırasında tespit edilen tüm çeviri ve biçim sorunlarını dosyalarda doğrudan düzelt, ardından kontrolleri yeniden çalıştır.
 
