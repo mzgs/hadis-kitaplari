@@ -21,6 +21,8 @@ Aşağıdaki hadisi Türkçeye çevir.
 
 Çeviri doğal, akıcı ve doğru Türkçe olsun. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay ve tercüme kokan ifadeler kullanma.
 
+ceviriden sonra Bütün kelimeleri tek tek incele ve türkçedeki yaygın ve yerleşik kullanım gore kelimeleri duzenle.
+
 * (صلى الله عليه وسلم) → (s.a.v.)
 * Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
 * Rivayet kalıplarını doğal Türkçe ile aktar.
@@ -53,8 +55,8 @@ Canım kudret elinde olan Allah’a yazma Canım elinde olan Allah’a yaz.
 
 Hadisin sıhhat derecesini internetten araştırıp ekle. Her âlimin hükmünü ayrı yaz. Kendi yorumunu ekleme. Grade kısmında sadece "Âlim - Hüküm" formatını kullan (örn. Elbânî - Sahih, İbn Hacer - Zayıf).
 
-Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
- 
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.  
+
 
 output format json, no markdown:
 {
