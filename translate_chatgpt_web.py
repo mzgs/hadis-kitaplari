@@ -3,132 +3,132 @@
 import json
 from argparse import ArgumentParser
 from pathlib import Path
+import re
 import urllib.error
 import urllib.request
+
+import json_repair
 
 
 API_URL = "http://127.0.0.1:8787/api/reply"
 DEFAULT_OUT_PATH = Path("out.json")
 DEFAULT_TIMEOUT_SECONDS = 300
 STOP_RESPONSE_MODELS = {"gpt-5-3-mini"}
+TRANSLATION_FIELDS = {"tr", "reference", "grade"}
 
 
 class StopTranslation(Exception):
     pass
 
 PROMPT = """
-Aşağıdaki hadisi Türkçeye çevir.
+Görev: Verilen tek hadisi Arapça aslından Türkiye Türkçesine çevir ve yalnızca
+istenen JSON nesnesini döndür.
 
-Çeviri doğal, akıcı ve doğru Türkçe olsun. Türkiye'de yaygın olarak kullanılan klasik hadis tercümesi geleneğini esas al. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay, tercüme kokan veya kelime kelime çevrilmiş ifadeler kullanma.
+ÖNCELİK SIRASI
+1. Arapça metindeki anlamın eksiksiz ve doğru aktarılması
+2. Hadisin maksadının, vurgu derecesinin ve konuşmacılarının korunması
+3. Türkiye'de yerleşik hadis tercümesi terminolojisi
+4. Doğal, açık ve akıcı Türkçe
+5. Klasik hadis tercümesi üslubuyla ölçülü uyum
 
-Çeviriyi tamamladıktan sonra son bir editör aşaması uygula:
+KAYNAK VE SADAKAT
+- Arapça alan tek yetkili çeviri kaynağıdır.
+- English alanı verilmişse yalnızca çeviri bittikten sonra olası eksiltme veya
+  yanlış anlamayı fark etmek için kontrol amacıyla kullan; İngilizce ifadeleri
+  Türkçeye aktarma ve Arapçaya aykırı hiçbir unsuru alma.
+- Metindeki hiçbir olay, şart, istisna, sebep, sonuç, yemin, olumsuzluk,
+  karşılaştırma, üstünlük derecesi, zamir ilişkisi veya konuşma sırasını atlama.
+- Metinde olmayan tarihî bilgi, kişi tanıtımı, yorum, hüküm, sebep veya sonuç
+  ekleme. Zorunlu bir açıklama olmadan anlam anlaşılabiliyorsa açıklama ekleme.
+- Kaynakta açıkça verilmeyen sûre adı, âyet numarası, yer, tarih, kişi kimliği
+  veya parantez içi bilgi tahmin etme.
+- Kur'an alıntılarını âyetin anlamına sadık ve yerleşik Türkçe ile çevir.
+  Kaynakta sûre veya âyet numarası yoksa ekleme.
+- Bir ifade birden fazla anlama gelebiliyorsa siyak ve sibaka en uygun,
+  klasik şerhlerle ve Türkçe hadis geleneğiyle uyumlu anlamı seç; ihtilaflı
+  yorumu kesin bilgi gibi metne katma.
 
-* Metni baştan sona yeniden incele.
-* Türkçede yerleşik ve yaygın kullanılan hadis tercümesi ifadelerini tercih et.
-* Kelime kelime çevrildiği hissini veren ifadeleri tespit edip doğal Türkçe karşılıklarıyla değiştir.
-* Arapça lafzın cümle yapısını Türkçeye taşımaktan kaçın.
-* Türkçede kullanılmayan veya çok nadir kullanılan dinî terimlerin yerleşik karşılığı varsa yerleşik olanı kullan.
-* Birden fazla doğru çeviri mümkünse, Türkiye'deki hadis tercümesi literatüründe en yaygın kullanılan karşılığı tercih et.
-* Diyaloglarda, soru-cevaplarda, hitaplarda ve rivayet kalıplarında Türkçenin doğal akışını koru.
-* Son metin tercüme hissi vermemeli; hadis Türkçe rivayet edilmiş olsaydı nasıl ifade edilecekse ona en yakın biçimde yazılmalıdır.
+İSNAD VE RİVAYET YAPISI
+- Hadisin başındaki müellife kadar uzanan teknik râvi zincirini bütünüyle
+  çevirmek zorunda değilsin. Metni, hadisi aktaran son sahâbî veya anlamlı
+  râviden başlatabilirsin.
+- Buna karşılık hadisin metni içinde geçen râvi açıklamalarını, ek rivayetleri,
+  konuşmaları ve olay örgüsünü atlama.
+- Kimin söylediğini daima açık tut. Resûlullah'ın sözü ile râvinin açıklamasını
+  birbirine karıştırma.
+- "عن فلان" kalıbını bağlama göre "Falancadan rivayet edildiğine göre" veya
+  "Falanca şöyle rivayet etmiştir" şeklinde doğal Türkçeyle aktar.
+- Resûlullah'ın sözlerinde "buyurdu"; sahâbî ve diğer kişilerde bağlama göre
+  "dedi", "şöyle dedi", "anlattı" veya "rivayet etti" kullan.
 
-- (صلى الله عليه وسلم) → (s.a.v.)
+TÜRKÇE ÜSLUP
+- Türkiye'de yayımlanan nitelikli hadis tercümelerinde yerleşmiş ifadeleri
+  tercih et; fakat eski, anlaşılmaz veya yapay Osmanlıca kullanma.
+- Arapça cümle dizimini Türkçeye taşıma. Anlamı değiştirmeden özne, nesne ve
+  yüklemi doğal Türkçe sırasıyla kur.
+- Kelime kelime çeviri, düşük anlatım, gereksiz tekrar, bozuk tamlama ve
+  tercüme kokan ifadeler bırakma.
+- Diyalogları okunaklı biçimde ayır; Türkçe noktalama kurallarına uy.
+- Hadis içindeki doğrudan konuşmalarda tercihen kıvrık çift tırnak “...” kullan.
+- Metinde bulunmayan "kâmil mânada", "yani", "başka bir ifadeyle" gibi
+  açıklayıcı ekler yapma.
+- Yerleşik İslâmî terim anlam kaybı olmadan sadeleştirilemiyorsa terimi koru.
 
-- (رضي الله عنه) → (r.a.)
+YAZIM VE TERİM STANDARDI
+- صلى الله عليه وسلم → (s.a.v.)
+- رضي الله عنه → (r.a.)
+- رضي الله عنها → (r.anha)
+- رضي الله عنهما → (r.anhuma)
+- رضي الله عنهم → (r.anhum)
+- Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)"
+  kullan.
+- Kişi adlarında tutarlı biçimde "b." kullan: "Abdullah b. Amr".
+- Yaygın yazımları koru: Âişe, İbn Abbâs, Ebû Hüreyre, Enes, Cebrâil,
+  Resûlullah, Nebî, Kur'an, İslâm, mümin, sahâbî.
+- "يا رسول الله" → "Yâ Resûlallah!"
+- "يا نبي الله" → "Yâ Nebiyyallah!"
+- "فوالذي نفسي بيده" ve benzeri yeminleri bağlama göre "Canım elinde olan
+  Allah'a yemin ederim ki" şeklinde aktar.
+- En üstünlük bildiren yapıları zayıflatma: "en cömert", "en ağır",
+  "en faziletli" gibi dereceyi açıkça koru.
 
-- (رضي الله عنها) → (r.anha)
+SIHHAT DERECESİ
+- Sıhhat derecesini internetten araştırma, hafızadan üretme veya âlimlere hüküm
+  nispet etme.
+- Yalnızca verilen kaydın Arapça veya metadata alanında açıkça yazılı bir hadis
+  hükmü varsa onu "Âlim - Hüküm" biçiminde grade alanına aktar.
+- Girdide açık bir hüküm yoksa grade değerini boş string yap: "".
+- Koleksiyon adından hareketle yeni bir âlim listesi veya hüküm üretme.
 
-- (رضي الله عنهم) → (r.anhum)
+SON EDİTÖR KONTROLÜ
+JSON'u üretmeden önce sessizce şu denetimleri yap:
+1. Arapça metindeki bütün anlam birimleri Türkçede var mı?
+2. Konuşmacılar, zamirler, olumsuzluklar ve vurgu dereceleri doğru mu?
+3. Kaynakta olmayan herhangi bir bilgi eklenmiş mi? Varsa çıkar.
+4. Türkçe doğal, dil bilgisi bakımından doğru ve tek başına anlaşılır mı?
+5. Adlar, unvanlar, dua kısaltmaları ve terimler tutarlı mı?
+6. reference girdideki değerle karakter karakter aynı mı?
 
-- Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
-
-- Resûlullah'ın sözleri için mümkün olduğunca "buyurdu" fiilini tercih et.
-
-- Sahabe ve diğer kişiler için bağlama uygun olarak "dedi", "şöyle dedi", "şöyle rivayet etti" gibi ifadeler kullan.
-
-- Rivayet kalıplarını doğal Türkçe ile aktar.
-
-- İsnadları okuyucunun rahat takip edebileceği şekilde çevir; uzun ravi zincirlerini kelime kelime çevirmek zorunda değilsin.
-
-- Siyak ve sibakı dikkate al.
-
-- Arapça metnin muradını doğru yansıt.
-
-- Tartışmalı, spekülatif veya metinde temeli olmayan yorumlar ekleme.
-
-- Gerekirse kısa açıklamalar ekleyebilirsin, ancak tercüme tefsire dönüşmesin.
-
-- Yerleşik İslâmî terimleri anlam kaybına yol açacaksa koru.
-
-"عن فلان" kalıplarını mümkün olduğunda:
-
-* "Falanca şöyle rivayet etmiştir"
-* "Falancadan rivayet edildiğine göre"
-
-şeklinde çevir.
-
-"قال" ifadesini bağlama göre:
-
-* "buyurdu"
-* "dedi"
-* "şöyle dedi"
-* "şöyle rivayet etti"
-
-şeklinde aktar.
-
-Hitapları Türkçe hadis tercümesi geleneğine uygun aktar.
-
-"يا رسول الله"
-"يا نبي الله"
-benzeri hitapları mümkün olduğunca:
-
-* "Yâ Resûlallah"
-* "Yâ Nebiyyallah"
-
-şeklinde koru.
-
-Hadisteki vurgu, kuvvetlendirme ve derecelendirmeleri koru. Bir sıfatın en yüksek derecesini, fazilet sıralamasını veya zirve hâlini ifade eden lafızları genel bir artış anlamına indirgeme. Metindeki üstünlük, fazilet veya öncelik derecesi Türkçede açıkça hissedilmelidir.
-
-Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
-
-Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklensin. Açıklamalar kısa tutulmalı, yorum, çıkarım ve ihtilaflı bilgiler eklenmemelidir, fakat gereksiz aciklama yapma.
-
-
-Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
-
-1. Anlamın doğruluğu
-2. Hadisin muradının korunması
-3. Türkiye'de yerleşik hadis tercümesi kullanımı
-4. Doğal ve akıcı Türkçe
-5. Klasik hadis tercümesi üslubu
-6. Lafzî sadakat
-
-Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
-
-Hadisin sıhhat derecesini güvenilir kaynaklardan araştırıp ekle.
-
-* Her âlimin hükmünü ayrı yaz.
-* Kendi yorumunu ekleme.
-* Grade alanında yalnızca "Âlim - Hüküm" formatını kullan.
-* Birden fazla hüküm varsa virgülle ayır.
-
-Çeviri tamamlandıktan sonra metni bir hadis tercümesi editörü gibi yeniden gözden geçir ve Türkiye'de yayımlanmış hadis tercümelerinde tercih edilen ifadeleri kullan.
-Birden fazla doğru Türkçe karşılık mümkünse, Türkiye'de yayımlanmış hadis tercümelerinde en yaygın kullanılan karşılığı tercih et. Nadir, yapay veya lafzî ifadelerden kaçın.
-
-Output format JSON, no markdown:
+ÇIKTI KURALI
+- Markdown, açıklama, kod bloğu veya JSON dışında hiçbir metin yazma.
+- Tam olarak bir JSON nesnesi döndür.
+- Yalnızca şu üç anahtarı ve bu sırayı kullan: "tr", "reference", "grade".
+- Bütün değerler string olmalı.
+- JSON içindeki düz çift tırnakları ve satır sonlarını geçerli JSON olacak
+  şekilde kaçır.
 
 {
-"tr": "<Turkish translation>",
-"reference": "<source reference>",
-"grade": "<Âlim - Hüküm>"
+  "tr": "<eksiksiz Türkçe çeviri>",
+  "reference": "<girdideki reference değeri aynen>",
+  "grade": "<yalnızca girdide açıkça bulunan hüküm; yoksa boş string>"
 }
-
-
 """
 
 PROMPT2 = """
-Metni Türkçede en doğal hadis üslubuyla yeniden ifade et. Arapça cümle yapısını ve bakış açısını koruma zorunluluğu yoktur. Anlam aynı kalmak şartıyla özne, nesne ve yüklem ilişkileri Türkçenin tabiî kullanımına göre yeniden kurulabilir.
-
+İlk çeviriyi Arapça metinle yeniden karşılaştır. Eksiltme, ekleme, yanlış özne,
+yanlış zamir, anlam kayması, zayıflatılmış vurgu, bozuk Türkçe veya tutarsız
+terim varsa düzelt. Sadece doğal ifade uğruna anlamı değiştirme. Son cevapta
+yalnızca ana promptta tanımlanan üç alanlı JSON nesnesini döndür.
 """
  
  
@@ -316,11 +316,99 @@ def load_book_items(book_path):
     return collect_hadith_items(book_data)
 
 
-def write_response(body, output_path):
+def parse_repaired_json(value, context):
+    if not isinstance(value, str):
+        return value
+
     try:
-        data = json.loads(body)
-    except json.JSONDecodeError:
-        data = body
+        return json_repair.loads(value)
+    except (json.JSONDecodeError, ValueError, TypeError) as exc:
+        raise ValueError(f"Could not parse or repair {context} as JSON") from exc
+
+
+def decode_json_string_content(value):
+    escaped = []
+    preceding_backslashes = 0
+
+    for character in value:
+        if character == '"' and preceding_backslashes % 2 == 0:
+            escaped.append("\\")
+        escaped.append(character)
+
+        if character == "\\":
+            preceding_backslashes += 1
+        else:
+            preceding_backslashes = 0
+
+    try:
+        return json.loads(f'"{"".join(escaped)}"')
+    except json.JSONDecodeError as exc:
+        raise ValueError("Could not decode repaired translation field") from exc
+
+
+def extract_translation_fields(raw_response):
+    if not isinstance(raw_response, str):
+        raise ValueError("Translation fallback requires a string response")
+
+    tr_match = re.search(
+        r'"tr"\s*:\s*"(.*)"\s*,\s*"reference"\s*:',
+        raw_response,
+        flags=re.DOTALL,
+    )
+    reference_match = re.search(
+        r'"reference"\s*:\s*"((?:\\.|[^"\\])*)"',
+        raw_response,
+        flags=re.DOTALL,
+    )
+    grade_match = re.search(
+        r'"grade"\s*:\s*"((?:\\.|[^"\\])*)"',
+        raw_response,
+        flags=re.DOTALL,
+    )
+    if not tr_match or not reference_match or not grade_match:
+        raise ValueError("Could not recover translation fields from model response")
+
+    return {
+        "tr": decode_json_string_content(tr_match.group(1)),
+        "reference": decode_json_string_content(reference_match.group(1)),
+        "grade": decode_json_string_content(grade_match.group(1)),
+    }
+
+
+def validate_translation(data, expected_reference=None):
+    if not isinstance(data, dict):
+        raise ValueError("Translation response must be a JSON object")
+
+    fields = set(data)
+    if fields != TRANSLATION_FIELDS:
+        missing = sorted(TRANSLATION_FIELDS - fields)
+        extra = sorted(fields - TRANSLATION_FIELDS)
+        raise ValueError(
+            "Translation response must contain exactly tr, reference, and grade; "
+            f"missing={missing}, extra={extra}"
+        )
+
+    for field in TRANSLATION_FIELDS:
+        if not isinstance(data[field], str):
+            raise ValueError(f"Translation field {field!r} must be a string")
+
+    if not data["tr"].strip():
+        raise ValueError("Translation field 'tr' must not be empty")
+    if not data["reference"].strip():
+        raise ValueError("Translation field 'reference' must not be empty")
+    if expected_reference is not None and data["reference"] != expected_reference:
+        raise ValueError(
+            "Translation reference does not match the source: "
+            f"expected {expected_reference!r}, got {data['reference']!r}"
+        )
+
+    return data
+
+
+def write_response(body, output_path, expected_reference=None):
+    raw_bridge_response = body if isinstance(body, str) else None
+    data = parse_repaired_json(body, "bridge response")
+    raw_model_response = raw_bridge_response
 
     if isinstance(data, dict):
         response_model = data.get("model")
@@ -332,25 +420,33 @@ def write_response(body, output_path):
 
         if "response" in data:
             data = data["response"]
+            raw_model_response = data if isinstance(data, str) else None
 
-    if isinstance(data, str):
+    data = parse_repaired_json(data, "model response")
+    try:
+        data = validate_translation(data, expected_reference)
+    except ValueError as validation_error:
+        if raw_model_response is None:
+            raise
         try:
-            data = json.loads(data)
-        except json.JSONDecodeError:
-            pass
+            data = extract_translation_fields(raw_model_response)
+        except ValueError:
+            raise validation_error
+        data = validate_translation(data, expected_reference)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as output_file:
-        if isinstance(data, str):
-            output_file.write(data)
-            if not data.endswith("\n"):
-                output_file.write("\n")
-        else:
-            json.dump(data, output_file, ensure_ascii=False, indent=2)
-            output_file.write("\n")
+        json.dump(data, output_file, ensure_ascii=False, indent=2)
+        output_file.write("\n")
 
 
-def request_translation(prompt, output_path, timeout, enable_prompt2=False):
+def request_translation(
+    prompt,
+    output_path,
+    timeout,
+    enable_prompt2=False,
+    expected_reference=None,
+):
     request_payload = {"prompt": prompt}
     if enable_prompt2:
         request_payload["prompt2"] = PROMPT2
@@ -367,7 +463,7 @@ def request_translation(prompt, output_path, timeout, enable_prompt2=False):
     with urllib.request.urlopen(request, timeout=timeout) as response:
         body = response.read().decode("utf-8")
         print(body)
-        write_response(body, output_path)
+        write_response(body, output_path, expected_reference)
         print(f"Wrote response to {output_path}")
 
 
@@ -406,7 +502,18 @@ def run_hadith_translations(
         else:
             print(f"Translating {index}")
         prompt = build_translation_prompt(selected_items, no_english)
-        request_translation(prompt, output_path, timeout, enable_prompt2)
+        expected_reference = (
+            selected_items[0].get("reference")
+            if isinstance(selected_items[0], dict)
+            else None
+        )
+        request_translation(
+            prompt,
+            output_path,
+            timeout,
+            enable_prompt2,
+            expected_reference,
+        )
 
 
 def main():
@@ -450,6 +557,9 @@ def main():
         raise SystemExit(130)
     except StopTranslation as exc:
         print(exc)
+        raise SystemExit(1) from exc
+    except ValueError as exc:
+        print(f"Invalid translation response: {exc}")
         raise SystemExit(1) from exc
     except urllib.error.HTTPError as exc:
         print(f"HTTP {exc.code}: {exc.read().decode('utf-8', errors='replace')}")
