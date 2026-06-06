@@ -165,6 +165,8 @@ Codex çeviri dosyalarını yazdıktan sonra şu kontrolleri yapmalıdır:
 9. Türkçe doğal ve yayıma uygun mu?
 10. Kişi adları, dua kısaltmaları ve terimler tutarlı mı?
 
+Kontroller sırasında tespit edilen tüm çeviri ve biçim sorunlarını dosyalarda doğrudan düzelt, ardından kontrolleri yeniden çalıştır.
+
 Örnek doğrulama:
 
 ```bash
