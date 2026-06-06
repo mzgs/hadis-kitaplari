@@ -47,7 +47,7 @@ Her hadis kaydında genellikle şu alanlar vardır:
 - `english`
 - `reference`
 
-Çeviride ana kaynak `arabic` alanıdır.
+Çeviride ana kaynak `arabic` alanıdır. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
 
 ## Çıktı Formatı
 
@@ -75,19 +75,19 @@ Kurallar:
 
 Öncelik sırası:
 
-1. Arapça metindeki anlamın eksiksiz ve doğru aktarılması
-2. Hadisin maksadının, vurgu derecesinin ve konuşmacılarının korunması
+1. Hadisin muradının Türkçe okuyucuya doğru, eksiksiz ve net biçimde aktarılması
+2. Arapça metindeki anlamın, bağlamın, vurgu derecesinin ve konuşmacıların korunması
 3. Türkiye’de yerleşik hadis tercümesi terminolojisi
 4. Doğal, açık ve akıcı Türkçe
 5. Klasik hadis tercümesi üslubuyla ölçülü uyum
 
 ## Kaynak Kullanımı
 
-- Arapça metin tek yetkili çeviri kaynağıdır.
-- İngilizce alan varsa yalnızca çeviri bittikten sonra eksiltme veya yanlış anlamayı fark etmek için kontrol amacıyla kullanılabilir.
+- Arapça metin temel çeviri kaynağıdır.
+- İngilizce alan varsa anlamı, bağlamı ve yerleşik terimi kontrol etmek; eksiltme veya yanlış anlamayı fark etmek için yardımcı kaynak olarak kullanılabilir.
 - İngilizce ifadeler Türkçeye birebir aktarılmaz.
 - Arapçaya aykırı hiçbir unsur çeviriye eklenmez.
-- Kaynakta açıkça bulunmayan sûre adı, âyet numarası, tarih, yer, kişi kimliği veya açıklama tahmin edilmez.
+- Hadisin bağlamından kesin olarak anlaşılmayan sûre adı, âyet numarası, tarih, yer, kişi kimliği veya açıklama tahmin edilmez.
 
 ## Anlam Sadakati
 
@@ -96,7 +96,9 @@ Kurallar:
 - Resûlullah’ın sözü ile râvinin açıklaması birbirine karıştırılmaz.
 - Uzun rivayetlerde olay akışı korunur.
 - Anlamı değiştiren sadeleştirme yapılmaz.
-- Metinde olmayan yorum veya tarihî açıklama eklenmez.
+- Hadisin muradını netleştirmek için, Arapça lafızda birebir bulunmasa bile bağlamdan kesin olarak anlaşılan ve yerleşik hadis terminolojisinde karşılığı bulunan açıklayıcı kelime veya kısa ifadeler eklenir.
+- Bu tür ekler yeni bir hüküm, olay veya yorum üretmemeli; yalnızca metnin bağlamda zaten taşıdığı muradı Türkçede açık hâle getirmelidir.
+- Bağlamdan kesin olarak çıkarılamayan yorum, tarihî bilgi veya açıklama eklenmez.
 
 ## İsnad ve Rivayet Yapısı
 
@@ -118,7 +120,9 @@ Kurallar:
 - Türkçe cümleler doğal, temiz ve tek başına anlaşılır olmalıdır.
 - Gereksiz tekrar, bozuk tamlama ve düşük anlatım bırakılmaz.
 - Diyaloglar okunaklı biçimde kurulur.
-- Metinde olmayan “kâmil mânada”, “yani”, “başka bir ifadeyle” gibi açıklayıcı ekler yapılmaz.
+- Muradı netleştiren açıklayıcı ifadeler gerektiğinde kullanılır; ancak “kâmil mânada”, “yani”, “başka bir ifadeyle” gibi kalıplar bağlamın gerektirmediği yorumları metne taşımak için kullanılmaz.
+- Türkiye’deki genel okuyucunun anlamakta zorlanabileceği hadis, siyer, fıkıh, ibadet, akrabalık, ölçü, askerî yapı veya tarihî kurum terimleri tercümede korunur; yalnız başına ve açıklamasız bırakılmaz. Böyle terimler genel karşılığıyla değiştirilmez; terim aynen yazılır ve hemen ardından kısa parantez içi açıklamayla netleştirilir. Bu açıklamalar sözlük maddesi gibi uzun olmamalı; yalnızca terimin bağlamdaki temel anlamını vermelidir.
+- Bir sûre veya âyet, metinde sûre adı yerine başlangıç lafzı yahut ayırt edici bir ibareyle anılıyorsa ve sûre/âyet kimliği bağlamdan kesin olarak biliniyorsa, Türkçe okuyucu için kısa parantez içinde sûre adı veya gerekli kısa bilgi mutlaka eklenir. Kesin olmayan sûre adı veya âyet numarası tahmin edilmez.
 
 ## Terim ve Yazım Standardı
 
@@ -161,9 +165,11 @@ Codex çeviri dosyalarını yazdıktan sonra şu kontrolleri yapmalıdır:
 5. Konuşmacılar doğru mu?
 6. Zamirler doğru kişilere bağlanıyor mu?
 7. Olumsuzluklar, yeminler ve üstünlük dereceleri korunmuş mu?
-8. Kaynakta olmayan açıklama veya yorum eklenmiş mi?
-9. Türkçe doğal ve yayıma uygun mu?
-10. Kişi adları, dua kısaltmaları ve terimler tutarlı mı?
+8. Hadisin muradı Türkçede yeterince açık mı; gerekli bağlamsal açıklamalar eklenmiş ve dayanaksız yorumlardan kaçınılmış mı?
+9. Genel okuyucuya kapalı kalabilecek terimler korunup hemen ardından kısa parantez içi açıklamayla netleştirilmiş mi?
+10. Başlangıç lafzı veya ayırt edici ibareyle anılan sûre/âyet kimliği kesin biliniyorsa kısa parantezle belirtilmiş mi?
+11. Türkçe doğal ve yayıma uygun mu?
+12. Kişi adları, dua kısaltmaları ve terimler tutarlı mı?
 
 Kontroller sırasında tespit edilen tüm çeviri ve biçim sorunlarını dosyalarda doğrudan düzelt, ardından kontrolleri yeniden çalıştır.
 
