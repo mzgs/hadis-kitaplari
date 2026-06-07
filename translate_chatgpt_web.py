@@ -32,8 +32,8 @@ kurallar:
 * "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
 * Ravi isimlerini değiştirme; varsa yerleşik Türkçe yazımlarını kullan.
 * Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
- * İsnadı doğal ve kısa Türkçeyle özetle; ravi zincirini kelime kelime çevirme.
-
+- Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
+Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (r.a.) rivayet edildiğine göre..." şeklinde başla.
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
 * Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
@@ -43,6 +43,10 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * ألا وهي القلب → O da kalptir.
 * العرض → namus
 * محارم الله → Allah'ın haram kıldığı şeyler
+- كراع يرعى حول الحمى → koruluk etrafında sürüsünü otlatan bir çoban
+- يوشك أن يواقعه → neredeyse harama düşecektir
+- ألا → Dikkat edin!
+- Helal açıktır, haram açıktır → Helal bellidir, haram da bellidir.
 
 Output JSON only:
 
