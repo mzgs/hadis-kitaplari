@@ -15,7 +15,9 @@ API_URL = "http://127.0.0.1:8787/api/reply"
 DEFAULT_OUT_PATH = Path("out.json")
 DEFAULT_TIMEOUT_SECONDS = 300
 STOP_RESPONSE_MODELS = {"gpt-5-3-mini"}
-TRANSLATION_FIELDS = {"tr", "reference", "grade"}
+REQUIRED_TRANSLATION_FIELDS = {"tr", "reference"}
+OPTIONAL_TRANSLATION_FIELDS = {"grade"}
+TRANSLATION_FIELDS = REQUIRED_TRANSLATION_FIELDS | OPTIONAL_TRANSLATION_FIELDS
 
 
 class StopTranslation(Exception):
@@ -25,26 +27,37 @@ PROMPT = """
 Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
 
 kurallar:
-- Peygamber Efendimizden bahsedildiğinde (s.a.v.), sahabelerden bahsedildiğinde (r.a.), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
-- Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
-- "وإذا خاصم فجر" → Husumete düştüğünde haddi aşar.
-- Kişi isimlerini Türkiye'de yaygın kullanılan İslami yazımla Türkçeleştir (Enes, Ebu Hureyre, Abdullah b. Abbas, İmam Buhârî vb.).
-- "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
+
+* Peygamber Efendimizden bahsedildiğinde (s.a.v.), sahabelerden bahsedildiğinde (r.a.), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle.
+* "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
+* Ravi isimlerini değiştirme; varsa yerleşik Türkçe yazımlarını kullan.
+* Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
+ * İsnadı doğal ve kısa Türkçeyle özetle; ravi zincirini kelime kelime çevirme.
+
+Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
+
+* Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
+* "وإذا خاصم فجر" → Husumete düştüğünde haddi aşar.
+- حول الحمى → koruluk etrafında
+- حمى الله → Allah'ın koruluğu
+* ألا وهي القلب → O da kalptir.
+* العرض → namus
+* محارم الله → Allah'ın haram kıldığı şeyler
 
 Output JSON only:
 
 {
-  "tr": "<Türkçe çeviri>",
-  "reference": "<source reference>",
-  "grade": "<Âlim - Hüküm>"
+"tr": "<Türkçe çeviri>",
+"reference": "<source reference>"
 }
+
 """
 
 PROMPT2 = """
 İlk çeviriyi Arapça metinle yeniden karşılaştır. Eksiltme, ekleme, yanlış özne,
 yanlış zamir, anlam kayması, zayıflatılmış vurgu, bozuk Türkçe veya tutarsız
 terim varsa düzelt. Sadece doğal ifade uğruna anlamı değiştirme. Son cevapta
-yalnızca ana promptta tanımlanan üç alanlı JSON nesnesini döndür.
+yalnızca ana promptta tanımlanan JSON nesnesini döndür.
 """
  
  
@@ -281,14 +294,16 @@ def extract_translation_fields(raw_response):
         raw_response,
         flags=re.DOTALL,
     )
-    if not tr_match or not reference_match or not grade_match:
+    if not tr_match or not reference_match:
         raise ValueError("Could not recover translation fields from model response")
 
-    return {
+    fields = {
         "tr": decode_json_string_content(tr_match.group(1)),
         "reference": decode_json_string_content(reference_match.group(1)),
-        "grade": decode_json_string_content(grade_match.group(1)),
     }
+    if grade_match:
+        fields["grade"] = decode_json_string_content(grade_match.group(1))
+    return fields
 
 
 def normalize_reference_text(reference):
@@ -319,15 +334,15 @@ def validate_translation(data, expected_reference=None):
         raise ValueError("Translation response must be a JSON object")
 
     fields = set(data)
-    if fields != TRANSLATION_FIELDS:
-        missing = sorted(TRANSLATION_FIELDS - fields)
-        extra = sorted(fields - TRANSLATION_FIELDS)
+    missing_required = sorted(REQUIRED_TRANSLATION_FIELDS - fields)
+    extra = sorted(fields - TRANSLATION_FIELDS)
+    if missing_required or extra:
         raise ValueError(
-            "Translation response must contain exactly tr, reference, and grade; "
-            f"missing={missing}, extra={extra}"
+            "Translation response must contain tr and reference; grade is optional; "
+            f"missing_required={missing_required}, extra={extra}"
         )
 
-    for field in TRANSLATION_FIELDS:
+    for field in fields:
         if not isinstance(data[field], str):
             raise ValueError(f"Translation field {field!r} must be a string")
 
