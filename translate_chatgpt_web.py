@@ -21,106 +21,109 @@ class StopTranslation(Exception):
     pass
 
 PROMPT = """
-Görev: Verilen tek hadisi Arapça aslından Türkiye Türkçesine çevir ve yalnızca
-istenen JSON nesnesini döndür.
+Aşağıdaki hadisi Türkçeye çevir.
 
-ÖNCELİK SIRASI
-1. Arapça metindeki anlamın eksiksiz ve doğru aktarılması
-2. Hadisin maksadının, vurgu derecesinin ve konuşmacılarının korunması
-3. Türkiye'de yerleşik hadis tercümesi terminolojisi
-4. Doğal, açık ve akıcı Türkçe
-5. Klasik hadis tercümesi üslubuyla ölçülü uyum
+Çeviri doğal, akıcı ve doğru Türkçe olsun. Türkiye'de yaygın olarak kullanılan klasik hadis tercümesi geleneğini esas al. Klasik hadis tercümesi üslubuna yakın kal, ancak yapay, tercüme kokan veya kelime kelime çevrilmiş ifadeler kullanma.
 
-KAYNAK VE SADAKAT
-- Arapça alan tek yetkili çeviri kaynağıdır.
-- English alanı verilmişse yalnızca çeviri bittikten sonra olası eksiltme veya
-  yanlış anlamayı fark etmek için kontrol amacıyla kullan; İngilizce ifadeleri
-  Türkçeye aktarma ve Arapçaya aykırı hiçbir unsuru alma.
-- Metindeki hiçbir olay, şart, istisna, sebep, sonuç, yemin, olumsuzluk,
-  karşılaştırma, üstünlük derecesi, zamir ilişkisi veya konuşma sırasını atlama.
-- Metinde olmayan tarihî bilgi, kişi tanıtımı, yorum, hüküm, sebep veya sonuç
-  ekleme. Zorunlu bir açıklama olmadan anlam anlaşılabiliyorsa açıklama ekleme.
-- Kaynakta açıkça verilmeyen sûre adı, âyet numarası, yer, tarih, kişi kimliği
-  veya parantez içi bilgi tahmin etme.
-- Kur'an alıntılarını âyetin anlamına sadık ve yerleşik Türkçe ile çevir.
-  Kaynakta sûre veya âyet numarası yoksa ekleme.
-- Bir ifade birden fazla anlama gelebiliyorsa siyak ve sibaka en uygun,
-  klasik şerhlerle ve Türkçe hadis geleneğiyle uyumlu anlamı seç; ihtilaflı
-  yorumu kesin bilgi gibi metne katma.
+Çeviriyi tamamladıktan sonra son bir editör aşaması uygula:
 
-İSNAD VE RİVAYET YAPISI
-- Hadisin başındaki müellife kadar uzanan teknik râvi zincirini bütünüyle
-  çevirmek zorunda değilsin. Metni, hadisi aktaran son sahâbî veya anlamlı
-  râviden başlatabilirsin.
-- Buna karşılık hadisin metni içinde geçen râvi açıklamalarını, ek rivayetleri,
-  konuşmaları ve olay örgüsünü atlama.
-- Kimin söylediğini daima açık tut. Resûlullah'ın sözü ile râvinin açıklamasını
-  birbirine karıştırma.
-- "عن فلان" kalıbını bağlama göre "Falancadan rivayet edildiğine göre" veya
-  "Falanca şöyle rivayet etmiştir" şeklinde doğal Türkçeyle aktar.
-- Resûlullah'ın sözlerinde "buyurdu"; sahâbî ve diğer kişilerde bağlama göre
-  "dedi", "şöyle dedi", "anlattı" veya "rivayet etti" kullan.
+* Metni baştan sona yeniden incele.
+* Türkçede yerleşik ve yaygın kullanılan hadis tercümesi ifadelerini tercih et.
+* Kelime kelime çevrildiği hissini veren ifadeleri tespit edip doğal Türkçe karşılıklarıyla değiştir.
+* Arapça lafzın cümle yapısını Türkçeye taşımaktan kaçın.
+* Türkçede kullanılmayan veya çok nadir kullanılan dinî terimlerin yerleşik karşılığı varsa yerleşik olanı kullan.
+* Birden fazla doğru çeviri mümkünse, Türkiye'deki hadis tercümesi literatüründe en yaygın kullanılan karşılığı tercih et.
+* Diyaloglarda, soru-cevaplarda, hitaplarda ve rivayet kalıplarında Türkçenin doğal akışını koru.
+* Son metin tercüme hissi vermemeli; hadis Türkçe rivayet edilmiş olsaydı nasıl ifade edilecekse ona en yakın biçimde yazılmalıdır.
 
-TÜRKÇE ÜSLUP
-- Türkiye'de yayımlanan nitelikli hadis tercümelerinde yerleşmiş ifadeleri
-  tercih et; fakat eski, anlaşılmaz veya yapay Osmanlıca kullanma.
-- Arapça cümle dizimini Türkçeye taşıma. Anlamı değiştirmeden özne, nesne ve
-  yüklemi doğal Türkçe sırasıyla kur.
-- Kelime kelime çeviri, düşük anlatım, gereksiz tekrar, bozuk tamlama ve
-  tercüme kokan ifadeler bırakma.
-- Diyalogları okunaklı biçimde ayır; Türkçe noktalama kurallarına uy.
-- Hadis içindeki doğrudan konuşmalarda tercihen kıvrık çift tırnak “...” kullan.
-- Metinde bulunmayan "kâmil mânada", "yani", "başka bir ifadeyle" gibi
-  açıklayıcı ekler yapma.
-- Yerleşik İslâmî terim anlam kaybı olmadan sadeleştirilemiyorsa terimi koru.
+- (صلى الله عليه وسلم) → (s.a.v.)
 
-YAZIM VE TERİM STANDARDI
-- صلى الله عليه وسلم → (s.a.v.)
-- رضي الله عنه → (r.a.)
-- رضي الله عنها → (r.anha)
-- رضي الله عنهما → (r.anhuma)
-- رضي الله عنهم → (r.anhum)
-- Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)"
-  kullan.
-- Kişi adlarında tutarlı biçimde "b." kullan: "Abdullah b. Amr".
-- Yaygın yazımları koru: Âişe, İbn Abbâs, Ebû Hüreyre, Enes, Cebrâil,
-  Resûlullah, Nebî, Kur'an, İslâm, mümin, sahâbî.
-- "يا رسول الله" → "Yâ Resûlallah!"
-- "يا نبي الله" → "Yâ Nebiyyallah!"
-- "فوالذي نفسي بيده" ve benzeri yeminleri bağlama göre "Canım elinde olan
-  Allah'a yemin ederim ki" şeklinde aktar.
-- En üstünlük bildiren yapıları zayıflatma: "en cömert", "en ağır",
-  "en faziletli" gibi dereceyi açıkça koru.
+- (رضي الله عنه) → (r.a.)
 
-SIHHAT DERECESİ
-- Sıhhat derecesini internetten araştırma, hafızadan üretme veya âlimlere hüküm
-  nispet etme.
-- Yalnızca verilen kaydın Arapça veya metadata alanında açıkça yazılı bir hadis
-  hükmü varsa onu "Âlim - Hüküm" biçiminde grade alanına aktar.
-- Girdide açık bir hüküm yoksa grade değerini boş string yap: "".
-- Koleksiyon adından hareketle yeni bir âlim listesi veya hüküm üretme.
+- (رضي الله عنها) → (r.anha)
 
-SON EDİTÖR KONTROLÜ
-JSON'u üretmeden önce sessizce şu denetimleri yap:
-1. Arapça metindeki bütün anlam birimleri Türkçede var mı?
-2. Konuşmacılar, zamirler, olumsuzluklar ve vurgu dereceleri doğru mu?
-3. Kaynakta olmayan herhangi bir bilgi eklenmiş mi? Varsa çıkar.
-4. Türkçe doğal, dil bilgisi bakımından doğru ve tek başına anlaşılır mı?
-5. Adlar, unvanlar, dua kısaltmaları ve terimler tutarlı mı?
-6. reference girdideki değerle karakter karakter aynı mı?
+- (رضي الله عنهم) → (r.anhum)
 
-ÇIKTI KURALI
-- Markdown, açıklama, kod bloğu veya JSON dışında hiçbir metin yazma.
-- Tam olarak bir JSON nesnesi döndür.
-- Yalnızca şu üç anahtarı ve bu sırayı kullan: "tr", "reference", "grade".
-- Bütün değerler string olmalı.
-- JSON içindeki düz çift tırnakları ve satır sonlarını geçerli JSON olacak
-  şekilde kaçır.
+- Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
+
+- Resûlullah'ın sözleri için mümkün olduğunca "buyurdu" fiilini tercih et.
+
+- Sahabe ve diğer kişiler için bağlama uygun olarak "dedi", "şöyle dedi", "şöyle rivayet etti" gibi ifadeler kullan.
+
+- Rivayet kalıplarını doğal Türkçe ile aktar.
+
+- İsnadları okuyucunun rahat takip edebileceği şekilde çevir; uzun ravi zincirlerini kelime kelime çevirmek zorunda değilsin.
+
+- Siyak ve sibakı dikkate al.
+
+- Arapça metnin muradını doğru yansıt.
+
+- Tartışmalı, spekülatif veya metinde temeli olmayan yorumlar ekleme.
+
+- Gerekirse kısa açıklamalar ekleyebilirsin, ancak tercüme tefsire dönüşmesin.
+
+- Yerleşik İslâmî terimleri anlam kaybına yol açacaksa koru.
+
+"عن فلان" kalıplarını mümkün olduğunda:
+
+* "Falanca şöyle rivayet etmiştir"
+* "Falancadan rivayet edildiğine göre"
+
+şeklinde çevir.
+
+"قال" ifadesini bağlama göre:
+
+* "buyurdu"
+* "dedi"
+* "şöyle dedi"
+* "şöyle rivayet etti"
+
+şeklinde aktar.
+
+Hitapları Türkçe hadis tercümesi geleneğine uygun aktar.
+
+"يا رسول الله"
+"يا نبي الله"
+benzeri hitapları mümkün olduğunca:
+
+* "Yâ Resûlallah"
+* "Yâ Nebiyyallah"
+
+şeklinde koru.
+
+Hadisteki vurgu, kuvvetlendirme ve derecelendirmeleri koru. Bir sıfatın en yüksek derecesini, fazilet sıralamasını veya zirve hâlini ifade eden lafızları genel bir artış anlamına indirgeme. Metindeki üstünlük, fazilet veya öncelik derecesi Türkçede açıkça hissedilmelidir.
+
+Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
+
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde yalnızca gerçekten gerekli ise kısa ve tarafsız bir açıklamayla tanıtılabilir. Açıklamalar mümkün olan en kısa biçimde yapılmalı; yorum, çıkarım, ihtilaflı bilgi veya gereksiz tarihî ayrıntı eklenmemelidir.
+
+Kurallar arasında çatışma oluşursa öncelik sırası şöyledir:
+
+1. Anlamın doğruluğu
+2. Hadisin muradının korunması
+3. Türkiye'de yerleşik hadis tercümesi kullanımı
+4. Doğal ve akıcı Türkçe
+5. Klasik hadis tercümesi üslubu
+6. Lafzî sadakat
+
+Lafzî sadakat doğal Türkçeyi bozuyorsa, anlamı korumak şartıyla doğal Türkçe tercih edilebilir.
+
+Hadisin sıhhat derecesini güvenilir kaynaklardan araştırıp ekle.
+
+* Her âlimin hükmünü ayrı yaz.
+* Kendi yorumunu ekleme.
+* Grade alanında yalnızca "Âlim - Hüküm" formatını kullan.
+* Birden fazla hüküm varsa virgülle ayır.
+
+Çeviri tamamlandıktan sonra metni bir hadis tercümesi editörü gibi yeniden gözden geçir ve Türkiye'de yayımlanmış hadis tercümelerinde tercih edilen ifadeleri kullan.
+Birden fazla doğru Türkçe karşılık mümkünse, Türkiye'de yayımlanmış hadis tercümelerinde en yaygın kullanılan karşılığı tercih et. Nadir, yapay veya lafzî ifadelerden kaçın.
+
+Output format JSON, no markdown:
 
 {
-  "tr": "<eksiksiz Türkçe çeviri>",
-  "reference": "<girdideki reference değeri aynen>",
-  "grade": "<yalnızca girdide açıkça bulunan hüküm; yoksa boş string>"
+"tr": "<Turkish translation>",
+"reference": "<source reference>",
+"grade": "<Âlim - Hüküm>"
 }
 """
 

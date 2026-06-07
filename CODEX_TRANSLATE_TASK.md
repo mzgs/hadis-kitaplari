@@ -100,6 +100,8 @@ Kurallar:
 - Bir kelimenin sözlük karşılığı tek başına yeterli sayılmaz. Kök anlam, kalıp, bağlam, zaman-görünüş değeri ve cümlede kurduğu ilişki birlikte değerlendirilir; Türkçede bu toplam anlamı en doğru ve doğal biçimde taşıyan ifade tercih edilir.
 - Arapça bir ifade devam eden hâli, yerleşik vasfı, karşılıklı ilişkiyi, korunma/selamet durumunu veya genel niteliği anlatıyorsa Türkçede de bu yön korunur. Bağlam özellikle geçmişte yaşanmış tekil bir olayı anlatmıyorsa, çeviri yalnızca tamamlanmış geçmiş olay izlenimi veren dar bir yapıya indirgenmez.
 - Anlamı doğru veren birden fazla Türkçe ifade mümkünse, Türkiye’deki yerleşik hadis tercümesi terminolojisine en uygun olanı tercih edilir. Selamet, zarar vermeme, dokunmama, güvende olma ve benzeri ilişki bildiren kalıplarda Türkçe hadis dilinde yerleşik karşılık “emin olmak” ise “güvende olmak” gibi genel modern ifadeler yerine bu terminolojik kullanım tercih edilir.
+- Sevgi, nefret, hoşlanmama, üstün tutma ve tercih bildiren karşılaştırmalarda, Arapçadaki ilişkinin yönü korunur: kimin kimi/neyi sevdiği, kime neyin daha sevgili geldiği, neyin ne kadar kötü görüldüğü açık olmalıdır. Türkçede özne-nesne ilişkisi bu anlamı bozacak veya vurguyu kaydıracak biçimde yeniden kurulmaz.
+- Benzetme ve karşılaştırma kalıplarında yalnızca iki fiilin ortak yapıldığı söylenmekle yetinilmez; benzetmenin kurduğu derece ve vurgu da aktarılır. Bir şeyin başka bir şey kadar ağır, kötü, sevimli, istenmez veya değerli görülmesi anlatılıyorsa Türkçede de bu ölçü ilişkisi açık kalmalıdır.
 - Hadisin muradını netleştirmek için, Arapça lafızda birebir bulunmasa bile bağlamdan kesin olarak anlaşılan ve yerleşik hadis terminolojisinde karşılığı bulunan açıklayıcı kelime veya kısa ifadeler eklenir.
 - Bu tür ekler yeni bir hüküm, olay veya yorum üretmemeli; yalnızca metnin bağlamda zaten taşıdığı muradı Türkçede açık hâle getirmelidir.
 - Bağlamdan kesin olarak çıkarılamayan yorum, tarihî bilgi veya açıklama eklenmez.
@@ -123,6 +125,9 @@ Kurallar:
 - Kelime kelime çeviri hissi veren ifadeler kullanılmaz.
 - Arapçadaki soru kalıpları, isim tamlamaları ve eksiltili yapılar Türkçeye lafzen aktarılmaz; anlam ve vurgu korunarak Türkçede doğal kullanılan soru ve cümle biçimleriyle yeniden kurulur.
 - Lafzen mümkün fakat Türkçede yapay, muğlak veya düşük kalan bir ifade kullanılmaz. Aynı anlamı eksiksiz veren daha doğal bir Türkçe kuruluş varsa o tercih edilir.
+- Zamirli üstünlük ve tercih ifadelerinde, Türkçede doğal olmayan ara söz dizilişleri bırakılmaz. Cümle, okuyucunun tek okumada kimin kime göre daha sevgili, üstün, yakın veya uzak olduğunu anlayacağı şekilde kurulmalıdır.
+- Arapçada “başkası/dışı” anlamı veren karşılaştırma kalıpları Türkçede yapay bir zamirli tamlamaya dönüşüyorsa bu yapı bırakılmaz. Bağlama göre “her şeyden”, “herkesten”, “diğerlerinden” veya aynı açıklıkta doğal bir ifade tercih edilir. Bu tercih anlamı genişletmemeli veya daraltmamalıdır.
+- Ciddi dinî kaçınma, sakınma, kerih görme, azap, ateş, küfür veya günaha dönüş gibi bağlamlarda “hoşlanmamak” fiili anlamı zayıflatıyorsa kullanılmaz. Bu tür yerlerde bağlama göre “kötü görmek”, “istememek”, “tiksinmek”, “kaçınmak” veya yerleşik hadis üslubuna uygun daha güçlü bir karşılık tercih edilir.
 - Soru ile cevap arasında dil bilgisi ve anlam uyumu bulunmalıdır. Soru bir kişi, özellik, fiil veya durumdan hangisini soruyorsa cevap Türkçede buna doğrudan ve doğal biçimde karşılık vermelidir.
 - Karşılaştırmalı bir soru, cevabında belirli bir insan tipini veya topluluğun bir ferdini tanımlıyorsa soru Türkçede de doğrudan o insanlar arasından kimi kastettiğini soracak biçimde kurulur. Arapçadaki soyut isim tamlaması, Türkçede yapay kalan “... bakımından kim” veya “... yönünden kim” kalıbına dönüştürülmez.
 - Din, iman, İslâm, amel, ahlâk gibi soyut veya kapsayıcı bir alan adıyla kurulan üstünlük sorularında cevap bir kişiyi tanımlıyorsa, soru Türkçede o alanın mensupları veya sahipleri arasından sorulur. Böyle yerlerde “İslâm bakımından kim”, “İslâm’ı en faziletli olan kim”, “İslâm’ın hangisi”, “iman bakımından kim”, “amel bakımından kim” gibi yapay veya bozuk kuruluşlar kullanılmaz.
@@ -134,6 +139,7 @@ Kurallar:
 - Diyaloglar okunaklı biçimde kurulur.
 - Muradı netleştiren açıklayıcı ifadeler gerektiğinde kullanılır; ancak “kâmil mânada”, “yani”, “başka bir ifadeyle” gibi kalıplar bağlamın gerektirmediği yorumları metne taşımak için kullanılmaz.
 - Türkiye’deki genel okuyucunun anlamakta zorlanabileceği hadis, siyer, fıkıh, ibadet, akrabalık, ölçü, askerî yapı veya tarihî kurum terimleri tercümede korunur; yalnız başına ve açıklamasız bırakılmaz. Böyle terimler genel karşılığıyla değiştirilmez; terim aynen yazılır ve hemen ardından kısa parantez içi açıklamayla netleştirilir. Bu açıklamalar sözlük maddesi gibi uzun olmamalı; yalnızca terimin bağlamdaki temel anlamını vermelidir.
+- Türkiye’deki genel okuyucu için yerleşik ve yaygın olan dinî terimler, kişi/topluluk adları ve kavramlar gereksiz parantezlerle açıklanmaz. Açıklama yalnızca anlam kapalı kalacaksa, karışma riski varsa veya bağlam özel bir teknik anlam gerektiriyorsa eklenir.
 - Bir sûre veya âyet, metinde sûre adı yerine başlangıç lafzı yahut ayırt edici bir ibareyle anılıyorsa ve sûre/âyet kimliği bağlamdan kesin olarak biliniyorsa, Türkçe okuyucu için kısa parantez içinde sûre adı veya gerekli kısa bilgi mutlaka eklenir. Kesin olmayan sûre adı veya âyet numarası tahmin edilmez.
 
 ## Terim ve Yazım Standardı
@@ -189,6 +195,11 @@ Codex çeviri dosyalarını yazdıktan sonra şu kontrolleri yapmalıdır:
 17. Din, iman, İslâm, amel, ahlâk gibi soyut alan adlarıyla kurulan kişi sorularında “... bakımından kim”, “...ı en faziletli olan kim” veya “...ın hangisi” türü yapay kuruluşlar bırakılmış mı?
 18. İnsan topluluğu içinden seçim bildiren soruda, Türkçede daha doğal olan “...lerden hangisi/kim” yerine yapay kalan “...ların hangisi” kalıbı kullanılmış mı?
 19. Kök anlam, kalıp ve bağlamın birlikte verdiği devam eden hâl, yerleşik vasıf, karşılıklı ilişki, korunma/selamet durumu veya genel nitelik Türkçede korunmuş mu; yoksa anlam tek bir sözlük karşılığına veya tamamlanmış geçmiş olay izlenimine daraltılmış mı?
+20. Sevgi, nefret, hoşlanmama, üstün tutma ve tercih bildiren karşılaştırmalarda ilişkinin yönü ve vurgusu doğru mu; kimin kimi/neyi neye göre sevdiği, kötü gördüğü veya üstün tuttuğu açık mı?
+21. Benzetme kalıplarında derece ilişkisi korunmuş mu; bir şeyin başka bir şey kadar ağır, kötü, sevimli, istenmez veya değerli görülmesi anlatılıyorsa bu vurgu Türkçede kaybolmuş mu?
+22. Zamirli üstünlük ifadelerinde Türkçe yapay veya dolaşık kalmış mı; cümle tek okumada doğal ve anlaşılır mı?
+23. Yerleşik ve yaygın terimler gereksiz parantez açıklamalarıyla ağırlaştırılmış mı; açıklama gerçekten anlamı açmak için gerekli mi?
+24. Son kalite kontrolü yalnızca JSON ve `reference` kontrolüyle sınırlı kalmış mı; Türkçe doğallık, vurgu, benzetme derecesi ve gereksiz açıklama sorunları metin üzerinde ayrıca denetlenmiş mi?
 
 Kontroller sırasında tespit edilen tüm çeviri ve biçim sorunlarını dosyalarda doğrudan düzelt, ardından kontrolleri yeniden çalıştır.
 
