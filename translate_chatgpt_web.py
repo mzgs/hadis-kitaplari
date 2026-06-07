@@ -4,6 +4,7 @@ import json
 from argparse import ArgumentParser
 from pathlib import Path
 import re
+import unicodedata
 import urllib.error
 import urllib.request
 
@@ -28,6 +29,7 @@ kurallar:
 - Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
 - Kişi isimlerini Türkiye'de yaygın kullanılan İslami yazımla Türkçeleştir (Enes, Ebu Hureyre, Abdullah b. Abbas, İmam Buhârî vb.).
 - Dini ve ahlaki kavramları koru; anlamı daraltan modern karşılıklar kullanma.
+- "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
 
 Output JSON only:
 
@@ -289,6 +291,29 @@ def extract_translation_fields(raw_response):
     }
 
 
+def normalize_reference_text(reference):
+    normalized = unicodedata.normalize("NFKD", reference)
+    normalized = "".join(
+        character for character in normalized
+        if not unicodedata.combining(character)
+    )
+    normalized = normalized.casefold().replace("ı", "i")
+    normalized = re.sub(r"\b(?:al|el|as|at)\b", " ", normalized)
+    normalized = normalized.replace("kh", "h")
+    return re.sub(r"[^a-z0-9]+", " ", normalized).strip()
+
+
+def references_match(actual_reference, expected_reference):
+    actual_numbers = re.findall(r"\d+", actual_reference)
+    expected_numbers = re.findall(r"\d+", expected_reference)
+    if actual_numbers != expected_numbers:
+        return False
+
+    return normalize_reference_text(actual_reference) == normalize_reference_text(
+        expected_reference
+    )
+
+
 def validate_translation(data, expected_reference=None):
     if not isinstance(data, dict):
         raise ValueError("Translation response must be a JSON object")
@@ -310,11 +335,13 @@ def validate_translation(data, expected_reference=None):
         raise ValueError("Translation field 'tr' must not be empty")
     if not data["reference"].strip():
         raise ValueError("Translation field 'reference' must not be empty")
-    if expected_reference is not None and data["reference"] != expected_reference:
-        raise ValueError(
-            "Translation reference does not match the source: "
-            f"expected {expected_reference!r}, got {data['reference']!r}"
-        )
+    if expected_reference is not None:
+        if not references_match(data["reference"], expected_reference):
+            raise ValueError(
+                "Translation reference does not match the source: "
+                f"expected {expected_reference!r}, got {data['reference']!r}"
+            )
+        data["reference"] = expected_reference
 
     return data
 
