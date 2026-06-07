@@ -26,6 +26,8 @@ Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercüme
 kurallar:
 - Peygamber Efendimizden bahsedildiğinde (s.a.v.), sahabelerden bahsedildiğinde (r.a.), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
 - Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
+- Kişi isimlerini Türkiye'de yaygın kullanılan İslami yazımla Türkçeleştir (Enes, Ebu Hureyre, Abdullah b. Abbas, İmam Buhârî vb.).
+- Dini ve ahlaki kavramları koru; anlamı daraltan modern karşılıklar kullanma.
 
 Output JSON only:
 
