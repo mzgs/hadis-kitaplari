@@ -168,3 +168,20 @@ Output format JSON, no markdown:
 * Birden fazla doğru çeviri mümkünse, Türkiye'deki hadis tercümesi literatüründe en yaygın kullanılan karşılığı tercih et.
 * Diyaloglarda, soru-cevaplarda, hitaplarda ve rivayet kalıplarında Türkçenin doğal akışını koru.
 * Son metin tercüme hissi vermemeli; hadis Türkçe rivayet edilmiş olsaydı nasıl ifade edilecekse ona en yakın biçimde yazılmalıdır.
+
+
+-------------------------------------------------------
+KISA VE ETKILI 
+
+Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+
+kurallar:
+- Peygamber Efendimizden bahsedildiğinde (s.a.v.), sahabelerden bahsedildiğinde (r.a.), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
+
+Output JSON only:
+
+{
+  "tr": "<Türkçe çeviri>",
+  "reference": "<source reference>",
+  "grade": "<Âlim - Hüküm>"
+}
