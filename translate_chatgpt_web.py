@@ -47,8 +47,10 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * فسوق → fasıklık
 * قتاله كفر → onunla savaşmak küfürdür
 * لا يمل الله حتى تملوا → siz usanmadıkça Allah usanmaz
-* أحب الدين → en sevimli amel
+* أحب الدين إليه → ona en sevimli gelen amel
 * ما دام عليه → devamlı yapılan
+* إيمانا واحتسابا → inanarak ve sevabını Allah’tan umarak
+* حسن إسلامه / أحسن إسلامه → İslamını güzelleştirmek
 * تلاحى → tartışmak
 * رفعت ليلة القدر → Kadir gecesinin vakti hakkındaki bilginin kaldırılması
 * ولدت الأمة ربها → cariyenin efendisini doğurması
@@ -78,21 +80,23 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * ويل للأعقاب → topukların vay hâline
 * أجران → iki kat ecir
 * بغير شيء → karşılıksız
+* إلا أن تطوع → ancak nafile olarak yapmak
 * يركب إلى المدينة → Medine'ye yolculuk etmek
 * أسعد الناس بشفاعتي → şefaatimden en çok nasiplenecek kimse
 * الحرص على الحديث → hadis öğrenme gayreti
-* Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
-* "وإذا خاصم فجر" → Husumete düştüğünde haddi aşar.
-- حول الحمى → koruluk etrafında
-- حمى الله → Allah'ın koruluğu
+* فسددوا وقاربوا وأبشروا → dosdoğru olmaya çalışın, buna yaklaşın, müjdelenin
+* والذي نفسي بيده → Canım elinde olan Allah’a
+* وإذا خاصم فجر → husumete düştüğünde haddi aşar.
+* حول الحمى → koruluk etrafında
+* حمى الله → Allah'ın koruluğu
 * ألا وهي القلب → O da kalptir.
 * لدينه وعرضه → dinini ve namusunu
 * حمى الله في أرضه محارمه → Allah'ın yeryüzündeki koruluğu, haram kıldığı şeylerdir.
-- كراع يرعى حول الحمى → koruluk etrafında sürüsünü otlatan bir çoban
-- يوشك أن يواقعه → neredeyse harama düşecektir
-- ألا وإن / ألا إن → Dikkat edin!
-- Helal açıktır, haram açıktır → Helal bellidir, haram da bellidir.
-- Ey Resûlullah → Ya Resûlullah
+* كراع يرعى حول الحمى → koruluk etrafında sürüsünü otlatan bir çoban
+* يوشك أن يواقعه → neredeyse harama düşecektir
+* ألا وإن / ألا إن → Dikkat edin!
+* Helal açıktır, haram açıktır → Helal bellidir, haram da bellidir.
+* يا رسول الله → Ya Resûlullah
 
 Output JSON only:
 
