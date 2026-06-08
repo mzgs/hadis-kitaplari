@@ -34,6 +34,7 @@ kurallar:
 * Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
 - Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
 Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (r.a.) rivayet edildiğine göre..." şeklinde başla.
+
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
 * Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
