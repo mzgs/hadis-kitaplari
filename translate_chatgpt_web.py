@@ -28,12 +28,12 @@ Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercüme
 
 kurallar:
 
-* Peygamber Efendimizden bahsedildiğinde (s.a.v.), sahabelerden bahsedildiğinde (r.a.), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle.
+* Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle.
 * "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
 * Ravi isimlerini değiştirme; varsa yerleşik Türkçe yazımlarını kullan.
-* Hz. Peygamber için bağlama göre "Resûlullah (s.a.v.)" veya "Nebî (s.a.v.)" kullan.
+* Hz. Peygamber için bağlama göre "Resûlullah (sav)" veya "Nebî (sav)" kullan.
 - Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
-Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (r.a.) rivayet edildiğine göre..." şeklinde başla.
+Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (ra) rivayet edildiğine göre..." şeklinde başla.
 
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
@@ -92,6 +92,7 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 - يوشك أن يواقعه → neredeyse harama düşecektir
 - ألا وإن / ألا إن → Dikkat edin!
 - Helal açıktır, haram açıktır → Helal bellidir, haram da bellidir.
+- Ey Resûlullah → Ya Resûlullah
 
 Output JSON only:
 
