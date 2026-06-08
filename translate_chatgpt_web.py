@@ -34,7 +34,11 @@ kurallar:
 * Hz. Peygamber için bağlama göre "Resûlullah (sav)" veya "Nebî (sav)" kullan.
 - Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
 Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (ra) rivayet edildiğine göre..." şeklinde başla.
-* Ravi adında emin değilsen tahmin etme; kaynak Arapçadaki son açık ravi adına sadık kal.
+* Sahabi raviyi belirlerken Arapça isnaddaki son açık sahabi adına sadık kal; İngilizce "Narrated ..." alanı farklı görünse bile Arapçayı esas al.
+* Ara raviyi sahabi ravi gibi gösterme. Örnek: "عن الأسود، قال قال لي ابن الزبير" yapısında başlangıç "El-Esved'den rivayet edildiğine göre, İbnü'z-Zübeyr ona şöyle dedi..." olmalıdır; doğrudan "İbnü'z-Zübeyr'den" diye başlama.
+* "سمعت أنس بن مالك" gibi açık bir ravi adı varsa başka bir sahabi adıyla değiştirme; önceki veya sonraki hadisten isim ödünç alma.
+* "بهذا", "بذلك", "نحوه" gibi önceki rivayete gönderme yapan ifadelerde, metni Resûlullah'a yeni ve tam bir söz gibi isnat etme; gönderme ve varsa ek açıklamayı açıkça belirt.
+* Ravi adında emin değilsen tahmin etme; kaynak Arapçadaki açık yapıyı koru ve kısa biçimde aktar.
 
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
@@ -69,6 +73,14 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * يفقهه في الدين → dinde fakih kılmak
 * لا حسد إلا → ancak ... gıpta edilir
 * هلكته في الحق → hak yolunda harcamak
+* من كذب علي → benim adıma yalan uydurmak
+* فليتبوأ مقعده من النار → cehennemdeki yerine hazırlansın
+* عائشة زوج النبي → Nebî’nin (sav) hanımı Âişe
+* من حوسب عذب → kim hesaba çekilirse azap görür
+* إنما ذلك العرض → Bu sadece amellerin arz edilmesidir
+* من نوقش الحساب → hesabı ince ince sorgulanmak
+* دخل الخلاء → tuvalete girmek
+* قضى حاجته → ihtiyacını gidermek
 * يطول بنا الصلاة → namazı uzatmak
 * منفرون → insanları soğutan
 * صلى بالناس → cemaate imamlık etmek
