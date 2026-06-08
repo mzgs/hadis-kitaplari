@@ -37,16 +37,60 @@ kurallar:
 
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
+* سلم من لسانه ويده → dilinden ve elinden emin olmak
+* أي الإسلام أفضل → Müslümanlardan hangisi daha faziletlidir?
+* أي الإسلام خير → İslam'da hangi amel daha hayırlıdır?
+* لا يؤمن → iman etmiş olmaz
+* يكره أن يعود في الكفر → küfre dönmeyi kötü görmek
+* كما يكره أن يقذف في النار → ateşe atılmak kadar kötü görmek
+* سباب المسلم → Müslümana sövmek
+* فسوق → fasıklık
+* قتاله كفر → onunla savaşmak küfürdür
+* لا يمل الله حتى تملوا → siz usanmadıkça Allah usanmaz
+* أحب الدين → en sevimli amel
+* ما دام عليه → devamlı yapılan
+* تلاحى → tartışmak
+* رفعت ليلة القدر → Kadir gecesinin vakti hakkındaki bilginin kaldırılması
+* ولدت الأمة ربها → cariyenin efendisini doğurması
+* تطاول في البنيان → yüksek bina yapmakta yarışmak
+* غير خزايا ولا ندامى → ne utanç duyacak ne de pişman olacak
+* ضيعت الأمانة → emanetin zayi edilmesi
+* وسد الأمر إلى غير أهله → işin ehil olmayana verilmesi
+* قد أجبتك → buyur, seni dinliyorum
+* لا تجد علي في نفسك → bana gücenme
+* اللهم نعم → evet, Allah şahittir
+* يتخول بالموعظة → uygun zamanlarda öğüt vermek
+* مخافة السآمة → bıkkınlığa yol açmamak için
+* يسروا ولا تعسروا → kolaylaştırın, güçleştirmeyin
+* بشروا ولا تنفروا → müjdeleyin, nefret ettirmeyin
+* يفقهه في الدين → dinde fakih kılmak
+* لا حسد إلا → ancak ... gıpta edilir
+* هلكته في الحق → hak yolunda harcamak
+* يطول بنا الصلاة → namazı uzatmak
+* منفرون → insanları soğutan
+* صلى بالناس → cemaate imamlık etmek
+* فليخفف → hafif tutsun
+* عرفها → ilan etmek
+* وما لك ولها → ondan sana ne
+* معها سقاؤها وحذاؤها → suyunu kendi taşır, ayaklarıyla yürür
+* يلقاها ربها → sahibi onu bulur
+* لك أو لأخيك أو للذئب → ya senin, ya din kardeşinin ya da kurdun
+* ويل للأعقاب → topukların vay hâline
+* أجران → iki kat ecir
+* بغير شيء → karşılıksız
+* يركب إلى المدينة → Medine'ye yolculuk etmek
+* أسعد الناس بشفاعتي → şefaatimden en çok nasiplenecek kimse
+* الحرص على الحديث → hadis öğrenme gayreti
 * Canım kudret elinde olan Allah’a → Canım elinde olan Allah’a
 * "وإذا خاصم فجر" → Husumete düştüğünde haddi aşar.
 - حول الحمى → koruluk etrafında
 - حمى الله → Allah'ın koruluğu
 * ألا وهي القلب → O da kalptir.
-* العرض → namus
-* محارم الله → Allah'ın haram kıldığı şeyler
+* لدينه وعرضه → dinini ve namusunu
+* حمى الله في أرضه محارمه → Allah'ın yeryüzündeki koruluğu, haram kıldığı şeylerdir.
 - كراع يرعى حول الحمى → koruluk etrafında sürüsünü otlatan bir çoban
 - يوشك أن يواقعه → neredeyse harama düşecektir
-- ألا → Dikkat edin!
+- ألا وإن / ألا إن → Dikkat edin!
 - Helal açıktır, haram açıktır → Helal bellidir, haram da bellidir.
 
 Output JSON only:
