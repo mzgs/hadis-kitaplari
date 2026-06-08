@@ -28,12 +28,13 @@ Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercüme
 
 kurallar:
 
-* Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle.
+* Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle; doğrudan hitaplarda "Ya Resûlullah" yaz, (sav) ekleme.
 * "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
-* Ravi isimlerini değiştirme; varsa yerleşik Türkçe yazımlarını kullan.
+* Ravi isimlerini yalnızca kaynak Arapçadaki şekilde aktar; yerleşik Türkçe yazım varsa onu kullan. Kaynakta açıkça geçmeyen hiçbir ravi adını ekleme, değiştirme ya da başka hadisten ödünç alma.
 * Hz. Peygamber için bağlama göre "Resûlullah (sav)" veya "Nebî (sav)" kullan.
 - Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
 Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (ra) rivayet edildiğine göre..." şeklinde başla.
+* Ravi adında emin değilsen tahmin etme; kaynak Arapçadaki son açık ravi adına sadık kal.
 
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
@@ -72,12 +73,12 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * منفرون → insanları soğutan
 * صلى بالناس → cemaate imamlık etmek
 * فليخفف → hafif tutsun
-* عرفها → ilan etmek
+* عرفها سنة → bir yıl ilan etmek
 * وما لك ولها → ondan sana ne
 * معها سقاؤها وحذاؤها → suyunu kendi taşır, ayaklarıyla yürür
 * يلقاها ربها → sahibi onu bulur
 * لك أو لأخيك أو للذئب → ya senin, ya din kardeşinin ya da kurdun
-* ويل للأعقاب → topukların vay hâline
+* ويل للأعقاب من النار → topukların ateşten vay hâline
 * أجران → iki kat ecir
 * بغير شيء → karşılıksız
 * إلا أن تطوع → ancak nafile olarak yapmak
@@ -85,7 +86,11 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * أسعد الناس بشفاعتي → şefaatimden en çok nasiplenecek kimse
 * الحرص على الحديث → hadis öğrenme gayreti
 * فسددوا وقاربوا وأبشروا → dosdoğru olmaya çalışın, buna yaklaşın, müjdelenin
-* والذي نفسي بيده → Canım elinde olan Allah’a
+* والذي نفسي بيده → Canım elinde olan Allah’a yemin olsun
+* الأعمال بالنية → Ameller niyetlere göredir
+* لكل امرئ ما نوى → herkes niyet ettiğinin karşılığını alır
+* تبتغي بها وجه الله → Allah’ın rızasını gözeterek
+* النصح لكل مسلم → her Müslümanın hayrını istemek
 * وإذا خاصم فجر → husumete düştüğünde haddi aşar.
 * حول الحمى → koruluk etrafında
 * حمى الله → Allah'ın koruluğu
@@ -95,8 +100,19 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * كراع يرعى حول الحمى → koruluk etrafında sürüsünü otlatan bir çoban
 * يوشك أن يواقعه → neredeyse harama düşecektir
 * ألا وإن / ألا إن → Dikkat edin!
-* Helal açıktır, haram açıktır → Helal bellidir, haram da bellidir.
+* الحلال بين والحرام بين → Helal bellidir, haram da bellidir.
 * يا رسول الله → Ya Resûlullah
+* ليبلغ الشاهد الغائب → burada bulunanlar bulunmayanlara ulaştırsın
+* ولا حرج → bir sakıncası yok
+* أشراط الساعة → kıyametin alametleri
+* يقبض العلم / يرفع العلم → ilmin ortadan kalkması
+* يظهر الجهل → cehaletin yayılması
+* يكثر الهرج → öldürme olaylarının çoğalması
+* لم يرفع بذلك رأسا → buna hiç değer vermemek
+* جاءنا بالبينات والهدى → bize apaçık deliller ve hidayet getirmek
+* سمعت الناس يقولون شيئا فقلته → insanların söylediğini duyup onu söylemek
+* كيف وقد قيل → bu söylenmişken nasıl devam edebilirsin?
+* إذا تكلم بكلمة أعادها ثلاثا → bir sözü üç defa tekrar etmek
 
 Output JSON only:
 
