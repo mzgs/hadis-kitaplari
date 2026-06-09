@@ -89,6 +89,8 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * إنما جعل الإمام ليؤتم به → İmam, kendisine uyulsun diye görevlendirilmiştir
 * صلى بالناس → cemaate imamlık etmek
 * فليخفف → hafif tutsun
+* سمع الله لمن حمده → Allah hamd edeni işitir
+* ربنا ولك الحمد / ربنا لك الحمد → Rabbimiz, hamd sanadır
 * عرفها سنة → bir yıl ilan etmek
 * وما لك ولها → ondan sana ne
 * معها سقاؤها وحذاؤها → suyunu kendi taşır, ayaklarıyla yürür
