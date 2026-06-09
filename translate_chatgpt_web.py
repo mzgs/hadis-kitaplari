@@ -34,7 +34,10 @@ kurallar:
 * Hz. Peygamber için bağlama göre "Resûlullah (sav)" veya "Nebî (sav)" kullan.
 - Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
 Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (ra) rivayet edildiğine göre..." şeklinde başla.
-* Sahabi raviyi belirlerken Arapça isnaddaki son açık sahabi adına sadık kal; İngilizce "Narrated ..." alanı farklı görünse bile Arapçayı esas al.
+* Arapça isnadı ve hadisin metnini ayır; ravi olarak sadece isnadda açıkça geçen kişiyi kullan. `عن/حدثنا/أخبرنا/سمعت/قال` zincirini dikkatle takip et, hadisin içinde adı geçen kişiyi otomatik olarak ravi sayma.
+* `قال سألت فلانا` / `قال قلت لفلان` yapılarında ravi, soruyu soran kişidir; sorulan kişiyi başlangıç ravi diye yazma. Çeviriyi mutlaka "X dedi ki: Y'ye sordum..." biçiminde kur.
+* `عن فلان، أن النبي...` / `عن فلان، أن رسول الله...` biçiminde, arada açık bir sahabi adı yoksa metne sahabi uydurma; ravi olarak sadece isnaddaki açık kişiyi yaz.
+* Ravi için künye, lakap, nisbe veya isim birlikte geçiyorsa hepsini koru; `أبو مسلمة، سعيد بن يزيد الأزدي` gibi bir kayıtta yalnızca ismi bırakıp künyeyi düşürme.
 * Ara raviyi sahabi ravi gibi gösterme. Örnek: "عن الأسود، قال قال لي ابن الزبير" yapısında başlangıç "El-Esved'den rivayet edildiğine göre, İbnü'z-Zübeyr ona şöyle dedi..." olmalıdır; doğrudan "İbnü'z-Zübeyr'den" diye başlama.
 * "سمعت أنس بن مالك" gibi açık bir ravi adı varsa başka bir sahabi adıyla değiştirme; önceki veya sonraki hadisten isim ödünç alma.
 * "بهذا", "بذلك", "نحوه" gibi önceki rivayete gönderme yapan ifadelerde, metni Resûlullah'a yeni ve tam bir söz gibi isnat etme; gönderme ve varsa ek açıklamayı açıkça belirt.
@@ -83,6 +86,7 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * قضى حاجته → ihtiyacını gidermek
 * يطول بنا الصلاة → namazı uzatmak
 * منفرون → insanları soğutan
+* إنما جعل الإمام ليؤتم به → İmam, kendisine uyulsun diye görevlendirilmiştir
 * صلى بالناس → cemaate imamlık etmek
 * فليخفف → hafif tutsun
 * عرفها سنة → bir yıl ilan etmek
@@ -99,6 +103,7 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * الحرص على الحديث → hadis öğrenme gayreti
 * فسددوا وقاربوا وأبشروا → dosdoğru olmaya çalışın, buna yaklaşın, müjdelenin
 * والذي نفسي بيده → Canım elinde olan Allah’a yemin olsun
+* صلاة الغداة بغلس / صلى الصبح بغلس → sabah namazını henüz ortalık karanlıkken kılmak
 * الأعمال بالنية → Ameller niyetlere göredir
 * لكل امرئ ما نوى → herkes niyet ettiğinin karşılığını alır
 * تبتغي بها وجه الله → Allah’ın rızasını gözeterek
@@ -125,6 +130,7 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * سمعت الناس يقولون شيئا فقلته → insanların söylediğini duyup onu söylemek
 * كيف وقد قيل → bu söylenmişken nasıl devam edebilirsin?
 * إذا تكلم بكلمة أعادها ثلاثا → bir sözü üç defa tekrar etmek
+* خالف بين طرفيه → elbisenin iki ucunu omuzlarının üzerinde çaprazlamak
 
 Output JSON only:
 
