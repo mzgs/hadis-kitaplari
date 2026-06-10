@@ -14,6 +14,7 @@ import json_repair
 API_URL = "http://127.0.0.1:8787/api/reply"
 DEFAULT_OUT_PATH = Path("out.json")
 DEFAULT_TIMEOUT_SECONDS = 300
+MULTI_PROMPT_MAX_CHARS = 18000
 STOP_RESPONSE_MODELS = {"gpt-5-3-mini"}
 REQUIRED_TRANSLATION_FIELDS = {"tr", "reference"}
 OPTIONAL_TRANSLATION_FIELDS = {"grade"}
@@ -43,9 +44,12 @@ kurallar:
 * "بهذا", "بذلك", "نحوه" gibi önceki rivayete gönderme yapan ifadelerde, metni Resûlullah'a yeni ve tam bir söz gibi isnat etme; gönderme ve varsa ek açıklamayı açıkça belirt.
 * Ravi adında emin değilsen tahmin etme; kaynak Arapçadaki açık yapıyı koru ve kısa biçimde aktar.
 Hitaplarda geçen künye veya lakaplar Türkçe okuyucu açısından belirsizse, anlamı değiştirmeden yaygın bilinen şekli kullanılabilir. Örneğin "يا أبا هرّ" → "Ebu Hureyre".
+* Mahrem konuları aktarırken anlamı eksiltme, fakat kaba, fazla açık veya Resûlullah'a (sav) nispet edildiğinde edebe aykırı duyulacak ifadeler kullanma. "Cinsel ilişkiye girmek" gibi doğrudan ve ağır ifadeleri ancak Arapça metin açıkça bunu gerektiriyorsa kullan; hayız bağlamındaki `باشر/يباشر/مباشرة` için "yakınlık kurmak" veya "mahrem yakınlıkta bulunmak" de.
 
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
+* باشر / يباشر / مباشرة → yakınlık kurmak / mahrem yakınlıkta bulunmak
+* إزار / اتزر / تتزر / فأتزرت → izar / izarını bağlamak
 * سلم من لسانه ويده → dilinden ve elinden emin olmak
 * أي الإسلام أفضل → Müslümanlardan hangisi daha faziletlidir?
 * أي الإسلام خير → İslam'da hangi amel daha hayırlıdır?
@@ -135,6 +139,8 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * إذا تكلم بكلمة أعادها ثلاثا → bir sözü üç defa tekrar etmek
 * خالف بين طرفيه → elbisenin iki ucunu omuzlarının üzerinde çaprazlamak
 
+onemli kural: her bir hadisi kendi icinde bagimsiz olarak incele.
+
 Output JSON only:
 [
 {
@@ -149,7 +155,13 @@ PROMPT2 = """
 İlk çeviriyi Arapça metinle yeniden karşılaştır. Eksiltme, ekleme, yanlış özne,
 yanlış zamir, anlam kayması, zayıflatılmış vurgu, bozuk Türkçe veya tutarsız
 terim varsa düzelt. Sadece doğal ifade uğruna anlamı değiştirme. Son cevapta
-yalnızca ana promptta tanımlanan JSON nesnesini döndür.
+yalnızca ana promptta tanımlanan JSON çıktısını döndür.
+"""
+
+MULTI_PROMPT_INSTRUCTIONS = """
+Birden fazla hadis verildiyse, her hadis için ayrı bir JSON nesnesi üret ve
+nesneleri girişteki sırayla aynı JSON array içinde döndür. Eksik, fazla veya
+birleştirilmiş kayıt üretme.
 """
  
  
@@ -196,6 +208,14 @@ def parse_args():
         "--no-english",
         action="store_true",
         help="Omit English translation/context fields from the prompt payload.",
+    )
+    parser.add_argument(
+        "--multi",
+        action="store_true",
+        help=(
+            "Translate multiple hadith items in one request, batching prompts up "
+            f"to {MULTI_PROMPT_MAX_CHARS} characters."
+        ),
     )
     return parser.parse_args()
 
@@ -302,11 +322,14 @@ def omit_english_fields(value):
     return value
 
 
-def build_translation_prompt(selected_items, no_english=False):
+def build_translation_prompt(selected_items, no_english=False, multi=False):
     prompt_items = omit_english_fields(selected_items) if no_english else selected_items
     hadiths_json = json.dumps(prompt_items, ensure_ascii=False, indent=2)
+    multi_instructions = (
+        f"\n\n{MULTI_PROMPT_INSTRUCTIONS.strip()}" if multi else ""
+    )
     return (
-        f"\n{PROMPT.rstrip()}\n\n"
+        f"\n{PROMPT.rstrip()}{multi_instructions}\n\n"
         f"{hadiths_json}"
     )
 
@@ -453,7 +476,7 @@ def validate_translation(data, expected_reference=None):
     return data
 
 
-def write_response(body, output_path, expected_reference=None):
+def parse_response_payload(body):
     raw_bridge_response = body if isinstance(body, str) else None
     data = parse_repaired_json(body, "bridge response")
     raw_model_response = raw_bridge_response
@@ -471,6 +494,18 @@ def write_response(body, output_path, expected_reference=None):
             raw_model_response = data if isinstance(data, str) else None
 
     data = parse_repaired_json(data, "model response")
+    return data, raw_model_response
+
+
+def write_translation_file(data, output_path):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as output_file:
+        json.dump(data, output_file, ensure_ascii=False, indent=2)
+        output_file.write("\n")
+
+
+def write_response(body, output_path, expected_reference=None):
+    data, raw_model_response = parse_response_payload(body)
     try:
         data = validate_translation(data, expected_reference)
     except ValueError as validation_error:
@@ -482,10 +517,39 @@ def write_response(body, output_path, expected_reference=None):
             raise validation_error
         data = validate_translation(data, expected_reference)
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as output_file:
-        json.dump(data, output_file, ensure_ascii=False, indent=2)
-        output_file.write("\n")
+    write_translation_file(data, output_path)
+
+
+def write_multi_response(body, output_paths, expected_references):
+    if expected_references is None:
+        expected_references = [None] * len(output_paths)
+    if len(expected_references) != len(output_paths):
+        raise ValueError(
+            "Expected reference count does not match output path count: "
+            f"expected {len(output_paths)}, got {len(expected_references)}"
+        )
+
+    data, raw_model_response = parse_response_payload(body)
+
+    if isinstance(data, dict) and len(output_paths) == 1:
+        data = [data]
+    if not isinstance(data, list):
+        if raw_model_response is not None and len(output_paths) == 1:
+            data = [extract_translation_fields(raw_model_response)]
+        else:
+            raise ValueError("Multi translation response must be a JSON array")
+    if len(data) != len(output_paths):
+        raise ValueError(
+            "Multi translation response count does not match request: "
+            f"expected {len(output_paths)}, got {len(data)}"
+        )
+
+    validated_items = [
+        validate_translation(item, expected_reference)
+        for item, expected_reference in zip(data, expected_references)
+    ]
+    for item, output_path in zip(validated_items, output_paths):
+        write_translation_file(item, output_path)
 
 
 def request_translation(
@@ -494,6 +558,8 @@ def request_translation(
     timeout,
     enable_prompt2=False,
     expected_reference=None,
+    output_paths=None,
+    expected_references=None,
 ):
     request_payload = {"prompt": prompt}
     if enable_prompt2:
@@ -511,8 +577,56 @@ def request_translation(
     with urllib.request.urlopen(request, timeout=timeout) as response:
         body = response.read().decode("utf-8")
         print(body)
-        write_response(body, output_path, expected_reference)
-        print(f"Wrote response to {output_path}")
+        if output_paths is not None:
+            write_multi_response(body, output_paths, expected_references)
+            print(f"Wrote {len(output_paths)} responses")
+        else:
+            write_response(body, output_path, expected_reference)
+            print(f"Wrote response to {output_path}")
+
+
+def build_multi_batches(work_items, no_english=False):
+    batches = []
+    current_batch = []
+    current_prompt = ""
+
+    for work_item in work_items:
+        candidate_batch = current_batch + [work_item]
+        candidate_prompt = build_translation_prompt(
+            [item["selected_item"] for item in candidate_batch],
+            no_english,
+            multi=True,
+        )
+
+        if len(candidate_prompt) > MULTI_PROMPT_MAX_CHARS:
+            if not current_batch:
+                raise ValueError(
+                    f"Hadith {work_item['index']} prompt is "
+                    f"{len(candidate_prompt)} characters, above "
+                    f"{MULTI_PROMPT_MAX_CHARS}"
+                )
+            batches.append((current_batch, current_prompt))
+            current_batch = [work_item]
+            current_prompt = build_translation_prompt(
+                [work_item["selected_item"]],
+                no_english,
+                multi=True,
+            )
+            if len(current_prompt) > MULTI_PROMPT_MAX_CHARS:
+                raise ValueError(
+                    f"Hadith {work_item['index']} prompt is "
+                    f"{len(current_prompt)} characters, above "
+                    f"{MULTI_PROMPT_MAX_CHARS}"
+                )
+            continue
+
+        current_batch = candidate_batch
+        current_prompt = candidate_prompt
+
+    if current_batch:
+        batches.append((current_batch, current_prompt))
+
+    return batches
 
 
 def run_hadith_translations(
@@ -522,6 +636,7 @@ def run_hadith_translations(
     force=False,
     enable_prompt2=False,
     no_english=False,
+    multi=False,
 ):
     if timeout <= 0:
         raise ValueError("--timeout must be greater than zero")
@@ -537,6 +652,54 @@ def run_hadith_translations(
             raise ValueError(
                 f"Hadith index {index} is out of range; book has {len(hadith_items)} items"
             )
+
+    if multi:
+        work_items = []
+        for index in indexes:
+            output_path = output_dir / f"{index}.json"
+            if output_path.exists() and not force:
+                print(f"Skipping {output_path}; already exists")
+                continue
+
+            selected_items = select_hadith_items(hadith_items, [index])
+            if output_path.exists():
+                print(f"Will recreate {output_path}")
+            else:
+                print(f"Will translate {index}")
+            work_items.append(
+                {
+                    "index": index,
+                    "output_path": output_path,
+                    "selected_item": selected_items[0],
+                    "expected_reference": (
+                        selected_items[0].get("reference")
+                        if isinstance(selected_items[0], dict)
+                        else None
+                    ),
+                }
+            )
+
+        if not work_items:
+            print("No hadiths to translate")
+            return
+
+        for batch, prompt in build_multi_batches(work_items, no_english):
+            indexes_text = ", ".join(str(item["index"]) for item in batch)
+            print(
+                f"Translating batch [{indexes_text}] "
+                f"({len(prompt)} chars)"
+            )
+            request_translation(
+                prompt,
+                None,
+                timeout,
+                enable_prompt2,
+                output_paths=[item["output_path"] for item in batch],
+                expected_references=[
+                    item["expected_reference"] for item in batch
+                ],
+            )
+        return
 
     for index in indexes:
         output_path = output_dir / f"{index}.json"
@@ -567,6 +730,10 @@ def run_hadith_translations(
 def main():
     args = parse_args()
 
+    if args.multi and not args.book:
+        print("--multi can only be used with --book")
+        raise SystemExit(1)
+
     if args.book:
         try:
             run_hadith_translations(
@@ -576,6 +743,7 @@ def main():
                 args.force,
                 args.enable_prompt2,
                 args.no_english,
+                args.multi,
             )
         except KeyboardInterrupt:
             print("\nStopped by user. Current in-progress hadith was not saved.")
