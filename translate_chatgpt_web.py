@@ -24,7 +24,7 @@ class StopTranslation(Exception):
     pass
 
 PROMPT = """
-Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+Aşağıdaki hadisleri doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
 
 kurallar:
 
@@ -42,6 +42,7 @@ kurallar:
 * "سمعت أنس بن مالك" gibi açık bir ravi adı varsa başka bir sahabi adıyla değiştirme; önceki veya sonraki hadisten isim ödünç alma.
 * "بهذا", "بذلك", "نحوه" gibi önceki rivayete gönderme yapan ifadelerde, metni Resûlullah'a yeni ve tam bir söz gibi isnat etme; gönderme ve varsa ek açıklamayı açıkça belirt.
 * Ravi adında emin değilsen tahmin etme; kaynak Arapçadaki açık yapıyı koru ve kısa biçimde aktar.
+Hitaplarda geçen künye veya lakaplar Türkçe okuyucu açısından belirsizse, anlamı değiştirmeden yaygın bilinen şekli kullanılabilir. Örneğin "يا أبا هرّ" → "Ebu Hureyre".
 
 Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 
@@ -135,11 +136,12 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * خالف بين طرفيه → elbisenin iki ucunu omuzlarının üzerinde çaprazlamak
 
 Output JSON only:
-
+[
 {
 "tr": "<Türkçe çeviri>",
 "reference": "<source reference>"
 }
+]
 
 """
 
