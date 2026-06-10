@@ -57,7 +57,6 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
 {
   "tr": "<Türkçe çeviri>",
   "reference": "<kaynak reference değeri>",
-  "grade": ""
 }
 ```
 
