@@ -173,15 +173,145 @@ Output format JSON, no markdown:
 -------------------------------------------------------
 KISA VE ETKILI 
 
-Aşağıdaki hadisi doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+Aşağıdaki hadisleri doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
 
 kurallar:
-- Peygamber Efendimizden bahsedildiğinde (s.a.v.), sahabelerden bahsedildiğinde (r.a.), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
+- Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
 
 Output JSON only:
 
+[
 {
-  "tr": "<Türkçe çeviri>",
-  "reference": "<source reference>",
-  "grade": "<Âlim - Hüküm>"
+"tr": "<Türkçe çeviri>",
+"reference": "<source reference>"
 }
+]
+
+
+
+--------------------------------
+LAST
+
+Aşağıdaki hadisleri doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+
+kurallar:
+
+* Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle; doğrudan hitaplarda "Ya Resûlullah" yaz, (sav) ekleme.
+* "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
+* Ravi isimlerini yalnızca kaynak Arapçadaki şekilde aktar; yerleşik Türkçe yazım varsa onu kullan. Kaynakta açıkça geçmeyen hiçbir ravi adını ekleme, değiştirme ya da başka hadisten ödünç alma.
+* Hz. Peygamber için bağlama göre "Resûlullah (sav)" veya "Nebî (sav)" kullan.
+- Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
+Örnek: "Bize Ebu Nuaym rivayet etti..." şeklindeki isnadı çevirme. Bunun yerine "Ebu Hureyre'den (ra) rivayet edildiğine göre..." şeklinde başla.
+* Arapça isnadı ve hadisin metnini ayır; ravi olarak sadece isnadda açıkça geçen kişiyi kullan. `عن/حدثنا/أخبرنا/سمعت/قال` zincirini dikkatle takip et, hadisin içinde adı geçen kişiyi otomatik olarak ravi sayma.
+* `قال سألت فلانا` / `قال قلت لفلان` yapılarında ravi, soruyu soran kişidir; sorulan kişiyi başlangıç ravi diye yazma. Çeviriyi mutlaka "X dedi ki: Y'ye sordum..." biçiminde kur.
+* `عن فلان، أن النبي...` / `عن فلان، أن رسول الله...` biçiminde, arada açık bir sahabi adı yoksa metne sahabi uydurma; ravi olarak sadece isnaddaki açık kişiyi yaz.
+* Ravi için künye, lakap, nisbe veya isim birlikte geçiyorsa hepsini koru; `أبو مسلمة، سعيد بن يزيد الأزدي` gibi bir kayıtta yalnızca ismi bırakıp künyeyi düşürme.
+* Ara raviyi sahabi ravi gibi gösterme. Örnek: "عن الأسود، قال قال لي ابن الزبير" yapısında başlangıç "El-Esved'den rivayet edildiğine göre, İbnü'z-Zübeyr ona şöyle dedi..." olmalıdır; doğrudan "İbnü'z-Zübeyr'den" diye başlama.
+* "سمعت أنس بن مالك" gibi açık bir ravi adı varsa başka bir sahabi adıyla değiştirme; önceki veya sonraki hadisten isim ödünç alma.
+* "بهذا", "بذلك", "نحوه" gibi önceki rivayete gönderme yapan ifadelerde, metni Resûlullah'a yeni ve tam bir söz gibi isnat etme; gönderme ve varsa ek açıklamayı açıkça belirt.
+* Ravi adında emin değilsen tahmin etme; kaynak Arapçadaki açık yapıyı koru ve kısa biçimde aktar.
+Hitaplarda geçen künye veya lakaplar Türkçe okuyucu açısından belirsizse, anlamı değiştirmeden yaygın bilinen şekli kullanılabilir. Örneğin "يا أبا هرّ" → "Ebu Hureyre".
+* Mahrem konuları aktarırken anlamı eksiltme, fakat kaba, fazla açık veya Resûlullah'a (sav) nispet edildiğinde edebe aykırı duyulacak ifadeler kullanma. "Cinsel ilişkiye girmek" gibi doğrudan ve ağır ifadeleri ancak Arapça metin açıkça bunu gerektiriyorsa kullan; hayız bağlamındaki `باشر/يباشر/مباشرة` için "yakınlık kurmak" veya "mahrem yakınlıkta bulunmak" de.
+
+Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
+
+* باشر / يباشر / مباشرة → yakınlık kurmak / mahrem yakınlıkta bulunmak
+* إزار / اتزر / تتزر / فأتزرت → izar / izarını bağlamak
+* سلم من لسانه ويده → dilinden ve elinden emin olmak
+* أي الإسلام أفضل → Müslümanlardan hangisi daha faziletlidir?
+* أي الإسلام خير → İslam'da hangi amel daha hayırlıdır?
+* لا يؤمن → iman etmiş olmaz
+* يكره أن يعود في الكفر → küfre dönmeyi kötü görmek
+* كما يكره أن يقذف في النار → ateşe atılmak kadar kötü görmek
+* سباب المسلم → Müslümana sövmek
+* فسوق → fasıklık
+* قتاله كفر → onunla savaşmak küfürdür
+* لا يمل الله حتى تملوا → siz usanmadıkça Allah usanmaz
+* أحب الدين إليه → ona en sevimli gelen amel
+* ما دام عليه → devamlı yapılan
+* إيمانا واحتسابا → inanarak ve sevabını Allah’tan umarak
+* حسن إسلامه / أحسن إسلامه → İslamını güzelleştirmek
+* تلاحى → tartışmak
+* رفعت ليلة القدر → Kadir gecesinin vakti hakkındaki bilginin kaldırılması
+* ولدت الأمة ربها → cariyenin efendisini doğurması
+* تطاول في البنيان → yüksek bina yapmakta yarışmak
+* غير خزايا ولا ندامى → ne utanç duyacak ne de pişman olacak
+* ضيعت الأمانة → emanetin zayi edilmesi
+* وسد الأمر إلى غير أهله → işin ehil olmayana verilmesi
+* قد أجبتك → buyur, seni dinliyorum
+* لا تجد علي في نفسك → bana gücenme
+* اللهم نعم → evet, Allah şahittir
+* يتخول بالموعظة → uygun zamanlarda öğüt vermek
+* مخافة السآمة → bıkkınlığa yol açmamak için
+* يسروا ولا تعسروا → kolaylaştırın, güçleştirmeyin
+* بشروا ولا تنفروا → müjdeleyin, nefret ettirmeyin
+* يفقهه في الدين → dinde fakih kılmak
+* لا حسد إلا → ancak ... gıpta edilir
+* هلكته في الحق → hak yolunda harcamak
+* من كذب علي → benim adıma yalan uydurmak
+* فليتبوأ مقعده من النار → cehennemdeki yerine hazırlansın
+* عائشة زوج النبي → Nebî’nin (sav) hanımı Âişe
+* من حوسب عذب → kim hesaba çekilirse azap görür
+* إنما ذلك العرض → Bu sadece amellerin arz edilmesidir
+* من نوقش الحساب → hesabı ince ince sorgulanmak
+* دخل الخلاء → tuvalete girmek
+* قضى حاجته → ihtiyacını gidermek
+* يطول بنا الصلاة → namazı uzatmak
+* منفرون → insanları soğutan
+* إنما جعل الإمام ليؤتم به → İmam, kendisine uyulsun diye görevlendirilmiştir
+* صلى بالناس → cemaate imamlık etmek
+* فليخفف → hafif tutsun
+* سمع الله لمن حمده → Allah hamd edeni işitir
+* ربنا ولك الحمد / ربنا لك الحمد → Rabbimiz, hamd sanadır
+* عرفها سنة → bir yıl ilan etmek
+* وما لك ولها → ondan sana ne
+* معها سقاؤها وحذاؤها → suyunu kendi taşır, ayaklarıyla yürür
+* يلقاها ربها → sahibi onu bulur
+* لك أو لأخيك أو للذئب → ya senin, ya din kardeşinin ya da kurdun
+* ويل للأعقاب من النار → topukların ateşten vay hâline
+* أجران → iki kat ecir
+* بغير شيء → karşılıksız
+* إلا أن تطوع → ancak nafile olarak yapmak
+* يركب إلى المدينة → Medine'ye yolculuk etmek
+* أسعد الناس بشفاعتي → şefaatimden en çok nasiplenecek kimse
+* الحرص على الحديث → hadis öğrenme gayreti
+* فسددوا وقاربوا وأبشروا → dosdoğru olmaya çalışın, buna yaklaşın, müjdelenin
+* والذي نفسي بيده → Canım elinde olan Allah’a yemin olsun
+* صلاة الغداة بغلس / صلى الصبح بغلس → sabah namazını henüz ortalık karanlıkken kılmak
+* الأعمال بالنية → Ameller niyetlere göredir
+* لكل امرئ ما نوى → herkes niyet ettiğinin karşılığını alır
+* تبتغي بها وجه الله → Allah’ın rızasını gözeterek
+* النصح لكل مسلم → her Müslümanın hayrını istemek
+* وإذا خاصم فجر → husumete düştüğünde haddi aşar.
+* حول الحمى → koruluk etrafında
+* حمى الله → Allah'ın koruluğu
+* ألا وهي القلب → O da kalptir.
+* لدينه وعرضه → dinini ve namusunu
+* حمى الله في أرضه محارمه → Allah'ın yeryüzündeki koruluğu, haram kıldığı şeylerdir.
+* كراع يرعى حول الحمى → koruluk etrafında sürüsünü otlatan bir çoban
+* يوشك أن يواقعه → neredeyse harama düşecektir
+* ألا وإن / ألا إن → Dikkat edin!
+* الحلال بين والحرام بين → Helal bellidir, haram da bellidir.
+* يا رسول الله → Ya Resûlullah
+* ليبلغ الشاهد الغائب → burada bulunanlar bulunmayanlara ulaştırsın
+* ولا حرج → bir sakıncası yok
+* أشراط الساعة → kıyametin alametleri
+* يقبض العلم / يرفع العلم → ilmin ortadan kalkması
+* يظهر الجهل → cehaletin yayılması
+* يكثر الهرج → öldürme olaylarının çoğalması
+* لم يرفع بذلك رأسا → buna hiç değer vermemek
+* جاءنا بالبينات والهدى → bize apaçık deliller ve hidayet getirmek
+* سمعت الناس يقولون شيئا فقلته → insanların söylediğini duyup onu söylemek
+* كيف وقد قيل → bu söylenmişken nasıl devam edebilirsin?
+* إذا تكلم بكلمة أعادها ثلاثا → bir sözü üç defa tekrar etmek
+* خالف بين طرفيه → elbisenin iki ucunu omuzlarının üzerinde çaprazlamak
+
+onemli kural: her bir hadisi kendi icinde bagimsiz olarak incele.
+
+Output JSON only:
+[
+{
+"tr": "<Türkçe çeviri>",
+"reference": "<source reference>"
+}
+]
