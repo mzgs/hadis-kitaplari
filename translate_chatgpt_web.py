@@ -24,8 +24,20 @@ TRANSLATION_FIELDS = REQUIRED_TRANSLATION_FIELDS | OPTIONAL_TRANSLATION_FIELDS
 class StopTranslation(Exception):
     pass
 
+
+class IncompleteMultiTranslation(ValueError):
+    def __init__(self, expected_count, received_count, missing_positions):
+        self.missing_positions = tuple(missing_positions)
+        saved_count = expected_count - len(self.missing_positions)
+        super().__init__(
+            "Multi translation response count does not match request: "
+            f"expected {expected_count}, got {received_count}; "
+            f"saved {saved_count}, missing {len(self.missing_positions)}"
+        )
+
+
 PROMPT = """
-Aşağıdaki hadisleri doğal Türkiye Türkçesiyle çevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+Aşağıdaki hadisleri doğal Türkiye klsik turkce hadis usulu ile cevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
 
 kurallar:
 - Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
@@ -429,9 +441,46 @@ def write_multi_response(body, output_paths, expected_references):
         else:
             raise ValueError("Multi translation response must be a JSON array")
     if len(data) != len(output_paths):
-        raise ValueError(
-            "Multi translation response count does not match request: "
-            f"expected {len(output_paths)}, got {len(data)}"
+        if len(data) > len(output_paths):
+            raise ValueError(
+                "Multi translation response count does not match request: "
+                f"expected {len(output_paths)}, got {len(data)}"
+            )
+
+        unmatched_positions = set(range(len(output_paths)))
+        matched_items = []
+        for item in data:
+            item = validate_translation(item)
+            matching_positions = [
+                position
+                for position in unmatched_positions
+                if expected_references[position] is not None
+                and references_match(
+                    item["reference"], expected_references[position]
+                )
+            ]
+            if len(matching_positions) != 1:
+                raise ValueError(
+                    "Could not uniquely match partial multi translation response "
+                    f"reference {item['reference']!r} to the request"
+                )
+
+            position = matching_positions[0]
+            unmatched_positions.remove(position)
+            matched_items.append(
+                (
+                    validate_translation(item, expected_references[position]),
+                    output_paths[position],
+                )
+            )
+
+        for item, output_path in matched_items:
+            write_translation_file(item, output_path)
+
+        raise IncompleteMultiTranslation(
+            len(output_paths),
+            len(data),
+            sorted(unmatched_positions),
         )
 
     validated_items = [
@@ -519,6 +568,64 @@ def build_multi_batches(work_items, no_english=False):
     return batches
 
 
+def translate_multi_batch(
+    batch,
+    timeout,
+    enable_prompt2=False,
+    no_english=False,
+    prompt=None,
+):
+    if prompt is None:
+        prompt = build_translation_prompt(
+            [item["selected_item"] for item in batch],
+            no_english,
+            multi=True,
+        )
+
+    indexes_text = ", ".join(str(item["index"]) for item in batch)
+    print(f"Translating batch [{indexes_text}] ({len(prompt)} chars)")
+
+    try:
+        request_translation(
+            prompt,
+            None,
+            timeout,
+            enable_prompt2,
+            output_paths=[item["output_path"] for item in batch],
+            expected_references=[
+                item["expected_reference"] for item in batch
+            ],
+        )
+    except IncompleteMultiTranslation as exc:
+        missing_batch = [batch[position] for position in exc.missing_positions]
+        print(f"{exc}; retrying missing hadiths")
+
+        if len(missing_batch) == len(batch):
+            if len(batch) == 1:
+                raise
+            midpoint = len(batch) // 2
+            translate_multi_batch(
+                batch[:midpoint],
+                timeout,
+                enable_prompt2,
+                no_english,
+            )
+            translate_multi_batch(
+                batch[midpoint:],
+                timeout,
+                enable_prompt2,
+                no_english,
+            )
+            return
+
+        translate_multi_batch(
+            missing_batch,
+            timeout,
+            enable_prompt2,
+            no_english,
+        )
+
+
 def run_hadith_translations(
     book_path,
     raw_hadith_indexes,
@@ -574,20 +681,12 @@ def run_hadith_translations(
             return
 
         for batch, prompt in build_multi_batches(work_items, no_english):
-            indexes_text = ", ".join(str(item["index"]) for item in batch)
-            print(
-                f"Translating batch [{indexes_text}] "
-                f"({len(prompt)} chars)"
-            )
-            request_translation(
-                prompt,
-                None,
+            translate_multi_batch(
+                batch,
                 timeout,
                 enable_prompt2,
-                output_paths=[item["output_path"] for item in batch],
-                expected_references=[
-                    item["expected_reference"] for item in batch
-                ],
+                no_english,
+                prompt,
             )
         return
 
