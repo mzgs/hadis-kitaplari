@@ -198,6 +198,8 @@ kurallar:
 
 * Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle; doğrudan hitaplarda "Ya Resûlullah" yaz, (sav) ekleme.
 * "reference" alanını kaynakta verildiği biçimiyle aynen koru; tercüme etme veya yazımını değiştirme.
+* Çeviride ana kaynak Arapça metindir; İngilizce metin yalnızca anlamı kontrol etmek ve Türkçe okuyucu için gerekli kısa açıklamaları yakalamak için yardımcı kaynak olarak kullanılabilir.
+* İngilizce metindeki parantez içi açıklamalar, Türkçe okuyucunun bilmeyebileceği bir kavramı, olayı veya bağlamı kısa ve tarafsız biçimde açıklıyorsa Türkçeye doğal biçimde ekle. Gereksiz, yorumlayıcı veya Arapça metinde karşılığı olmayan parantezleri aktarma.
 * Ravi isimlerini yalnızca kaynak Arapçadaki şekilde aktar; yerleşik Türkçe yazım varsa onu kullan. Kaynakta açıkça geçmeyen hiçbir ravi adını ekleme, değiştirme ya da başka hadisten ödünç alma.
 * Hz. Peygamber için bağlama göre "Resûlullah (sav)" veya "Nebî (sav)" kullan.
 - Tam ravi zincirini çevirme; yalnızca hadisi rivayet eden sahabeyi belirt.
@@ -305,6 +307,7 @@ Aşağıdaki ifadeler geçtiğinde şu karşılıkları kullan:
 * كيف وقد قيل → bu söylenmişken nasıl devam edebilirsin?
 * إذا تكلم بكلمة أعادها ثلاثا → bir sözü üç defa tekrar etmek
 * خالف بين طرفيه → elbisenin iki ucunu omuzlarının üzerinde çaprazlamak
+* سرية → seriyye (küçük askerî birlik)
 
 onemli kural: her bir hadisi kendi icinde bagimsiz olarak incele.
 
@@ -323,9 +326,9 @@ Output JSON only:
 
 ----------------------------------------------------------
 
-Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
+Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa yalnızca anlam kontrolü ve Türkçe okuyucu için gerekli kısa parantez açıklamalarını yakalamak için yardımcı kaynak olarak kullan. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
 
 ---
 
 
-Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
+Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa yalnızca anlam kontrolü ve Türkçe okuyucu için gerekli kısa parantez açıklamalarını yakalamak için yardımcı kaynak olarak kullan. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.

@@ -47,8 +47,10 @@ Her hadis kaydında genellikle şu alanlar vardır:
 - `english`
 - `reference`
 
-Çeviride ana kaynak `arabic` alanıdır , english alanini yardimci kaynak olarak kullanabilirsin. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
+Çeviride ana kaynak `arabic` alanıdır , english alanini yardimci kaynak olarak kullanabilirsin. İngilizce metindeki parantez içi açıklamalar Türkçe okuyucunun bilmeyebileceği bir kavramı, olayı veya bağlamı kısa ve tarafsız biçimde açıklıyorsa çeviriye doğal biçimde eklenebilir; gereksiz, yorumlayıcı veya Arapça metinde karşılığı olmayan parantezler aktarılmaz. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
  Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+
+ Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa yalnızca anlam kontrolü ve Türkçe okuyucu için gerekli kısa parantez açıklamalarını yakalamak için yardımcı kaynak olarak kullan. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et
 
 kurallar:
 - Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle. 
@@ -67,4 +69,3 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
   "reference": "<kaynak reference değeri>",
 }
 ```
-
