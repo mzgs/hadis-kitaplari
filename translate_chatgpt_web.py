@@ -37,7 +37,7 @@ class IncompleteMultiTranslation(ValueError):
 
 
 PROMPT = """
-Aşağıdaki hadisleri doğal Türkiye klsik turkce hadis usulu ile cevir. Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa anlam kontrolü için kullan ve İngilizce metindeki tüm parantez içlerini Türkçeye çevirip metne ekle. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
 
 kurallar:
 - Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh.) ekle. 
