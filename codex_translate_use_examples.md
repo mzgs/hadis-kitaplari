@@ -47,15 +47,17 @@ Her hadis kaydında genellikle şu alanlar vardır:
 - `english`
 - `reference`
 
-Çeviride ana kaynak `arabic` alanıdır , english alanini yardimci kaynak olarak kullanabilirsin. İngilizce metindeki parantez içi açıklamalar Türkçe okuyucunun bilmeyebileceği bir kavramı, olayı veya bağlamı kısa ve tarafsız biçimde açıklıyorsa çeviriye doğal biçimde eklenebilir; gereksiz, yorumlayıcı veya Arapça metinde karşılığı olmayan parantezler aktarılmaz. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
+Çeviride ana kaynak `arabic` alanıdır , english alanini yardimci kaynak olarak kullanabilirsin. İngilizce metindeki parantez içi açıklamaları atlama; tamamını Türkçeye çevirip çeviriye doğal biçimde ekle. Bu parantezler kavram, bağlam, sure numarası, kişi hitabı veya kısa açıklama içeriyorsa Türkçe karşılığını parantez içinde koru. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
  Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
 
- Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa yalnızca anlam kontrolü ve Türkçe okuyucu için gerekli kısa parantez açıklamalarını yakalamak için yardımcı kaynak olarak kullan. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et
+ Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa anlam kontrolü için kullan ve İngilizce metindeki tüm parantez içlerini Türkçeye çevirip metne ekle. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et
 
 kurallar:
 - Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle. 
 
 Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde yalnızca gerçekten gerekli ise kısa ve tarafsız bir açıklamayla tanıtılabilir. Açıklamalar mümkün olan en kısa biçimde yapılmalı; yorum, çıkarım, ihtilaflı bilgi veya gereksiz tarihî ayrıntı eklenmemelidir.
+
+Kur'an ayetlerinden bir başlangıç veya meşhur ifade sureye işaret ediyorsa ve sure adı biliniyorsa, Türkçe okuyucu için sure adını kısa biçimde parantez içinde ekle. İngilizce metinde sure numarası parantez içinde verilmişse onu da Türkçeye çevirerek aktar. Örnek: "Kul hüvallahu ehad" (112. sûre, İhlâs sûresi).
 
 Burdaki ornek hadisleri oku "ornek_hadisler.txt" , ve cevirileri bunlara benzer yap.
 
