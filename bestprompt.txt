@@ -315,3 +315,17 @@ Output JSON only:
 "reference": "<source reference>"
 }
 ]
+
+
+
+
+
+
+----------------------------------------------------------
+
+Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
+
+---
+
+
+Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
