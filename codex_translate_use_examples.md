@@ -47,7 +47,15 @@ Her hadis kaydında genellikle şu alanlar vardır:
 - `english`
 - `reference`
 
-Çeviride ana kaynak `arabic` alanıdır. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
+Çeviride ana kaynak `arabic` alanıdır , english alanini yardimci kaynak olarak kullanabilirsin. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
+ Kelime kelime tercümeden kaçın. Gereksiz resmî, edebî veya çeviri kokan ifadeler kullanma.
+
+kurallar:
+- Peygamber Efendimizden bahsedildiğinde (sav), sahabelerden bahsedildiğinde (ra), büyük İslam âlimlerinden bahsedildiğinde (rh) ekle. 
+
+Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde yalnızca gerçekten gerekli ise kısa ve tarafsız bir açıklamayla tanıtılabilir. Açıklamalar mümkün olan en kısa biçimde yapılmalı; yorum, çıkarım, ihtilaflı bilgi veya gereksiz tarihî ayrıntı eklenmemelidir.
+
+Burdaki ornek hadisleri oku "ornek_hadisler.txt" , ve cevirileri bunlara benzer yap.
 
 ## Çıktı Formatı
 
@@ -60,4 +68,3 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
 }
 ```
 
-Burdaki ornek hadisleri oku "ornek_hadisler.txt" , ve cevirileri bunlara benzer yap.
