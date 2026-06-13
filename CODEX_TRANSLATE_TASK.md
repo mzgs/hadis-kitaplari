@@ -89,9 +89,11 @@ Kurallar:
 * Modernleştirme yapma.
 * Gereksiz sadeleştirme yapma.
 * Metne yorum ekleme.
-* Türk okuyucunun metni anlamasını belirgin biçimde zorlaştıracak kadar az bilinen veya bağlam için gerekli kişi, yer, kavim, unvan ve tarihî/coğrafî adlar ilk geçtiği yerde kısa parantez açıklamasıyla verilebilir. Bu açıklama yorum değil, tanıtıcı bilgi olmalıdır.
-* Klasik hadis/siyer terimleri Türkçede aynen kullanılacaksa, ortalama Türk okuyucu için anlamı açık değilse ilk geçtiği yerde kısa parantez açıklaması ver.
-* Gereksiz parantez açıklaması kullanma. Yaygın bilinen kişi, kavim, terim ve yer adlarını açıklama; metni açıklama sözlüğüne çevirmemeye dikkat et.
+* Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Bu kural uzun tarihî rivayetlerde de atlanmaz; sonraki tekrarlarında açıklama yeniden verilmez.
+* Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklenebilir. Açıklamalar kısa tutulmalı; yorum, çıkarım ve ihtilaflı bilgi eklenmemelidir.
+* Gereksiz açıklama yapma. Yaygın bilinen kişi, kavim, terim ve yer adlarını açıklama; metni açıklama sözlüğüne çevirmemeye dikkat et.
+* Hükümdarlar, yabancı unvanlar, eski şehir adları ve bugünkü okuyucunun başka bir yerle karıştırabileceği bölge adları ilk geçişte kısaca tanıtılır. Örneğin: "Herakliyus (Roma imparatoru)", "İliyâ (Kudüs)". `Şam` lafzı bugünkü Şam şehri değil de tarihî bölge anlamındaysa "Şam bölgesi (Suriye ve çevresi)" gibi açık karşılanır.
+* Klasik hadis/siyer terimleri Türkçede aynen kullanılacaksa, ortalama Türk okuyucu için anlamı açık değilse ilk geçtiği yerde kısa açıklama ver.
 * Kaynak `english` alanında özel ad veya yer için parantez içinde açıklama verilmişse, bu açıklama otomatik olarak Türkçeye taşınmaz. Yalnızca Türk okuyucu için gerçekten gerekli ve kısa olan açıklamalar ilk geçtiği yerde kullanılır; sonraki tekrarlarında yeniden verilmez.
 * Kaynak `english` alanındaki parantez, sûre/âyet kimliği veya metni tanımayı doğrudan kolaylaştıran Kur'an referansı içeriyorsa, bunu kısa ve doğal biçimde Türkçeye taşı.
 * Kaynakta Kur'an'dan bir sûre adı, sûre numarası veya âyet kimliği varsa ve hadiste sûre lafzı kısmen zikrediliyorsa, Türkçe çeviride ilk geçtiği yerde kısa parantezle sûre adı verilir.
@@ -106,6 +108,7 @@ Kurallar:
 * Osmanlıca veya akademik görünen fakat hadis tercümelerinde yerleşik olmayan karşılıklar üretme.
 * Arapça kökenli teknik bir kelime Türkçede var diye onu otomatik kullanma. Türkiye'deki hadis tercümelerinde yaygın değilse daha doğal ve yerleşik Türkçe karşılığı tercih et.
 * Özellikle `باشر / مباشرة / يباشر` gibi ifadeleri otomatik olarak "mübaşeret etmek" diye çevirme. Bağlam hayız hâlindeki eşle cima dışında temas/yakınlık ise "yakınlaşmak", "beraber olmak" veya cümlenin gerektirdiği daha doğal klasik karşılığı kullan; "cinsel ilişki" anlamı ancak metinde açıkça cima/vat' anlamı varsa tercih edilir.
+* Lafzî karşılık Türkçede mümkün olsa bile, hedef isim/fiil birlikteliği Türkçede tabii ve klasik hadis tercümesi üslubuna uygun değilse kullanılmaz. Kelime seçiminde yalnız tek tek kelimelerin anlamına değil, Türkçedeki doğal eşdizime de dikkat et. Meselâ "vahiy kızıştı" gibi bağlama yakışmayan gündelik çağrışımlı kullanımlar yerine, bağlama göre "vahiy yoğunlaştı", "vahiy peş peşe gelmeye başladı", "vahiy yoğunlaşıp arka arkaya gelmeye başladı" gibi Türkçede doğal duran karşılıkları tercih et. Soyut, manevî veya dinî bağlamlarda "gelişi arttı" gibi mekanik duran ifadelerden daha tabii bir karşılık varsa onu seç.
 * Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
 * Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
 “Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
