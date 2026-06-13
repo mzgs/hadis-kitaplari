@@ -89,8 +89,9 @@ Kurallar:
 * Modernleştirme yapma.
 * Gereksiz sadeleştirme yapma.
 * Metne yorum ekleme.
-* Türk okuyucunun ilk bakışta bilemeyebileceği kişi, yer, kavim, unvan ve tarihî/coğrafî adlar ilk geçtiği yerde kısa parantez açıklamasıyla verilir. Bu açıklama yorum değil, tanıtıcı bilgi olmalıdır. Bu kural bütün hadislerde geçen bütün benzer özel adlar için uygulanır; belirli örneklerle sınırlı değildir.
-* Kaynak `english` alanında özel ad veya yer için parantez içinde açıklama verilmişse, Türkçe çeviride de ilk geçtiği yerde uygun ve kısa bir parantez açıklaması kullanılmalıdır. Parantez açıklaması sonraki tekrarlarında yeniden verilmez.
+* Türk okuyucunun metni anlamasını belirgin biçimde zorlaştıracak kadar az bilinen veya bağlam için gerekli kişi, yer, kavim, unvan ve tarihî/coğrafî adlar ilk geçtiği yerde kısa parantez açıklamasıyla verilebilir. Bu açıklama yorum değil, tanıtıcı bilgi olmalıdır.
+* Gereksiz parantez açıklaması kullanma. Yaygın bilinen kişi, kavim, terim ve yer adlarını açıklama; metni açıklama sözlüğüne çevirmemeye dikkat et.
+* Kaynak `english` alanında özel ad veya yer için parantez içinde açıklama verilmişse, bu açıklama otomatik olarak Türkçeye taşınmaz. Yalnızca Türk okuyucu için gerçekten gerekli ve kısa olan açıklamalar ilk geçtiği yerde kullanılır; sonraki tekrarlarında yeniden verilmez.
 * Metinden anlam eksiltme veya anlam genişletme.
 * Hadisin manevî ve edebî üslubunu koru.
 * Türkçede doğal olmayan kelime sıralamalarını düzelt; ancak metnin anlamından uzaklaşma.
