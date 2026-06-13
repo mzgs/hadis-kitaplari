@@ -329,4 +329,48 @@ Output JSON only:
 
 Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının diline yakın, vakur ve ilmî bir Türkçe ile çevir. Anlamı koru; kelime kelime takılma. İngilizce metin varsa anlam kontrolü için kullan ve İngilizce metindeki tüm parantez içlerini Türkçeye çevirip metne ekle. “Resûlullah sallallahu aleyhi ve sellem buyurdu ki”, “rivayet olundu”, “şöyle buyurdu” gibi yerleşik kalıpları kullan. Günlük konuşma dili, aşırı modern ifade ve yorum ekleme. Cümleleri açık, sade ve ilmî bir üslupla kur. Terimlerde tutarlı ol: sahabe, ashâb, niyet, amel, fazilet, takva gibi yerleşik karşılıkları tercih et. Çıktı sadece Türkçe çeviri olsun.
 
- 
+ -------------------------------------------------------
+
+
+ Aşağıdaki hadisi Arapçadan Türkçeye çevir.
+
+Çeviri üslubu olarak Türkiye'de kullanılan klasik hadis tercümesi dilini esas al.
+
+TEMEL PRENSİP
+
+Bu görev Arapça metni Türkçeye aktarmak değil, Türkiye'deki klasik hadis tercüme geleneğine uygun bir hadis tercümesi üretme görevidir.
+
+Tercüme yaparken öncelikle Türkiye'de yayımlanmış hadis tercümelerinde yerleşmiş dil ve terminolojiyi esas al.
+
+Bir ifade için Arapça lafza daha yakın bir karşılık ile Türkiye'deki hadis tercüme geleneğinde yerleşmiş karşılık arasında tercih gerektiğinde daima yerleşik hadis tercümesini tercih et.
+
+Hadis mütercimi gibi tercüme et; Arapça mütercimi gibi tercüme etme.
+
+Türkiye'de yaygın biçimde kullanılan karşılıklar mevcutken sözlük merkezli, lafzî, akademik veya özgün karşılıklar üretme.
+
+Ahmed Davudoğlu, Mehmed Sofuoğlu, Talat Koçyiğit, İbrahim Canan, Riyâzü's-Sâlihîn tercümeleri ve Diyanet hadis tercümelerinde görülen yerleşik terminolojiyi esas al.
+
+Kurallar:
+
+* Diyanet hadis tercümeleri, Riyâzü's-Sâlihîn tercümeleri ve klasik Buhari-Müslim tercüme üslubuna yakın yaz.
+* Modernleştirme yapma.
+* Gereksiz sadeleştirme yapma.
+* Metne yorum ekleme.
+* Metinden anlam eksiltme veya anlam genişletme.
+* Hadisin manevî ve edebî üslubunu koru.
+* Türkçede doğal olmayan kelime sıralamalarını düzelt; ancak metnin anlamından uzaklaşma.
+* Birden fazla anlam ihtimali varsa belirt.
+* Hadis tercümanlarının tercih edeceği en güçlü anlamı seç.
+* Arapça kelimelerin sözlük anlamlarını önceleme; hadis tercüme geleneğinde yerleşmiş Türkçe karşılıklarını tercih et.
+* Lafzî tercüme uğruna Türk hadis tercüme geleneğinden ayrılma.
+* Türk okuyucunun klasik hadis kitaplarında görmeye alışık olduğu ifadeleri kullan.
+* Osmanlıca veya akademik görünen fakat hadis tercümelerinde yerleşik olmayan karşılıklar üretme.
+* Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
+* Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
+
+Şu başlıklarla cevap ver:
+
+1. Literal (kelimeye yakın) çeviri
+2. Klasik hadis üslubuyla tercüme
+3. Çeviride dikkat edilen nüanslar
+
