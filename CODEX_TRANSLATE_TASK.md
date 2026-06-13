@@ -94,6 +94,7 @@ Kurallar:
 * Gereksiz parantez açıklaması kullanma. Yaygın bilinen kişi, kavim, terim ve yer adlarını açıklama; metni açıklama sözlüğüne çevirmemeye dikkat et.
 * Kaynak `english` alanında özel ad veya yer için parantez içinde açıklama verilmişse, bu açıklama otomatik olarak Türkçeye taşınmaz. Yalnızca Türk okuyucu için gerçekten gerekli ve kısa olan açıklamalar ilk geçtiği yerde kullanılır; sonraki tekrarlarında yeniden verilmez.
 * Kaynak `english` alanındaki parantez, sûre/âyet kimliği veya metni tanımayı doğrudan kolaylaştıran Kur'an referansı içeriyorsa, bunu kısa ve doğal biçimde Türkçeye taşı.
+* Kaynakta Kur'an'dan bir sûre adı, sûre numarası veya âyet kimliği varsa ve hadiste sûre lafzı kısmen zikrediliyorsa, Türkçe çeviride ilk geçtiği yerde kısa parantezle sûre adı verilir.
 * Metinden anlam eksiltme veya anlam genişletme.
 * Hadisin manevî ve edebî üslubunu koru.
 * Türkçede doğal olmayan kelime sıralamalarını düzelt; ancak metnin anlamından uzaklaşma.
@@ -106,5 +107,4 @@ Kurallar:
 * Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
 * Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
 “Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
-
 
