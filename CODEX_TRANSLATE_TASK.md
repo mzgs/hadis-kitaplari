@@ -106,8 +106,5 @@ Kurallar:
 * Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
 * Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
 “Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
-Şu başlıklarla cevap ver:
 
-1. Literal (kelimeye yakın) çeviri
-2. Klasik hadis üslubuyla tercüme
-3. Çeviride dikkat edilen nüanslar
+
