@@ -104,7 +104,8 @@ Kurallar:
 * Lafzî tercüme uğruna Türk hadis tercüme geleneğinden ayrılma.
 * Türk okuyucunun klasik hadis kitaplarında görmeye alışık olduğu ifadeleri kullan.
 * Osmanlıca veya akademik görünen fakat hadis tercümelerinde yerleşik olmayan karşılıklar üretme.
+* Arapça kökenli teknik bir kelime Türkçede var diye onu otomatik kullanma. Türkiye'deki hadis tercümelerinde yaygın değilse daha doğal ve yerleşik Türkçe karşılığı tercih et.
+* Özellikle `باشر / مباشرة / يباشر` gibi ifadeleri otomatik olarak "mübaşeret etmek" diye çevirme. Bağlam hayız hâlindeki eşle cima dışında temas/yakınlık ise "yakınlaşmak", "beraber olmak" veya cümlenin gerektirdiği daha doğal klasik karşılığı kullan; "cinsel ilişki" anlamı ancak metinde açıkça cima/vat' anlamı varsa tercih edilir.
 * Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
 * Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
 “Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
-
