@@ -109,3 +109,24 @@ Kurallar:
 * Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
 * Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
 “Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
+
+## Codex CLI Test Modu
+
+Bu bölüm normal çeviri görevlerinde dikkate alınmaz. Yalnızca kullanıcı açıkça “Codex CLI ile test et”, “codex cli ile tekrar üret”, “x hadisini codex cli full auto ile test et” veya buna denk bir talimat verirse uygulanır.
+
+Test modu istenirse şu akış izlenir:
+
+1. Kullanıcının verdiği hadis numarasından kaynak dosya ve çıktı yolu belirlenir. Örneğin `Sahih al-Bukhari 302` için kaynak `sunnahcom/bukhari.json`, çıktı dosyası `translations/bukhari/302.json` olur.
+2. Sadece hedef hadis numarasına ait çıktı dosyası silinir. Başka çeviri dosyaları, kaynak dosyalar veya talimat dosyaları silinmez/değiştirilmez.
+3. Hedef dosya silindikten sonra Codex CLI non-interactive full-auto modda çalıştırılır.
+4. CLI komutu repo kökünden şu biçimde çalıştırılır:
+
+```bash
+codex exec -C /Users/mustafa/Developer/hadis-kitaplari --full-auto 'CODEX_TRANSLATE_TASK.md dosyasındaki talimatları kullanarak reference değeri "<REFERENCE>" olan hadisi sunnahcom/<COLLECTION>.json içinden bul ve eksikse translations/<COLLECTION>/<NUMBER>.json dosyasına Türkçe çevirisini ekle. Mevcut başka dosyalara dokunma.'
+```
+
+5. CLI tamamlandıktan sonra oluşturulan JSON `jq . <çıktı-dosyası>` ile doğrulanır.
+6. Kaynak JSON'daki `reference` değeri ile oluşturulan dosyadaki `reference` değerinin birebir eşleştiği kontrol edilir.
+7. Sonuçta oluşturulan dosya, üretilen çeviri ve yapılan doğrulamalar kullanıcıya kısaca raporlanır.
+
+Test modu, çeviri kalitesini ve bu dosyadaki prompt kurallarının Codex CLI tarafından doğru uygulanıp uygulanmadığını sınamak içindir. Normal “çevir” isteklerinde bu bölümdeki silme ve CLI ile yeniden üretme adımları uygulanmaz.
