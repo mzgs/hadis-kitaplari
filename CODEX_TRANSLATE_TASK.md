@@ -59,164 +59,47 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
   "reference": "<kaynak reference değeri>",
 }
 ```
+ 
+
+ ## Kurallar
+
+
+Çeviri üslubu olarak Türkiye'de kullanılan klasik hadis tercümesi dilini esas al.
+
+TEMEL PRENSİP
+
+Bu görev Arapça metni Türkçeye aktarmak değil, Türkiye'deki klasik hadis tercüme geleneğine uygun bir hadis tercümesi üretme görevidir.
+
+Tercüme yaparken öncelikle Türkiye'de yayımlanmış hadis tercümelerinde yerleşmiş dil ve terminolojiyi esas al.
+
+Bir ifade için Arapça lafza daha yakın bir karşılık ile Türkiye'deki hadis tercüme geleneğinde yerleşmiş karşılık arasında tercih gerektiğinde daima yerleşik hadis tercümesini tercih et.
+
+Hadis mütercimi gibi tercüme et; Arapça mütercimi gibi tercüme etme.
+
+Türkiye'de yaygın biçimde kullanılan karşılıklar mevcutken sözlük merkezli, lafzî, akademik veya özgün karşılıklar üretme.
+
+Ahmed Davudoğlu, Mehmed Sofuoğlu, Talat Koçyiğit, İbrahim Canan, Riyâzü's-Sâlihîn tercümeleri ve Diyanet hadis tercümelerinde görülen yerleşik terminolojiyi esas al.
 
 Kurallar:
 
-- JSON geçerli olmalıdır.
-- Sadece `tr`, `reference`, `grade` alanları bulunmalıdır.
-- Bütün değerler string olmalıdır.
-- `reference`, kaynak hadisteki `reference` değeriyle birebir aynı olmalıdır.
-- Kaynak kayıtta açık bir sıhhat hükmü yoksa `grade` boş string olmalıdır.
-- Sıhhat hükmü tahmin edilmez.
-- Âlimlere kaynaksız hüküm nispet edilmez.
+* Diyanet hadis tercümeleri, Riyâzü's-Sâlihîn tercümeleri ve klasik Buhari-Müslim tercüme üslubuna yakın yaz.
+* Modernleştirme yapma.
+* Gereksiz sadeleştirme yapma.
+* Metne yorum ekleme.
+* Metinden anlam eksiltme veya anlam genişletme.
+* Hadisin manevî ve edebî üslubunu koru.
+* Türkçede doğal olmayan kelime sıralamalarını düzelt; ancak metnin anlamından uzaklaşma.
+* Birden fazla anlam ihtimali varsa belirt.
+* Hadis tercümanlarının tercih edeceği en güçlü anlamı seç.
+* Arapça kelimelerin sözlük anlamlarını önceleme; hadis tercüme geleneğinde yerleşmiş Türkçe karşılıklarını tercih et.
+* Lafzî tercüme uğruna Türk hadis tercüme geleneğinden ayrılma.
+* Türk okuyucunun klasik hadis kitaplarında görmeye alışık olduğu ifadeleri kullan.
+* Osmanlıca veya akademik görünen fakat hadis tercümelerinde yerleşik olmayan karşılıklar üretme.
+* Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
+* Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
+“Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
+Şu başlıklarla cevap ver:
 
-## Çeviri Öncelikleri
-
-Öncelik sırası:
-
-1. Hadisin muradının Türkçe okuyucuya doğru, eksiksiz ve net biçimde aktarılması
-2. Arapça metindeki anlamın, bağlamın, vurgu derecesinin ve konuşmacıların korunması
-3. Türkiye’de yerleşik hadis tercümesi terminolojisi
-4. Doğal, açık ve akıcı Türkçe
-5. Klasik hadis tercümesi üslubuyla ölçülü uyum
-
-## Kaynak Kullanımı
-
-- Arapça metin temel çeviri kaynağıdır.
-- İngilizce alan varsa anlamı, bağlamı ve yerleşik terimi kontrol etmek; eksiltme veya yanlış anlamayı fark etmek için yardımcı kaynak olarak kullanılabilir.
-- İngilizce ifadeler Türkçeye birebir aktarılmaz.
-- Arapçaya aykırı hiçbir unsur çeviriye eklenmez.
-- Hadisin bağlamından kesin olarak anlaşılmayan sûre adı, âyet numarası, tarih, yer, kişi kimliği veya açıklama tahmin edilmez.
-
-## Anlam Sadakati
-
-- Metindeki hiçbir olay, şart, istisna, sebep, sonuç, yemin, olumsuzluk, karşılaştırma, üstünlük derecesi, zamir ilişkisi veya konuşma sırası atlanmaz.
-- Konuşmacılar açık tutulur.
-- Resûlullah’ın sözü ile râvinin açıklaması birbirine karıştırılmaz.
-- Uzun rivayetlerde olay akışı korunur.
-- Anlamı değiştiren sadeleştirme yapılmaz.
-- Arapça fiil ve ifadelerin zaman, görünüş ve süreklilik değeri bağlama göre korunur. Devam eden bir hâl, genel özellik veya süreklilik bildiren anlam; Türkçede yalnızca geçmişte gerçekleşip tamamlanmış bir olay izlenimi veren yapılarla çevrilmez.
-- Bir kelimenin sözlük karşılığı tek başına yeterli sayılmaz. Kök anlam, kalıp, bağlam, zaman-görünüş değeri ve cümlede kurduğu ilişki birlikte değerlendirilir; Türkçede bu toplam anlamı en doğru ve doğal biçimde taşıyan ifade tercih edilir.
-- Arapça bir ifade devam eden hâli, yerleşik vasfı, karşılıklı ilişkiyi, korunma/selamet durumunu veya genel niteliği anlatıyorsa Türkçede de bu yön korunur. Bağlam özellikle geçmişte yaşanmış tekil bir olayı anlatmıyorsa, çeviri yalnızca tamamlanmış geçmiş olay izlenimi veren dar bir yapıya indirgenmez.
-- Anlamı doğru veren birden fazla Türkçe ifade mümkünse, Türkiye’deki yerleşik hadis tercümesi terminolojisine en uygun olanı tercih edilir. Selamet, zarar vermeme, dokunmama, güvende olma ve benzeri ilişki bildiren kalıplarda Türkçe hadis dilinde yerleşik karşılık “emin olmak” ise “güvende olmak” gibi genel modern ifadeler yerine bu terminolojik kullanım tercih edilir.
-- Sevgi, nefret, hoşlanmama, üstün tutma ve tercih bildiren karşılaştırmalarda, Arapçadaki ilişkinin yönü korunur: kimin kimi/neyi sevdiği, kime neyin daha sevgili geldiği, neyin ne kadar kötü görüldüğü açık olmalıdır. Türkçede özne-nesne ilişkisi bu anlamı bozacak veya vurguyu kaydıracak biçimde yeniden kurulmaz.
-- Benzetme ve karşılaştırma kalıplarında yalnızca iki fiilin ortak yapıldığı söylenmekle yetinilmez; benzetmenin kurduğu derece ve vurgu da aktarılır. Bir şeyin başka bir şey kadar ağır, kötü, sevimli, istenmez veya değerli görülmesi anlatılıyorsa Türkçede de bu ölçü ilişkisi açık kalmalıdır.
-- Hadisin muradını netleştirmek için, Arapça lafızda birebir bulunmasa bile bağlamdan kesin olarak anlaşılan ve yerleşik hadis terminolojisinde karşılığı bulunan açıklayıcı kelime veya kısa ifadeler eklenir.
-- Bu tür ekler yeni bir hüküm, olay veya yorum üretmemeli; yalnızca metnin bağlamda zaten taşıdığı muradı Türkçede açık hâle getirmelidir.
-- Bağlamdan kesin olarak çıkarılamayan yorum, tarihî bilgi veya açıklama eklenmez.
-
-## İsnad ve Rivayet Yapısı
-
-- Hadisin başındaki uzun teknik râvi zincirini bütünüyle çevirmek zorunlu değildir.
-- Çeviri, hadisi aktaran son sahâbî veya anlamlı râviden başlatılabilir.
-- Hadis metni içindeki râvi açıklamaları, konuşmalar, ek bilgiler ve olay örgüsü atlanmaz.
-- `عن فلان` kalıbı bağlama göre şöyle aktarılır:
-  - “Falancadan rivayet edildiğine göre”
-  - “Falanca şöyle rivayet etmiştir”
-- Resûlullah’ın sözleri için genellikle “buyurdu” kullanılır.
-- Sahâbî ve diğer kişiler için bağlama göre “dedi”, “şöyle dedi”, “anlattı” veya “rivayet etti” kullanılır.
-
-## Türkçe Üslup
-
-- Türkiye’de yayımlanan nitelikli hadis tercümelerindeki yerleşik ifadeler tercih edilir.
-- Metin ne aşırı modernleştirilir ne de anlaşılmaz Osmanlıca ile ağırlaştırılır.
-- Arapça cümle dizimi Türkçeye taşınmaz.
-- Kelime kelime çeviri hissi veren ifadeler kullanılmaz.
-- Arapçadaki soru kalıpları, isim tamlamaları ve eksiltili yapılar Türkçeye lafzen aktarılmaz; anlam ve vurgu korunarak Türkçede doğal kullanılan soru ve cümle biçimleriyle yeniden kurulur.
-- Lafzen mümkün fakat Türkçede yapay, muğlak veya düşük kalan bir ifade kullanılmaz. Aynı anlamı eksiksiz veren daha doğal bir Türkçe kuruluş varsa o tercih edilir.
-- Zamirli üstünlük ve tercih ifadelerinde, Türkçede doğal olmayan ara söz dizilişleri bırakılmaz. Cümle, okuyucunun tek okumada kimin kime göre daha sevgili, üstün, yakın veya uzak olduğunu anlayacağı şekilde kurulmalıdır.
-- Arapçada “başkası/dışı” anlamı veren karşılaştırma kalıpları Türkçede yapay bir zamirli tamlamaya dönüşüyorsa bu yapı bırakılmaz. Bağlama göre “her şeyden”, “herkesten”, “diğerlerinden” veya aynı açıklıkta doğal bir ifade tercih edilir. Bu tercih anlamı genişletmemeli veya daraltmamalıdır.
-- Ciddi dinî kaçınma, sakınma, kerih görme, azap, ateş, küfür veya günaha dönüş gibi bağlamlarda “hoşlanmamak” fiili anlamı zayıflatıyorsa kullanılmaz. Bu tür yerlerde bağlama göre “kötü görmek”, “istememek”, “tiksinmek”, “kaçınmak” veya yerleşik hadis üslubuna uygun daha güçlü bir karşılık tercih edilir.
-- Soru ile cevap arasında dil bilgisi ve anlam uyumu bulunmalıdır. Soru bir kişi, özellik, fiil veya durumdan hangisini soruyorsa cevap Türkçede buna doğrudan ve doğal biçimde karşılık vermelidir.
-- Karşılaştırmalı bir soru, cevabında belirli bir insan tipini veya topluluğun bir ferdini tanımlıyorsa soru Türkçede de doğrudan o insanlar arasından kimi kastettiğini soracak biçimde kurulur. Arapçadaki soyut isim tamlaması, Türkçede yapay kalan “... bakımından kim” veya “... yönünden kim” kalıbına dönüştürülmez.
-- Din, iman, İslâm, amel, ahlâk gibi soyut veya kapsayıcı bir alan adıyla kurulan üstünlük sorularında cevap bir kişiyi tanımlıyorsa, soru Türkçede o alanın mensupları veya sahipleri arasından sorulur. Böyle yerlerde “İslâm bakımından kim”, “İslâm’ı en faziletli olan kim”, “İslâm’ın hangisi”, “iman bakımından kim”, “amel bakımından kim” gibi yapay veya bozuk kuruluşlar kullanılmaz.
-- Arapçada soyut adla kurulan soru Türkçede kişi sorusuna dönüşüyorsa, Türkçede “...lerden hangisi/kim”, “... sahiplerinden hangisi/kim” veya bağlama göre aynı doğallıktaki bir ifade tercih edilir. Soyut adı nesne gibi kullanıp “...ı en faziletli olan kim” türü bir yapı kurulmaz.
-- Bir topluluk içinden kişi seçen sorularda Türkçede çoğunlukla ayrılma hâli kullanılır: “...lerden hangisi/kim”. İnsan toplulukları için “...ların hangisi” kalıbı ancak Türkçede gerçekten doğal ve yerleşikse kullanılmalıdır; aksi hâlde “...lerden hangisi/kim” tercih edilir.
-- Doğallık denetiminde yalnızca dil bilgisi doğruluğu yeterli değildir. Cümle, Türkiye Türkçesinde aynı soru günlük ve nitelikli yazı dilinde nasıl soruluyorsa o kuruluşla verilmelidir; Arapça yapının izini taşıyan dolaylı bir kuruluş sırf anlaşılabilir olduğu için kabul edilmez.
-- Türkçe cümleler doğal, temiz ve tek başına anlaşılır olmalıdır.
-- Gereksiz tekrar, bozuk tamlama ve düşük anlatım bırakılmaz.
-- Diyaloglar okunaklı biçimde kurulur.
-- Muradı netleştiren açıklayıcı ifadeler gerektiğinde kullanılır; ancak “kâmil mânada”, “yani”, “başka bir ifadeyle” gibi kalıplar bağlamın gerektirmediği yorumları metne taşımak için kullanılmaz.
-- Türkiye’deki genel okuyucunun anlamakta zorlanabileceği hadis, siyer, fıkıh, ibadet, akrabalık, ölçü, askerî yapı veya tarihî kurum terimleri tercümede korunur; yalnız başına ve açıklamasız bırakılmaz. Böyle terimler genel karşılığıyla değiştirilmez; terim aynen yazılır ve hemen ardından kısa parantez içi açıklamayla netleştirilir. Bu açıklamalar sözlük maddesi gibi uzun olmamalı; yalnızca terimin bağlamdaki temel anlamını vermelidir.
-- Türkiye’deki genel okuyucu için yerleşik ve yaygın olan dinî terimler, kişi/topluluk adları ve kavramlar gereksiz parantezlerle açıklanmaz. Açıklama yalnızca anlam kapalı kalacaksa, karışma riski varsa veya bağlam özel bir teknik anlam gerektiriyorsa eklenir.
-- Bir sûre veya âyet, metinde sûre adı yerine başlangıç lafzı yahut ayırt edici bir ibareyle anılıyorsa ve sûre/âyet kimliği bağlamdan kesin olarak biliniyorsa, Türkçe okuyucu için kısa parantez içinde sûre adı veya gerekli kısa bilgi mutlaka eklenir. Kesin olmayan sûre adı veya âyet numarası tahmin edilmez.
-
-## Terim ve Yazım Standardı
-
-- `صلى الله عليه وسلم` → `(s.a.v.)`
-- `رضي الله عنه` → `(r.a.)`
-- `رضي الله عنها` → `(r.anha)`
-- `رضي الله عنهما` → `(r.anhuma)`
-- `رضي الله عنهم` → `(r.anhum)`
-- Hz. Peygamber için bağlama göre “Resûlullah (s.a.v.)” veya “Nebî (s.a.v.)” kullanılır.
-- Kişi adlarında tutarlı biçimde `b.` kullanılır: “Abdullah b. Amr”.
-- Yaygın yazımlar korunur:
-  - Âişe
-  - İbn Abbâs
-  - Ebû Hüreyre
-  - Enes
-  - Cebrâil
-  - Resûlullah
-  - Nebî
-  - Kur’an
-  - İslâm
-  - mümin
-  - sahâbî
-- `يا رسول الله` → “Yâ Resûlallah!”
-- `يا نبي الله` → “Yâ Nebiyyallah!”
-- `فوالذي نفسي بيده` ve benzeri yeminler bağlama göre “Canım elinde olan Allah’a yemin ederim ki” şeklinde aktarılır.
-- Üstünlük bildiren yapılar zayıflatılmaz:
-  - “en cömert”
-  - “en ağır”
-  - “en faziletli”
-  - “daha sevgili”
-
-## Kalite Kontrol
-
-Codex çeviri dosyalarını yazdıktan sonra şu kontrolleri yapmalıdır:
-
-1. Dosya geçerli JSON mu?
-2. JSON yalnızca `tr`, `reference`, `grade` alanlarını mı içeriyor?
-3. `reference` kaynakla birebir aynı mı?
-4. Kaynak metindeki bütün anlam birimleri Türkçede var mı?
-5. Konuşmacılar doğru mu?
-6. Zamirler doğru kişilere bağlanıyor mu?
-7. Olumsuzluklar, yeminler ve üstünlük dereceleri korunmuş mu?
-8. Hadisin muradı Türkçede yeterince açık mı; gerekli bağlamsal açıklamalar eklenmiş ve dayanaksız yorumlardan kaçınılmış mı?
-9. Genel okuyucuya kapalı kalabilecek terimler korunup hemen ardından kısa parantez içi açıklamayla netleştirilmiş mi?
-10. Başlangıç lafzı veya ayırt edici ibareyle anılan sûre/âyet kimliği kesin biliniyorsa kısa parantezle belirtilmiş mi?
-11. Türkçe doğal ve yayıma uygun mu?
-12. Kişi adları, dua kısaltmaları ve terimler tutarlı mı?
-13. Arapça soru, tamlama veya eksiltili cümle yapısı Türkçeye lafzen taşınarak yapay bir anlatıma yol açmış mı?
-14. Devam eden hâl, genel özellik veya süreklilik bildiren bir anlam yanlışlıkla geçmişte tamamlanmış tekil bir olay gibi çevrilmiş mi?
-15. Diyaloglarda soru ile cevap Türkçe bakımından doğrudan, doğal ve anlamca uyumlu mu?
-16. Cevabı bir insan tipini veya topluluğun ferdini tanımlayan soru, Türkçede doğrudan o insanlar arasından kimi kastettiğini soruyor mu; yoksa soyut bir adı “bakımından/yönünden” sözüyle zarflaştırarak yapay mı kalıyor?
-17. Din, iman, İslâm, amel, ahlâk gibi soyut alan adlarıyla kurulan kişi sorularında “... bakımından kim”, “...ı en faziletli olan kim” veya “...ın hangisi” türü yapay kuruluşlar bırakılmış mı?
-18. İnsan topluluğu içinden seçim bildiren soruda, Türkçede daha doğal olan “...lerden hangisi/kim” yerine yapay kalan “...ların hangisi” kalıbı kullanılmış mı?
-19. Kök anlam, kalıp ve bağlamın birlikte verdiği devam eden hâl, yerleşik vasıf, karşılıklı ilişki, korunma/selamet durumu veya genel nitelik Türkçede korunmuş mu; yoksa anlam tek bir sözlük karşılığına veya tamamlanmış geçmiş olay izlenimine daraltılmış mı?
-20. Sevgi, nefret, hoşlanmama, üstün tutma ve tercih bildiren karşılaştırmalarda ilişkinin yönü ve vurgusu doğru mu; kimin kimi/neyi neye göre sevdiği, kötü gördüğü veya üstün tuttuğu açık mı?
-21. Benzetme kalıplarında derece ilişkisi korunmuş mu; bir şeyin başka bir şey kadar ağır, kötü, sevimli, istenmez veya değerli görülmesi anlatılıyorsa bu vurgu Türkçede kaybolmuş mu?
-22. Zamirli üstünlük ifadelerinde Türkçe yapay veya dolaşık kalmış mı; cümle tek okumada doğal ve anlaşılır mı?
-23. Yerleşik ve yaygın terimler gereksiz parantez açıklamalarıyla ağırlaştırılmış mı; açıklama gerçekten anlamı açmak için gerekli mi?
-24. Son kalite kontrolü yalnızca JSON ve `reference` kontrolüyle sınırlı kalmış mı; Türkçe doğallık, vurgu, benzetme derecesi ve gereksiz açıklama sorunları metin üzerinde ayrıca denetlenmiş mi?
-
-Kontroller sırasında tespit edilen tüm çeviri ve biçim sorunlarını dosyalarda doğrudan düzelt, ardından kontrolleri yeniden çalıştır.
-
-Örnek doğrulama:
-
-```bash
-for f in translations/bukhari/{1..20}.json; do
-  jq empty "$f" || exit 1
-done
-```
-
-## Raporlama
-
-Görev sonunda kısa rapor ver:
-
-- Hangi kaynak dosya kullanıldı?
-- Hangi hadis aralığı işlendi?
-- Hangi dosyalar zaten mevcut olduğu için atlandı?
-- Hangi dosyalar yeni oluşturuldu?
-- JSON ve reference kontrolleri geçti mi?
-- Herhangi bir hadis için tereddüt veya risk var mı?
+1. Literal (kelimeye yakın) çeviri
+2. Klasik hadis üslubuyla tercüme
+3. Çeviride dikkat edilen nüanslar

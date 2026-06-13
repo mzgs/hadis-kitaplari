@@ -331,8 +331,7 @@ Arapça hadis metnini, Türkiye’de yayımlanan klasik hadis kitaplarının dil
 
  -------------------------------------------------------
 
-
- Aşağıdaki hadisi Arapçadan Türkçeye çevir.
+Aşağıdaki hadisi Arapçadan Türkçeye çevir.
 
 Çeviri üslubu olarak Türkiye'de kullanılan klasik hadis tercümesi dilini esas al.
 
@@ -373,4 +372,3 @@ Kurallar:
 1. Literal (kelimeye yakın) çeviri
 2. Klasik hadis üslubuyla tercüme
 3. Çeviride dikkat edilen nüanslar
-
