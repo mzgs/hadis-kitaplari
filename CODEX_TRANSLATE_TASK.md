@@ -59,55 +59,28 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
 ```json
 {
   "tr": "<Türkçe çeviri>",
-  "reference": "<kaynak reference değeri>",
+  "reference": "<kaynak reference değeri>"
 }
 ```
- 
-
- ## Kurallar
 
 
-Çeviri üslubu olarak Türkiye'de kullanılan klasik hadis tercümesi dilini esas al.
+## Çeviri Kuralları
 
-TEMEL PRENSİP
+Temel ilke: Bu görev lafzî Arapça aktarımı değil, Türkiye'deki klasik hadis tercüme geleneğine uygun bir Türkçe hadis tercümesi üretme görevidir.
 
-Bu görev Arapça metni Türkçeye aktarmak değil, Türkiye'deki klasik hadis tercüme geleneğine uygun bir hadis tercümesi üretme görevidir.
-
-Tercüme yaparken öncelikle Türkiye'de yayımlanmış hadis tercümelerinde yerleşmiş dil ve terminolojiyi esas al.
-
-Bir ifade için Arapça lafza daha yakın bir karşılık ile Türkiye'deki hadis tercüme geleneğinde yerleşmiş karşılık arasında tercih gerektiğinde daima yerleşik hadis tercümesini tercih et.
-
-Hadis mütercimi gibi tercüme et; Arapça mütercimi gibi tercüme etme.
-
-Türkiye'de yaygın biçimde kullanılan karşılıklar mevcutken sözlük merkezli, lafzî, akademik veya özgün karşılıklar üretme.
-
-Ahmed Davudoğlu, Mehmed Sofuoğlu, Talat Koçyiğit, İbrahim Canan, Riyâzü's-Sâlihîn tercümeleri ve Diyanet hadis tercümelerinde görülen yerleşik terminolojiyi esas al.
-
-Kurallar:
-
-* Diyanet hadis tercümeleri, Riyâzü's-Sâlihîn tercümeleri ve klasik Buhari-Müslim tercüme üslubuna yakın yaz.
-* Modernleştirme yapma.
-* Gereksiz sadeleştirme yapma.
-* Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar ilk geçtiği yerde en az kelimeyle kısa bir açıklamayla tanıtılsın. Bu kural uzun tarihî rivayetlerde de atlanmaz; sonraki tekrarlarında açıklama yeniden verilmez.
-* Kesin olarak bilinen tarihî bağlam ve hadis âlimlerinin ittifakla açıkladığı örtük hususlar metne doğal biçimde eklenebilir. Açıklamalar kısa tutulmalı; yorum, çıkarım ve ihtilaflı bilgi eklenmemelidir.
-* Klasik hadis/siyer terimleri Türkçede aynen kullanılacaksa, ortalama Türk okuyucu için anlamı açık değilse ilk geçtiği yerde kısa açıklama ver.
-* Kaynak `english` alanında özel ad veya yer için parantez içinde açıklama verilmişse, bu açıklama otomatik olarak Türkçeye taşınmaz. Yalnızca Türk okuyucu için gerçekten gerekli ve kısa olan açıklamalar ilk geçtiği yerde kullanılır; sonraki tekrarlarında yeniden verilmez.
-* Kaynak `english` alanındaki parantez, sûre/âyet kimliği veya metni tanımayı doğrudan kolaylaştıran Kur'an referansı içeriyorsa, bunu kısa ve doğal biçimde Türkçeye taşı.
-* Kaynakta Kur'an'dan bir sûre adı, sûre numarası veya âyet kimliği varsa ve hadiste sûre lafzı kısmen zikrediliyorsa, Türkçe çeviride ilk geçtiği yerde kısa parantezle sûre adı verilir.
-* Metinden anlam eksiltme veya anlam genişletme.
-* Hadisin manevî ve edebî üslubunu koru.
-* Türkçede doğal olmayan kelime sıralamalarını düzelt; ancak metnin anlamından uzaklaşma.
-* Birden fazla anlam ihtimali varsa belirt.
-* Hadis tercümanlarının tercih edeceği en güçlü anlamı seç.
-* Arapça kelimelerin sözlük anlamlarını önceleme; hadis tercüme geleneğinde yerleşmiş Türkçe karşılıklarını tercih et.
-* Lafzî tercüme uğruna Türk hadis tercüme geleneğinden ayrılma.
-* Türk okuyucunun klasik hadis kitaplarında görmeye alışık olduğu ifadeleri kullan.
-* Osmanlıca veya akademik görünen fakat hadis tercümelerinde yerleşik olmayan karşılıklar üretme.
-* Arapça kökenli teknik bir kelime Türkçede var diye onu otomatik kullanma. Türkiye'deki hadis tercümelerinde yaygın değilse daha doğal ve yerleşik Türkçe karşılığı tercih et.
-
-* Bir ifade Türkçede yerleşmiş bir hadis kalıbıyla karşılanıyorsa, o kalıbı koru.
-* Tercümenin Türkçesi, Türkiye'de yayımlanmış klasik bir hadis kitabından alınmış hissi vermelidir.
-“Klasik üslup, yerleşik hadis tercümesi kalıpları demektir; Arapça veya Osmanlıca kökenli kelime kullanmak başlı başına tercih sebebi değildir.”
+- Diyanet hadis tercümeleri, Riyâzü's-Sâlihîn tercümeleri ve klasik Buhari-Müslim tercüme üslubunda yerleşmiş dil ve terminolojiyi esas al.
+- Bir ifade için Arapça lafza yakın karşılık ile yerleşik hadis tercümesi karşılığı arasında tercih gerekiyorsa yerleşik karşılığı kullan.
+- Modernleştirme, gereksiz sadeleştirme, akademik üslup veya özgün karşılık üretme yoluna gitme.
+- Arapça veya Osmanlıca kökenli bir kelimeyi yalnızca Türkçedeki hadis tercümelerinde yaygın ve doğal ise kullan.
+- Türkçede yerleşmiş hadis kalıplarını koru; Türkçede doğal olmayan kelime sıralamalarını düzeltirken anlamdan uzaklaşma.
+- Metinden anlam eksiltme veya metne yorum yoluyla anlam ekleme.
+- Hadisin manevî ve edebî üslubunu koru.
+- Birden fazla anlam ihtimali varsa hadis tercüme geleneğinde en güçlü olan anlamı seç; JSON içine açıklama, dipnot veya ihtimal notu ekleme.
+- Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar aynı hadis metni içinde ilk geçtiği yerde en az kelimeyle kısa biçimde tanıtılabilir; sonraki tekrarlarında açıklama yeniden verilmez.
+- Yalnızca metnin anlaşılması için zorunlu, kısa ve kesin tarihî bağlam bilgileri doğal biçimde eklenebilir; yorum, tahmin ve ihtilaflı açıklama eklenmez.
+- Klasik hadis/siyer terimleri Türkçede aynen kullanılacaksa ve ortalama Türk okuyucu için anlamı açık değilse aynı hadis içinde ilk geçtiği yerde kısa açıklama ver.
+- Kaynak `english` alanındaki parantez açıklamaları otomatik olarak Türkçeye taşıma; yalnızca Türk okuyucu için gerçekten gerekli ve kısa olanları kullan.
+- Kaynakta sûre/âyet kimliği, Kur'an referansı veya hadiste kısmen zikredilen sûre lafzını tanımayı kolaylaştıran bilgi varsa bunu kısa ve doğal biçimde Türkçeye taşı.
 
 ## Codex CLI Test Modu
 
