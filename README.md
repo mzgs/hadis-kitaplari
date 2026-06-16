@@ -3,6 +3,7 @@
 python translate_chatgpt_web.py --book sunnahcom/bukhari.json --hadiths 1,2,4,5,6,7094
 
 
+["Sahih al-Bukhari 7375","Sahih al-Bukhari 1","Sahih al-Bukhari 6","Sahih al-Bukhari 9","Sahih al-Bukhari 10","Sahih al-Bukhari 11","Sahih al-Bukhari 12","Sahih al-Bukhari 14","Sahih al-Bukhari 16"]
 
 ----------------------------------------
 Bu dosyayı : CODEX_TRANSLATE_TASK.md dikkate alarak `sunnahcom/bukhari.json` ilk 5 hadisi çevir.
