@@ -55,7 +55,7 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
 
 
 ## Çeviri Kuralları
-Aşağıdaki klasik Arapça metni Türkçeye çevir. Google Translate tarzı kelime kelime çeviri yapma. Klasik Arapça, hadis ve fıkıh terminolojisini dikkate alarak akıcı ve doğru bir tercüme yap. Özel terimleri bağlama göre anlamlandır, gerekmedikçe açıklama ekleme.
+Aşağıdaki klasik Arapça metni Türkçeye çevir. Klasik Arapça, hadis ve fıkıh terminolojisini dikkate alarak akıcı ve doğru bir tercüme yap. Özel terimleri bağlama göre anlamlandır.
 
 ## Codex CLI Test Modu
 
