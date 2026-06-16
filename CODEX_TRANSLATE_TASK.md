@@ -22,14 +22,7 @@ Codex bunu şu şekilde yorumlamalıdır:
 6. Sadece eksik dosyalar Codex tarafından çevrilip eklenir.
 7. Sonunda hangi dosyaların eklendiği ve hangilerinin zaten mevcut olduğu raporlanır.
 
-## Mevcut Dosyaları Koruma
-
-- Mevcut çeviri dosyaları silinmez.
-- Mevcut çeviri dosyalarının üzerine yazılmaz.
-- Mevcut dosyalar yeniden çevrilmez.
-- Kullanıcı açıkça “yeniden çevir”, “üzerine yaz”, “force uygula” veya benzeri bir talimat vermedikçe yalnızca eksik dosyalar oluşturulur.
-- Çıktı klasörü yoksa oluşturulur.
-- Çeviri görevlerinde bu dosya esas alınır; projedeki diğer `.md` dosyaları, `README` dosyaları veya dokümantasyon metinlerindeki bilgiler/talimatlar dikkate alınmaz. Kullanıcı açıkça başka bir dosyayı kaynak göstermedikçe çeviri kararları bu dosyadaki kurallara ve ilgili JSON kaynağına göre verilir.
+ 
 
 ## Kaynak Okuma
 
@@ -47,10 +40,7 @@ Her hadis kaydında genellikle şu alanlar vardır:
 - `arabic`
 - `english`
 - `reference`
-
-Çeviride ana kaynak `arabic` alanıdır. Bununla birlikte çevirinin temel amacı, hadisin vermek istediği muradı Türkçe okuyucuya doğru, eksiksiz ve açık biçimde aktarmaktır.
-
-`english` alanı ana çeviri kaynağı olarak kullanılmaz; ancak hadis akışını, özel adların yerleşik karşılıklarını ve İngilizce metinde parantez içinde verilen kısa tanıtıcı açıklamaları kontrol etmek için yardımcı kaynak olarak dikkate alınır.
+ 
 
 ## Çıktı Formatı
 
@@ -65,22 +55,7 @@ Her hadis ayrı bir JSON dosyası olarak yazılır:
 
 
 ## Çeviri Kuralları
-
-Temel ilke: Bu görev lafzî Arapça aktarımı değil, Türkiye'deki klasik hadis tercüme geleneğine uygun bir Türkçe hadis tercümesi üretme görevidir.
-
-- Diyanet hadis tercümeleri, Riyâzü's-Sâlihîn tercümeleri ve klasik Buhari-Müslim tercüme üslubunda yerleşmiş dil ve terminolojiyi esas al.
-- Bir ifade için Arapça lafza yakın karşılık ile yerleşik hadis tercümesi karşılığı arasında tercih gerekiyorsa yerleşik karşılığı kullan.
-- Modernleştirme, gereksiz sadeleştirme, akademik üslup veya özgün karşılık üretme yoluna gitme.
-- Arapça veya Osmanlıca kökenli bir kelimeyi yalnızca Türkçedeki hadis tercümelerinde yaygın ve doğal ise kullan.
-- Türkçede yerleşmiş hadis kalıplarını koru; Türkçede doğal olmayan kelime sıralamalarını düzeltirken anlamdan uzaklaşma.
-- Metinden anlam eksiltme veya metne yorum yoluyla anlam ekleme.
-- Hadisin manevî ve edebî üslubunu koru.
-- Birden fazla anlam ihtimali varsa hadis tercüme geleneğinde en güçlü olan anlamı seç; JSON içine açıklama, dipnot veya ihtimal notu ekleme.
-- Okuyucunun bilmeyebileceği kişi, yer, kabile, olay ve kavramlar aynı hadis metni içinde ilk geçtiği yerde en az kelimeyle kısa biçimde tanıtılabilir; sonraki tekrarlarında açıklama yeniden verilmez.
-- Yalnızca metnin anlaşılması için zorunlu, kısa ve kesin tarihî bağlam bilgileri doğal biçimde eklenebilir; yorum, tahmin ve ihtilaflı açıklama eklenmez.
-- Klasik hadis/siyer terimleri Türkçede aynen kullanılacaksa ve ortalama Türk okuyucu için anlamı açık değilse aynı hadis içinde ilk geçtiği yerde kısa açıklama ver.
-- Kaynak `english` alanındaki parantez açıklamaları otomatik olarak Türkçeye taşıma; yalnızca Türk okuyucu için gerçekten gerekli ve kısa olanları kullan.
-- Kaynakta sûre/âyet kimliği, Kur'an referansı veya hadiste kısmen zikredilen sûre lafzını tanımayı kolaylaştıran bilgi varsa bunu kısa ve doğal biçimde Türkçeye taşı.
+Aşağıdaki klasik Arapça metni Türkçeye çevir. Google Translate tarzı kelime kelime çeviri yapma. Klasik Arapça, hadis ve fıkıh terminolojisini dikkate alarak akıcı ve doğru bir tercüme yap. Özel terimleri bağlama göre anlamlandır, gerekmedikçe açıklama ekleme.
 
 ## Codex CLI Test Modu
 
