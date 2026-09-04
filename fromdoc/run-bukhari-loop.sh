@@ -8,8 +8,19 @@ LOG_FILE="$PROJECT_DIR/buhari-logs.md"
 MAX_RUNS="${1:-0}"
 RUN_COUNT=0
 
-if ! command -v zsh >/dev/null 2>&1 || ! zsh -ic 'whence -w cop >/dev/null' >/dev/null 2>&1; then
-  echo "Hata: .zshrc içinde cop komutu veya fonksiyonu bulunamadı." >&2
+if command -v cop >/dev/null 2>&1; then
+  COP_RUNNER="direct"
+# Etkileşimli Bash, Ubuntu'da /etc/bash.bashrc ile ~/.bashrc dosyalarını yükler.
+elif command -v bash >/dev/null 2>&1 && bash -ic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
+  COP_RUNNER="bash"
+# Login Bash, ~/.bash_profile dosyasını yükler.
+elif command -v bash >/dev/null 2>&1 && bash -lic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
+  COP_RUNNER="bash_login"
+elif command -v zsh >/dev/null 2>&1 && zsh -ic 'whence -w cop >/dev/null' >/dev/null 2>&1; then
+  COP_RUNNER="zsh"
+else
+  echo "Hata: cop komutu veya shell fonksiyonu bulunamadı." >&2
+  echo "Ubuntu için cop fonksiyonunun /etc/bash.bashrc, ~/.bashrc veya ~/.bash_profile içinde tanımlı olduğundan emin ol." >&2
   exit 1
 fi
 
@@ -33,6 +44,23 @@ progress_value() {
   }' "$PROGRESS_FILE"
 }
 
+run_cop() {
+  case "$COP_RUNNER" in
+    direct)
+      command cop "$@"
+      ;;
+    bash)
+      bash -ic 'cop "$@"' -- "$@"
+      ;;
+    bash_login)
+      bash -lic 'cop "$@"' -- "$@"
+      ;;
+    zsh)
+      zsh -ic 'cop "$@"' -- "$@"
+      ;;
+  esac
+}
+
 PROMPT='progress.md ve buhari-logs.md dosyalarını oku. progress.md içindeki kalıcı talimatlara aynen uyarak yalnızca sıradaki 5 hadislik tek çalışma grubunu incele, gerekli doğrulanabilir düzeltmeleri yap, JSON ve referans sırası kontrollerini çalıştır, değişiklik günlüğünü ve progress.md içindeki güncel ilerleme alanlarını güncelle. Grup geçmişini progress.md içine ekleme. Koleksiyonda incelenecek hadis kalmadıysa Durum alanını Tamamlandı olarak güncelle.'
 
 while true; do
@@ -53,7 +81,7 @@ while true; do
   echo
   echo "Codex turu $RUN_COUNT başlıyor. Mevcut ilerleme: ${BEFORE:-bilinmiyor}"
 
-  zsh -ic 'cop "$@"' -- exec \
+  run_cop exec \
     --cd "$PROJECT_DIR" \
     --sandbox workspace-write \
     "$PROMPT"
