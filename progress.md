@@ -15,8 +15,9 @@
 7. Arapça alan eksik veya kesilmişse öncelikle `arabic_books/collections/bukhari.json`, gerekirse diğer güvenilir yerel Buhari kaynakları kullanılarak tamamlanmalıdır.
 8. Metnin anlamını keyfi biçimde modernleştirme; yalnız doğrulanabilir düzeltmeler yap.
 9. Her değişikliği `buhari-logs.md` dosyasına referans, alan, gerekçe, eski parça ve yeni parça olarak ekle. Alanın tamamı değiştirilmediyse hadisin tam metnini yazma; yalnız değiştirilen kelimeyi, cümleyi veya bölümü kaydet.
-10. Her çalışma grubundan sonra JSON ayrıştırmasını, referans sırasını ve değiştirilen kayıtları doğrula.
-11. Doğrulama tamamlandıktan sonra bu dosyadaki ilerleme bilgilerini güncelle.
+10. Her çalışma görevinde sıradaki tam 5 hadisi incele (örneğin 21-25, ardından 26-30). Kullanıcı açıkça farklı bir sayı istemedikçe bir görevde 5 hadisten fazla ilerleme.
+11. Her 5 hadislik çalışma grubundan sonra JSON ayrıştırmasını, referans sırasını ve değiştirilen kayıtları doğrula.
+12. Doğrulama tamamlandıktan sonra bu dosyadaki ilerleme bilgilerini güncelle.
 
 ## İlerleme
 
@@ -27,11 +28,8 @@
 - Sonraki hadis: Sahih al Bukhari 21
 - Son çalışma tarihi: 2026-09-04
 - Durum: Devam ediyor
-- İlk grupta incelenen kayıt sayısı: 10
-- İlk grupta değişiklik yapılan alan sayısı: 6
-- İkinci grupta incelenen kayıt sayısı: 10
-- İkinci grupta değişiklik yapılan alan sayısı: 5
+- Çalışma grubu boyutu: 5 hadis
 
 ## Devam Komutu
 
-Kullanıcı `progress dosyasından devam et`, `Buhari düzeltmesine devam et` veya benzeri bir ifade kullandığında bu talimatlara göre Sahih al Bukhari 21'den devam et.
+Kullanıcı `progress dosyasından devam et`, `Buhari düzeltmesine devam et` veya benzeri bir ifade kullandığında bu talimatlara göre yalnızca sıradaki 5 hadisi, yani Sahih al Bukhari 21-25 arasını incele. Sonraki görevde 26-30 aralığıyla devam et.
