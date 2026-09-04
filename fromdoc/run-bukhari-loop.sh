@@ -29,6 +29,8 @@ if [[ ! -f "$PROGRESS_FILE" || ! -f "$LOG_FILE" ]]; then
   exit 1
 fi
 
+cd "$PROJECT_DIR"
+
 if [[ ! "$MAX_RUNS" =~ ^[0-9]+$ ]]; then
   echo "Kullanım: $0 [maksimum_tur]" >&2
   echo "maksimum_tur verilmezse veya 0 olursa tamamlanana kadar çalışır." >&2
@@ -83,9 +85,7 @@ while true; do
   echo "Çalıştırıcı: $COP_RUNNER | Çalışma dizini: $PROJECT_DIR"
 
   run_cop exec \
-    --cd "$PROJECT_DIR" \
     --skip-git-repo-check \
-    --sandbox workspace-write \
     "$PROMPT"
 
   AFTER="$(progress_value 'Son tamamlanan hadis')"
