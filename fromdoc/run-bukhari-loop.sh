@@ -80,9 +80,11 @@ while true; do
 
   echo
   echo "Codex turu $RUN_COUNT başlıyor. Mevcut ilerleme: ${BEFORE:-bilinmiyor}"
+  echo "Çalıştırıcı: $COP_RUNNER | Çalışma dizini: $PROJECT_DIR"
 
   run_cop exec \
     --cd "$PROJECT_DIR" \
+    --skip-git-repo-check \
     --sandbox workspace-write \
     "$PROMPT"
 
