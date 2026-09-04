@@ -7,8 +7,25 @@ PROGRESS_FILE="$PROJECT_DIR/progress.md"
 LOG_FILE="$PROJECT_DIR/buhari-logs.md"
 MAX_RUNS="${1:-0}"
 RUN_COUNT=0
-SCRIPT_VERSION="pm2-v2"
+SCRIPT_VERSION="pm2-v4"
 COP_FUNCTION_FILE=""
+
+USER_HOME="${HOME:-}"
+if [[ -z "$USER_HOME" ]] && command -v getent >/dev/null 2>&1; then
+  USER_HOME="$(getent passwd "$(id -u)" | awk -F: 'NR == 1 { print $6 }')"
+fi
+
+if [[ -z "$USER_HOME" && -r /etc/passwd ]]; then
+  USER_HOME="$(awk -F: -v uid="$(id -u)" '$3 == uid { print $6; exit }' /etc/passwd)"
+fi
+
+if [[ -z "$USER_HOME" || ! -d "$USER_HOME" ]]; then
+  echo "Hata: Çalışan kullanıcının ev dizini belirlenemedi." >&2
+  exit 1
+fi
+
+# Snap yerine standalone Codex kurulumunu önceliklendir.
+export PATH="$USER_HOME/.local/bin:$USER_HOME/bin:$USER_HOME/.codex/bin:$PATH"
 
 cleanup() {
   if [[ -n "$COP_FUNCTION_FILE" && -f "$COP_FUNCTION_FILE" ]]; then
@@ -21,16 +38,16 @@ trap cleanup EXIT
 if command -v cop >/dev/null 2>&1; then
   COP_RUNNER="direct"
 # Etkileşimli Bash, Ubuntu'da /etc/bash.bashrc ile ~/.bashrc dosyalarını yükler.
-elif command -v bash >/dev/null 2>&1 && bash -ic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
+elif command -v bash >/dev/null 2>&1 && HOME="$USER_HOME" bash -ic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
   COP_RUNNER="bash"
   COP_FUNCTION_FILE="$(mktemp)"
-  bash -ic 'declare -f cop > "$1"' -- "$COP_FUNCTION_FILE" </dev/null 2>/dev/null
+  HOME="$USER_HOME" bash -ic 'declare -f cop > "$1"' -- "$COP_FUNCTION_FILE" </dev/null 2>/dev/null
 # Login Bash, ~/.bash_profile dosyasını yükler.
-elif command -v bash >/dev/null 2>&1 && bash -lic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
+elif command -v bash >/dev/null 2>&1 && HOME="$USER_HOME" bash -lic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
   COP_RUNNER="bash_login"
   COP_FUNCTION_FILE="$(mktemp)"
-  bash -lic 'declare -f cop > "$1"' -- "$COP_FUNCTION_FILE" </dev/null 2>/dev/null
-elif command -v zsh >/dev/null 2>&1 && zsh -ic 'whence -w cop >/dev/null' >/dev/null 2>&1; then
+  HOME="$USER_HOME" bash -lic 'declare -f cop > "$1"' -- "$COP_FUNCTION_FILE" </dev/null 2>/dev/null
+elif command -v zsh >/dev/null 2>&1 && HOME="$USER_HOME" zsh -ic 'whence -w cop >/dev/null' >/dev/null 2>&1; then
   COP_RUNNER="zsh"
 else
   echo "Hata: cop komutu veya shell fonksiyonu bulunamadı." >&2
@@ -46,6 +63,34 @@ fi
 cd "$PROJECT_DIR"
 
 echo "Betik sürümü: $SCRIPT_VERSION"
+
+CODEX_PATH="$(command -v codex || true)"
+CODEX_REAL_PATH=""
+
+if [[ -n "$CODEX_PATH" ]]; then
+  CODEX_REAL_PATH="$(readlink -f "$CODEX_PATH" 2>/dev/null || printf '%s' "$CODEX_PATH")"
+fi
+
+if [[ -z "$CODEX_PATH" ]]; then
+  echo "Hata: cop fonksiyonunun kullanacağı codex binary'si bulunamadı." >&2
+  exit 1
+fi
+
+if [[ "$CODEX_PATH" == /snap/* || "$CODEX_REAL_PATH" == /snap/* ]]; then
+  echo "Hata: Snap Codex tespit edildi: $CODEX_REAL_PATH" >&2
+  echo "Snap, /var/www çalışma dizinini /var/lib/snapd/void olarak değiştirir." >&2
+  echo "Standalone Codex'i kur ve ~/.local/bin dizinini PATH başına ekle." >&2
+  exit 1
+fi
+
+if [[ -n "$COP_FUNCTION_FILE" ]] && grep -q '/snap/' "$COP_FUNCTION_FILE"; then
+  echo "Hata: cop fonksiyonu doğrudan bir Snap yolunu çağırıyor." >&2
+  echo "cop içindeki /snap/.../codex yolunu $CODEX_REAL_PATH olarak değiştir." >&2
+  exit 1
+fi
+
+echo "Codex binary: $CODEX_REAL_PATH"
+echo "Başlangıç dizini: $(pwd -P)"
 
 if [[ ! "$MAX_RUNS" =~ ^[0-9]+$ ]]; then
   echo "Kullanım: $0 [maksimum_tur]" >&2
@@ -65,18 +110,18 @@ progress_value() {
 run_cop() {
   case "$COP_RUNNER" in
     direct)
-      command cop "$@"
+      HOME="$USER_HOME" command cop "$@"
       ;;
     bash)
-      bash --noprofile --norc -c 'source "$1"; shift; cop "$@"' \
+      HOME="$USER_HOME" bash --noprofile --norc -c 'source "$1"; shift; cop "$@"' \
         bash "$COP_FUNCTION_FILE" "$@"
       ;;
     bash_login)
-      bash --noprofile --norc -c 'source "$1"; shift; cop "$@"' \
+      HOME="$USER_HOME" bash --noprofile --norc -c 'source "$1"; shift; cop "$@"' \
         bash "$COP_FUNCTION_FILE" "$@"
       ;;
     zsh)
-      zsh -ic 'cop "$@"' -- "$@"
+      HOME="$USER_HOME" zsh -ic 'cop "$@"' -- "$@"
       ;;
   esac
 }
@@ -103,6 +148,7 @@ while true; do
   echo "Çalıştırıcı: $COP_RUNNER | Çalışma dizini: $PROJECT_DIR"
 
   run_cop exec \
+    --cd "$PROJECT_DIR" \
     --skip-git-repo-check \
     "$PROMPT" </dev/null
 
