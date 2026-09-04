@@ -8,8 +8,8 @@ LOG_FILE="$PROJECT_DIR/buhari-logs.md"
 MAX_RUNS="${1:-0}"
 RUN_COUNT=0
 
-if ! command -v cop >/dev/null 2>&1; then
-  echo "Hata: cop komutu bulunamadı." >&2
+if ! command -v zsh >/dev/null 2>&1 || ! zsh -ic 'whence -w cop >/dev/null' >/dev/null 2>&1; then
+  echo "Hata: .zshrc içinde cop komutu veya fonksiyonu bulunamadı." >&2
   exit 1
 fi
 
@@ -53,7 +53,7 @@ while true; do
   echo
   echo "Codex turu $RUN_COUNT başlıyor. Mevcut ilerleme: ${BEFORE:-bilinmiyor}"
 
-  cop exec \
+  zsh -ic 'cop "$@"' -- exec \
     --cd "$PROJECT_DIR" \
     --sandbox workspace-write \
     "$PROMPT"
