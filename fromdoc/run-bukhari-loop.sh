@@ -7,15 +7,29 @@ PROGRESS_FILE="$PROJECT_DIR/progress.md"
 LOG_FILE="$PROJECT_DIR/buhari-logs.md"
 MAX_RUNS="${1:-0}"
 RUN_COUNT=0
+SCRIPT_VERSION="pm2-v2"
+COP_FUNCTION_FILE=""
+
+cleanup() {
+  if [[ -n "$COP_FUNCTION_FILE" && -f "$COP_FUNCTION_FILE" ]]; then
+    rm -f -- "$COP_FUNCTION_FILE"
+  fi
+}
+
+trap cleanup EXIT
 
 if command -v cop >/dev/null 2>&1; then
   COP_RUNNER="direct"
 # Etkileşimli Bash, Ubuntu'da /etc/bash.bashrc ile ~/.bashrc dosyalarını yükler.
 elif command -v bash >/dev/null 2>&1 && bash -ic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
   COP_RUNNER="bash"
+  COP_FUNCTION_FILE="$(mktemp)"
+  bash -ic 'declare -f cop > "$1"' -- "$COP_FUNCTION_FILE" </dev/null 2>/dev/null
 # Login Bash, ~/.bash_profile dosyasını yükler.
 elif command -v bash >/dev/null 2>&1 && bash -lic 'type cop >/dev/null 2>&1' >/dev/null 2>&1; then
   COP_RUNNER="bash_login"
+  COP_FUNCTION_FILE="$(mktemp)"
+  bash -lic 'declare -f cop > "$1"' -- "$COP_FUNCTION_FILE" </dev/null 2>/dev/null
 elif command -v zsh >/dev/null 2>&1 && zsh -ic 'whence -w cop >/dev/null' >/dev/null 2>&1; then
   COP_RUNNER="zsh"
 else
@@ -30,6 +44,8 @@ if [[ ! -f "$PROGRESS_FILE" || ! -f "$LOG_FILE" ]]; then
 fi
 
 cd "$PROJECT_DIR"
+
+echo "Betik sürümü: $SCRIPT_VERSION"
 
 if [[ ! "$MAX_RUNS" =~ ^[0-9]+$ ]]; then
   echo "Kullanım: $0 [maksimum_tur]" >&2
@@ -52,10 +68,12 @@ run_cop() {
       command cop "$@"
       ;;
     bash)
-      bash -ic 'cop "$@"' -- "$@"
+      bash --noprofile --norc -c 'source "$1"; shift; cop "$@"' \
+        bash "$COP_FUNCTION_FILE" "$@"
       ;;
     bash_login)
-      bash -lic 'cop "$@"' -- "$@"
+      bash --noprofile --norc -c 'source "$1"; shift; cop "$@"' \
+        bash "$COP_FUNCTION_FILE" "$@"
       ;;
     zsh)
       zsh -ic 'cop "$@"' -- "$@"
@@ -86,7 +104,7 @@ while true; do
 
   run_cop exec \
     --skip-git-repo-check \
-    "$PROMPT"
+    "$PROMPT" </dev/null
 
   AFTER="$(progress_value 'Son tamamlanan hadis')"
   STATUS="$(progress_value 'Durum')"
