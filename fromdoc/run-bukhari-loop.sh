@@ -7,7 +7,7 @@ PROGRESS_FILE="$PROJECT_DIR/progress.md"
 LOG_FILE="$PROJECT_DIR/buhari-logs.md"
 MAX_RUNS="${1:-0}"
 RUN_COUNT=0
-SCRIPT_VERSION="pm2-v4"
+SCRIPT_VERSION="pm2-v5"
 COP_FUNCTION_FILE=""
 
 USER_HOME="${HOME:-}"
@@ -126,17 +126,12 @@ run_cop() {
   esac
 }
 
-PROMPT='progress.md ve buhari-logs.md dosyalarını oku. progress.md içindeki kalıcı talimatlara aynen uyarak yalnızca sıradaki 5 hadislik tek çalışma grubunu incele, gerekli doğrulanabilir düzeltmeleri yap, JSON ve referans sırası kontrollerini çalıştır, değişiklik günlüğünü ve progress.md içindeki güncel ilerleme alanlarını güncelle. Grup geçmişini progress.md içine ekleme. Koleksiyonda incelenecek hadis kalmadıysa Durum alanını Tamamlandı olarak güncelle.'
+PROMPT='progress.md ve buhari-logs.md dosyalarını oku. progress.md içindeki kalıcı talimatlara aynen uyarak yalnızca sıradaki 5 hadislik tek çalışma grubunu incele, gerekli doğrulanabilir düzeltmeleri yap, JSON ve referans sırası kontrollerini çalıştır, değişiklik günlüğünü ve progress.md içindeki güncel ilerleme alanlarını güncelle. Grup geçmişini progress.md içine ekleme. Koleksiyonda incelenecek hadis kalmadıysa Durum alanını Tamamlandı olarak güncelle. Bu Codex çağrısında tam olarak bir çalışma grubu tamamladıktan sonra başka bir gruba başlama; son yanıtını verip hemen çık.'
 
-while true; do
+while (( MAX_RUNS == 0 || RUN_COUNT < MAX_RUNS )); do
   STATUS="$(progress_value 'Durum')"
   if [[ "$STATUS" == "Tamamlandı" ]]; then
     echo "İşlem tamamlandı: progress.md durumu Tamamlandı."
-    break
-  fi
-
-  if (( MAX_RUNS > 0 && RUN_COUNT >= MAX_RUNS )); then
-    echo "Belirlenen maksimum tur sayısına ulaşıldı: $MAX_RUNS"
     break
   fi
 
@@ -167,3 +162,7 @@ while true; do
 
   echo "Tur $RUN_COUNT tamamlandı. Yeni ilerleme: $AFTER"
 done
+
+if [[ "${STATUS:-}" != "Tamamlandı" ]] && (( MAX_RUNS > 0 && RUN_COUNT >= MAX_RUNS )); then
+  echo "Belirlenen maksimum tur sayısına ulaşıldı: $MAX_RUNS"
+fi
